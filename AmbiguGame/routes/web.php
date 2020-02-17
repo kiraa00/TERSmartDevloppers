@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('jeu', function () {
+    return view('ici la page du jeu');
+});
