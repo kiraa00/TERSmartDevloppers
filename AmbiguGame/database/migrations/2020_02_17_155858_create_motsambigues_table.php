@@ -16,8 +16,6 @@ class CreateMotsambiguesTable extends Migration
         Schema::create('motsambigues', function (Blueprint $table) {
             $table->bigIncrements('idMot');
             $table->string('mot');
-            $table->unsignedBigInteger('idPhrase');
-            $table->foreign('idPhrase')->references('idPhrase')->on('phrases')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -1,5 +1,6 @@
 <?php
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,6 +16,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('jeu', function () {
-    return view('ici la page du jeu');
-});
+Route::get('/createPhrase','CreatePhrase@index');
+Route::post('/insertPhrase','CreatePhrase@store');
+Route::post('/ajouterGlose','CreatePhrase@ajouterGlose');

@@ -23,7 +23,6 @@ class CreateMembresTable extends Migration
             $table->unsignedBigInteger('idPhrase');
             $table->foreign('idPhrase')->references('idPhrase')->on('phrases')->onDelete('cascade');
             $table->string('titre');
-            $table->date('dateInscription');
             $table->integer('points');
             $table->integer('credit');
             $table->integer('nbrphrasescree');

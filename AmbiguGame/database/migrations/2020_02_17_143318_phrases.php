@@ -16,11 +16,10 @@ class Phrases extends Migration
         Schema::create('phrases', function (Blueprint $table) {
             $table->bigIncrements('idPhrase');
             $table->string('phrase');
-            $table->date('datecreation');
-            $table->integer('nbrjouer');
-            $table->integer('nbrlike');
-            $table->integer('gain');
-            $table->integer('dejajouer');
+            $table->integer('nbrjouer')->nullable();
+            $table->integer('nbrlike')->nullable();
+            $table->integer('gain')->nullable();
+            $table->integer('dejajouer')->nullable();
             $table->timestamps();
         });
     }
