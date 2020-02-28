@@ -17,5 +17,6 @@ Route::get('/', function () {
 });
 
 Route::get('/createPhrase','CreatePhrase@index');
+Route::get('/recupererGloses','CreatePhrase@recupererGloses');
 Route::post('/insertPhrase','CreatePhrase@store');
 Route::post('/ajouterGlose','CreatePhrase@ajouterGlose');

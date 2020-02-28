@@ -38,29 +38,29 @@ class CreatePhrase extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+    // inserer la phrase et mettre 
     public function store(Request $request)
     {
         $phrases = new phrases();
         $contenir = new Contenir();
         $mot = DB::table('motsambigues')->where('mot', $request->mot_ambiguD)->first();
-        $motId = $mot->idMot;
-        $phrases->phrase = $request->phraseD;
-        $phrases->nbrjouer = 1;
-        $phrases->nbrlike = 0;
-        $phrases->gain = 0;
-        $phrases->dejajouer = 0;
-        $phrases->save();
-        $contenir->idPhrase = DB::table('phrases')->where('phrase', $phrases->phrase)->first()->idPhrase;
-        $contenir->idMot = $motId;
-        $contenir->save();
-
-
-
-
+        if($motId != null){
+            $motId = $mot->idMot;
+            $phrases->phrase = $request->phraseD;
+            $phrases->nbrjouer = 1;
+            $phrases->nbrlike = 0;
+            $phrases->gain = 0;
+            $phrases->dejajouer = 0;
+            $phrases->save();
+            $contenir->idPhrase = DB::table('phrases')->where('phrase', $phrases->phrase)->first()->idPhrase;
+            $contenir->idMot = $motId;
+            $contenir->save();
+        }
         return $request->phraseD;
     }
-
-    public function ajouterGlose(Request $request){
+    // ajouter la glose et le motAmbigu + association motAmbigu et glose
+        public function ajouterGlose(Request $request){
         $glose = new gloses();
         $motAmbigu = new motsambigues();
 
@@ -83,6 +83,20 @@ class CreatePhrase extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    public function recupererGloses(Request $data){
+        $MotInstance = DB::table('motsambigues')->where('mot', $data->mot)->first();
+        $GlosesData = null;
+        if($MotInstance != null){
+            $idMot = $MotInstance->idMot;
+            $GlosesData = DB::table('gloses')->where('idMot', $idMot);
+        }
+
+
+        return $GlosesData;
+    }
+
+
+
     public function show($id)
     {
         //

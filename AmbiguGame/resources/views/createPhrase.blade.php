@@ -45,9 +45,9 @@
     var curr_mot='';
     var mots_ajoute=[];
     $(document).ready(function(){
-        $('#Mot_butt').click(add_mot);
+        //ajouter glose dans la base de donnée
         $('#btnAddGlose').click(function(){
-            console.log("i m here");
+            console.log("adding the glose ...");
             var glose = $('#glose_input').val();
             var Mot = $('#'+curr_mot).val();
             // $.post('ajouterGlose', {"_token": "{{ csrf_token() }}",glose:glose, motAmbigu:Mot}, function(data){
@@ -64,6 +64,23 @@
                 }  
             });
         });
+
+        //ajouter le field MotAmbigu et récupérer les gloses associé
+        $('#Mot_butt').click(function(){
+            var dataString = "mot="+add_mot();
+
+            $.ajax({
+                type: "GET",
+                url: "recupererGloses",
+                data: dataString,
+                success: function(data){
+                    console.log(data);
+                }  
+            });
+
+
+        });
+
     });
 
     function ajouter_glose(value){
@@ -98,6 +115,7 @@
             $('#'+sup_mot_id).click({id:divId, select:selection }, supp_mot);
             $('#'+buttonId).click({selectId:selectId, MotId:MotId}, show_form);
             i++;
+            return selection;
         }
     }
     function supp_mot(param){
