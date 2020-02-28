@@ -3,7 +3,7 @@
 @section('mainContent')
 
 <h1> Create Phrase </h1>
-<form name="ajouter phrase" method="post" action="insertPhrase">
+<form method="post" action="insertPhrase">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <div id="phrase_space" class="form-group">
         <textarea name="phraseD" id="phrase" required="required" placeholder="Saisissez votre phrase"></textarea>
