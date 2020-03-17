@@ -78,7 +78,7 @@ $db['default'] = array(
 	'hostname' => 'localhost',
 	'username' => 'root',
 	'password' => '',
-	'database' => '',
+	'database' => 'enigmot',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => TRUE,
@@ -95,11 +95,11 @@ $db['default'] = array(
 	'save_queries' => TRUE
 );
 
-$db['default']['failover'] = array(
+$db['Test'] = array(
                         'hostname' => 'localhost',
-                        'username' => '',
+                        'username' => 'root',
                         'password' => '',
-                        'database' => 'enigmot',
+                        'database' => '',
                         'dbdriver' => 'mysqli',
                         'dbprefix' => '',
                         'pconnect' => TRUE,
