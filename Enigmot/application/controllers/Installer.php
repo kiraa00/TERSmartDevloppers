@@ -5,18 +5,23 @@ class Installer extends CI_Controller {
     {
         $this->load->dbforge();
 
-        //creation de la base de données
+        $this->load->model('Joueur');
+        $this->Joueur->createData();
 
-        if ($this->dbforge->create_database('enigmot')){
-            $this->load->database();
-        }else{
-            echo 'error pour créer la base de donnée vérifier s\'il n\'existe pas déjà';
-        }
+        $this->load->model('Phrase');
+        $this->Phrase->createData();
 
+        $this->load->model('Jouer');
+        $this->Jouer->createData();    
 
-    
+        $this->load->model('Mot');
+        $this->Mot->createData(); 
 
+        $this->load->model('Glose');
+        $this->Glose->createData(); 
 
+        $this->load->model('Contenir');
+        $this->Contenir->createData(); 
     }
 
 }
