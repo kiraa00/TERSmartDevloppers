@@ -35,9 +35,10 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	<script src="<?php echo base_url('assets/vendors/counter-up/jquery.counterup.min.js');?>"></script>
 	<script src="<?php echo base_url('assets/js/mail-script.js');?>"></script>
 	<!--gmaps Js-->
-	<script src="<?php echo base_url('assets/https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE');?>"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
 	<script src="<?php echo base_url('assets/js/gmaps.min.js');?>"></script>
 	<script src="<?php echo base_url('assets/js/theme.js');?>"></script>
+	<script src="<?php echo base_url('assets/js/Create.js');?>"></script>
 </body>
 
 </html>

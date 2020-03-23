@@ -16,6 +16,7 @@
 	<link rel="stylesheet" href="<?php echo base_url('assets/vendors/nice-select/css/nice-select.css');?>">
 	<link rel="stylesheet" href="<?php echo base_url('assets/vendors/animate-css/animate.css');?>">
 	<link rel="stylesheet" href="<?php echo base_url('assets/vendors/flaticon/flaticon.css');?>">
+
 	<!-- main css -->
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/style.css');?>">
 </head>
@@ -27,7 +28,7 @@
 			<nav class="navbar navbar-expand-lg navbar-light">
 				<div class="container">
 					<!-- Brand and toggle get grouped for better mobile display -->
-					<a class="navbar-brand logo_h"  href="index.html"><img src="<?php echo base_url('assets/css/img/logo.png');?>" class="Mon_logo" alt=""></a>
+					<a class="navbar-brand logo_h"  href="index.html"><img src="<?php echo base_url('assets/img/logo.png');?>" class="Mon_logo" alt=""></a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
 					 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="icon-bar"></span>
@@ -37,9 +38,9 @@
 					<!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
 						<ul class="nav navbar-nav menu_nav justify-content-center">
-							<li class="nav-item active"><a class="nav-link" href="index.html">Acceuil</a></li>
-							<li class="nav-item"><a class="nav-link" href="jouer.html">Jouer</a></li>
-							<li class="nav-item"><a class="nav-link" href="creation_page.html">Créer</a>
+							<li class="nav-item active"><a class="nav-link" href="Home">Acceuil</a></li>
+							<li class="nav-item"><a class="nav-link" href="jouer">Jouer</a></li>
+							<li class="nav-item"><a class="nav-link" href="create">Créer</a>
 							<li class="nav-item submenu dropdown">
 								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 								 aria-expanded="false">Classement</a>
