@@ -1,15 +1,36 @@
+		<!--================Home Banner Area =================-->
 		<section class="banner_area">
-			<div class="banner_inner d-flex align-items-center">
+			<div class="banner_inner d-flex align-items-center" style="min-height: 100vh">
+				<div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
 				<div class="container">
-					<div class="banner_content text-center">
-						<h2>Creation d'une Phrase</h2>
+					<div class="banner_content text-center p-5">
+						<div class="page_link">
+							<a href="Home">Home</a>
+							<a href="create">Create Phrase</a>
+						</div>
+						<h2>Create Phrase</h2>
+					</div>
+						<div class="col-lg-12 p-5" style="background-color: #5753967a;">
+						<h3>Creation d'une Phrase</h3>
 						<form method="post" action="insertPhrase">
 						    <div id="phrase_space" class="form-group">
-						        <input type="text" name="phraseD" id="phrase" required="required" placeholder="Saisissez votre phrase"></textarea>
-						        <button id="Mot_butt" class="registerbtn" type="button">Ajouter un mot ambigu</button>
+								<div class="input-group col-9">
+									  <input type="text" class="form-control" name="phraseD" id="phrase" required="required" placeholder="Saisissez votre phrase">
+								</div>
+								<div class="col-9 pt-2">
+								<button id="Mot_butt" class="genric-btn primary circle medium
+						        " type="button">Ajouter un mot ambigu</button>
+								</div>						 
 						    </div>
-						    <div id="Mots_space" class="form-group"></div>
-						    <button class="registerbtn2" type="submit">Ajouter la phrase</button>
+						    <div id="Mots_space" class="row"></div>
+						    <div class="row">
+								<div class="col-md-9">
+								</div>
+								<div class="col-md-3">
+									<button class="genric-btn danger circle arrow" type="submit">Ajouter la phrase</button>
+								</div>
+							</div>
+
 
 						</form> 
 						<div class="modal fade" id="addGlose" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -27,16 +48,11 @@
 						                    <button type="button" class="registerbtn" onclick="hide_form()">Cancel</button>
 						                    <button type="button" id="btnAddGlose" class="registerbtn2">Ajouter la glose</button>
 						                </div>
-						            </form>
-						        </div>
-						    </div>
+									</form>
+								</div>
+							</div>
 						</div>
-							
 					</div>
 				</div>
-				
 			</div>
-			
 		</section>
-
-

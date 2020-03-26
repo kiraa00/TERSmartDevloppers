@@ -25,7 +25,13 @@ Author E-mail: naimlasker@gmail.com
 /* Wide Mobile Layout: 480px */
 /*---------------------------------------------------- */
 /*----------------------------------------------------*/
+html {
+    min-height: 100%;
+}
 body {
+    min-height: 100%;
+  margin: 0;
+  padding: 0;
   line-height: 24px;
   font-size: 14px;
   font-family: "Roboto", sans-serif;
