@@ -14,7 +14,7 @@
                 'id_joueur' => array(
                              'type' => 'int',
                              'constraint' => '15',
-                             'auto_increment'=>true
+                             'auto_increment'=>true,
                               ),
 
                 'Nom' => array(

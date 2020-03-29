@@ -14,6 +14,8 @@
 						<h3>Creation d'une Phrase</h3>
 						<form method="post" action="insertPhrase">
 						    <div id="phrase_space" class="form-group">
+						    	<!-- hidden phrase à enregistré -->
+						    	<input id="phraseH" name="phraseH" type="hidden" value="">
 								<div class="input-group col-9">
 									  <input type="text" class="form-control" name="phraseD" id="phrase" required="required" placeholder="Saisissez votre phrase">
 								</div>
@@ -33,12 +35,19 @@
 
 
 						</form> 
+					</div>
+				</div>
+			</div>
+		</section>
+
 						<div class="modal fade" id="addGlose" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-						    <div class="modal-dialog" role="document">
+						    <div class="modal-dialog modal-dialog-centered" role="document">
 						        <div class="modal-content">
+
 						            <div class="modal-header">
+						            	<h3 class="modal-title" class="center"id="myModalLabel">Ajouter Glose</h4>
 						                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						                <h4 class="modal-title" id="myModalLabel">Ajouter Glose</h4>
+						                
 						            </div>
 						            <form id="glose_form" method="post">
 						                <div class="modal-body">
@@ -52,7 +61,3 @@
 								</div>
 							</div>
 						</div>
-					</div>
-				</div>
-			</div>
-		</section>

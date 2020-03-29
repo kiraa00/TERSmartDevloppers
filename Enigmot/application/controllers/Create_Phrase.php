@@ -3,25 +3,42 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Create_Phrase extends CI_Controller {
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/user_guide/general/urls.html
-	 */
+	public function __construct(){
+		parent::__construct();
+		// load form and url helpers
+        $this->load->helper(array('form', 'url'));
+        $this->load->model('Glose');
+        $this->load->model('Mot');
+        $this->load->model('Contenir');
+        // load form_validation library
+		//XMLHttpRequest
+		header('Access-Control-Allow-Origin: *');
+	}
+
 	public function index()
 	{
 		$this->load->view('header');
         $this->load->view('pages/Create_Phrase');
         $this->load->view('footer');
+	}
+
+	public function ajouterGlose(){
+		$data=array(
+        	'glose'   =>  $this->input->post('glose'),
+            'motAmbigu' =>  $this->input->post('motAmbigu'),
+        );
+
+		$id_Glose = $this->Glose->insert($data['glose']);
+		$id_mot = $this->Mot->insert($data['motAmbigu']);
+
+		$dataC = array(
+        	'id_glose'   =>  $id_Glose,
+            'id_ambigu' =>  $id_mot,
+            'Nbr_choisi'  => 0,
+        );
+
+        $this->Contenir->insert($dataC);
+
+        echo json_encode($data['glose']);
 	}
 }

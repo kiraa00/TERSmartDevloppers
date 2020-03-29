@@ -6,6 +6,11 @@
             $this->load->database();
       }
 
+      public $id_glose;
+      public $id_ambigu;
+      public $Nbr_choisi;
+
+
       public function createData()  
       {  
         $this->load->dbforge();
@@ -35,6 +40,11 @@
         $this->dbforge->create_table('Contenir');
 
 
+      }
+
+
+      public function insert($data){
+        $this->db->insert('Contenir', $data);
       }
      
 }

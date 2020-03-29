@@ -1,4 +1,4 @@
-    var i=0;
+        var i=0;
     var curr_selectId='';
     var curr_mot='';
     var mots_ajoute=[];
@@ -11,14 +11,19 @@
             // $.post('ajouterGlose', {"_token": "{{ csrf_token() }}",glose:glose, motAmbigu:Mot}, function(data){
             //     console.log(data);
             // });
-            var dataString = "glose="+glose+"&motAmbigu="+Mot;
+            var dataSet = {"glose" : glose, "motAmbigu" : Mot}
             $.ajax({
                 type: "POST",
-                url: "ajouterGlose",
-                data: dataString,
+                url: "Create_Phrase/ajouterGlose",
+                data: dataSet,
                 success: function(data){
                     console.log(data);
                     ajouter_glose(glose);
+                    swal(
+                        'Good job!',
+                        'Data has been save!',
+                        'success'
+                    )                    
                 }  
             });
         });
@@ -27,14 +32,14 @@
         $('#Mot_butt').click(function(){
             var dataString = "mot="+add_mot();
 
-            $.ajax({
-                type: "GET",
-                url: "recupererGloses",
-                data: dataString,
-                success: function(data){
-                    console.log(data);
-                }  
-            });
+            // $.ajax({
+            //     type: "GET",
+            //     url: "recupererGloses",
+            //     data: dataString,
+            //     success: function(data){
+            //         console.log(data);
+            //     }  
+            // });
 
 
         });
@@ -42,13 +47,14 @@
     });
 
     function ajouter_glose(value){
+        //ajoute la glose dans select
         let option="<option>"+value+"</option>"
         $('#'+curr_selectId).append(option);
         hide_form();
     }    
     function add_mot(){
         let selection = '';
-        $('textarea').focus();
+        $('#phrase').focus();
         selection = window.getSelection();
         selection = selection.toString().replace( /\s/g, '');
         if(selection!='' && jQuery.inArray( selection , mots_ajoute)==-1){
@@ -73,6 +79,7 @@
             $('#'+sup_mot_id).click({id:divId, select:selection }, supp_mot);
             $('#'+buttonId).click({selectId:selectId, MotId:MotId}, show_form);
             i++;
+            $('#phrase').selection('replace', {text: '<amb id = 1>'+ selection + '</amb>'});
             return selection;
         }
     }
@@ -85,6 +92,7 @@
 
     }
     function show_form(param){
+        console.log(mots_ajoute);
         curr_selectId=param.data.selectId;
         curr_mot=param.data.MotId;
         $('#glose_form')[0].reset(); // reset form on modals
@@ -99,3 +107,29 @@
         curr_mot='';
         $('#addGlose').modal('hide');
     }
+
+
+function getSelectionCharOffsetsWithin(element) {
+    var start = 0, end = 0;
+    var sel, range, priorRange;
+    if (typeof window.getSelection != "undefined") {
+        range = window.getSelection().getRangeAt(0);
+        priorRange = range.cloneRange();
+        priorRange.selectNodeContents(element);
+        priorRange.setEnd(range.startContainer, range.startOffset);
+        start = priorRange.toString().length;
+        end = start + range.toString().length;
+    } else if (typeof document.selection != "undefined" &&
+            (sel = document.selection).type != "Control") {
+        range = sel.createRange();
+        priorRange = document.body.createTextRange();
+        priorRange.moveToElementText(element);
+        priorRange.setEndPoint("EndToStart", range);
+        start = priorRange.text.length;
+        end = start + range.text.length;
+    }
+    return {
+        start: start,
+        end: end
+    };
+}

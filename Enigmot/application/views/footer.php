@@ -22,6 +22,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script src="<?php echo base_url('assets/js/jquery-3.2.1.min.js');?>"></script>
+	<script src="<?php echo base_url('assets/js/sweetalert.js');?>"></script>
 	<script src="<?php echo base_url('assets/js/popper.js');?>"></script>
 	<script src="<?php echo base_url('assets/js/bootstrap.min.js');?>"></script>
 	<script src="<?php echo base_url('assets/js/stellar.js');?>"></script>
@@ -38,6 +39,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
 	<script src="<?php echo base_url('assets/js/gmaps.min.js');?>"></script>
 	<script src="<?php echo base_url('assets/js/theme.js');?>"></script>
+	<script src="<?php echo base_url('assets/js/jquery.selection.js');?>"></script>
 	<script src="<?php echo base_url('assets/js/Create.js');?>"></script>
 </body>
 
