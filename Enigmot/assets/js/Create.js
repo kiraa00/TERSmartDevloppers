@@ -19,6 +19,7 @@
                 success: function(data){
                     console.log(data);
                     ajouter_glose(glose);
+                    // raffraichirGlose();
                     swal(
                         'Good job!',
                         'Data has been save!',
@@ -30,25 +31,59 @@
 
         //ajouter le field MotAmbigu et récupérer les gloses associé
         $('#Mot_butt').click(function(){
-            var dataString = "mot="+add_mot();
-
-            // $.ajax({
-            //     type: "GET",
-            //     url: "recupererGloses",
-            //     data: dataString,
-            //     success: function(data){
-            //         console.log(data);
-            //     }  
-            // });
+            var mot = add_mot();
+            console.log($('#phrase').val());
+            $.ajax({
+                type: "GET",
+                url: "Create_Phrase/recuperer_Gloses/"+mot,
+                success: function(data){
+                    console.log(data);
+                    afficherGlose(data);
+                }  
+            });
 
 
         });
 
     });
+    function raffraichirGlose(){
+        for(var j=0;j<i;j++){
+            var mot = $('#mot_ambigu'+j).val();
+            var gloseID = '#gloses'+j;
+            $.ajax({
+                type: "GET",
+                url: "Create_Phrase/recuperer_Gloses/"+mot,
+                success: function(data){
+                    console.log(data);
+                    afficherGlose(data,gloseID);
+                }  
+            });
+            
+        }
+    }
+
+    function afficherGlose(data,glose=''){
+        arr = JSON.parse(data);
+        console.log(arr);
+        $.each( arr, function( index, val ){
+            var option="<option>"+val['Glose']+"</option>";
+            if(glose == ''){
+                $('#'+curr_selectId).append(option);
+            }else{
+                $('#'+curr_selectId).each(function(){
+                    if (this.value == val['Glose'] ) {
+                        console.log(value);
+                        $(glose).append(option);
+                    }
+                });
+                
+            }
+        });
+    }
 
     function ajouter_glose(value){
         //ajoute la glose dans select
-        let option="<option>"+value+"</option>"
+        let option="<option>"+value+"</option>";
         $('#'+curr_selectId).append(option);
         hide_form();
     }    
@@ -57,7 +92,8 @@
         $('#phrase').focus();
         selection = window.getSelection();
         selection = selection.toString().replace( /\s/g, '');
-        if(selection!='' && jQuery.inArray( selection , mots_ajoute)==-1){
+        // && jQuery.inArray( selection , mots_ajoute)==-1
+        if(selection!='' ){
             mots_ajoute.push(selection);
             let divId='mot'+i;
             let selectId = 'gloses'+i;
@@ -66,20 +102,20 @@
             let sup_mot_id='supprimer_mot'+i;
             let form =  "<div id='"+divId+"'>"
                         +"<label for='"+MotId+"'>Mot ambigu:  </label>"
-                        +"<input name='mot_ambiguD' type='text' id='"+MotId+"' value='"+selection+"'/>"
+                        +"<input name='mot_ambiguD[]' type='text' id='"+MotId+"' value='"+selection+"'/>"
                         +"<label for='"+selectId+"'>Glose:    </label>"
-                        +"<select name='gloseD' id='"+selectId+"' required='required'>"
+                        +"<select name='gloseD[]' id='"+selectId+"' required='required'>"
                         +"<option selected disabled>Choisissez une glose</option>"
                         +"</select>"
                         +"<button class='registerbtn' type='button' id='"+buttonId+"'>Ajouter glose</button>"
                         +"<button class='registerbtn2' id='"+sup_mot_id+"' type='button'>Supprimer Mot</button>"
                         +"</div>";
-
+             curr_selectId=selectId;
             $('#Mots_space').append(form);
             $('#'+sup_mot_id).click({id:divId, select:selection }, supp_mot);
             $('#'+buttonId).click({selectId:selectId, MotId:MotId}, show_form);
             i++;
-            $('#phrase').selection('replace', {text: '<amb id = 1>'+ selection + '</amb>'});
+            $('#phrase').selection('replace', {text: "<amb id = \'"+i+"\'>"+ selection + "</amb>"});
             return selection;
         }
     }
@@ -107,29 +143,3 @@
         curr_mot='';
         $('#addGlose').modal('hide');
     }
-
-
-function getSelectionCharOffsetsWithin(element) {
-    var start = 0, end = 0;
-    var sel, range, priorRange;
-    if (typeof window.getSelection != "undefined") {
-        range = window.getSelection().getRangeAt(0);
-        priorRange = range.cloneRange();
-        priorRange.selectNodeContents(element);
-        priorRange.setEnd(range.startContainer, range.startOffset);
-        start = priorRange.toString().length;
-        end = start + range.toString().length;
-    } else if (typeof document.selection != "undefined" &&
-            (sel = document.selection).type != "Control") {
-        range = sel.createRange();
-        priorRange = document.body.createTextRange();
-        priorRange.moveToElementText(element);
-        priorRange.setEndPoint("EndToStart", range);
-        start = priorRange.text.length;
-        end = start + range.text.length;
-    }
-    return {
-        start: start,
-        end: end
-    };
-}

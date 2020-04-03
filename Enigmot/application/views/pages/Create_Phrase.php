@@ -12,7 +12,7 @@
 					</div>
 						<div class="col-lg-12 p-5" style="background-color: #5753967a;">
 						<h3>Creation d'une Phrase</h3>
-						<form method="post" action="insertPhrase">
+						<form method="post" action="Create_Phrase/insertPhrase">
 						    <div id="phrase_space" class="form-group">
 						    	<!-- hidden phrase à enregistré -->
 						    	<input id="phraseH" name="phraseH" type="hidden" value="">

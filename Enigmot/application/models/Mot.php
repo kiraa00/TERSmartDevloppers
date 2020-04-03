@@ -43,12 +43,11 @@
         $this->db->select('*');
         $this->db->where($where);
         $query = $this->db->get('Mot');
-
         if($query->num_rows()==0){
           $this->db->insert('Mot', $where);
           $id = $this->db->insert_id();
         }else{
-          $id = $this->row()->id_ambigu;
+          $id = $query->row()->id_ambigu;
         }
         return $id;
       }      

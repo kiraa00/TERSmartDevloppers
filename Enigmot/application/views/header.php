@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
 	<!-- Required meta tags -->
@@ -58,8 +58,8 @@
 								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 								 aria-expanded="false" class="primary_btn">Inscription/Connexion</a>
 								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="inscription.html">Inscription</a></li>
-									<li class="nav-item"><a class="nav-link" href="connexion.html">Connexion</a></li>
+									<li class="nav-item"><a class="nav-link" href="<?php echo base_url('index.php/inscription');?>">Inscription</a></li>
+									<li class="nav-item"><a class="nav-link" href="<?php echo base_url('index.php/connexion');?>">Connexion</a></li>
 								</ul>
 							</li>
 						</ul>

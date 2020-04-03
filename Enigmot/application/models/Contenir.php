@@ -44,7 +44,17 @@
 
 
       public function insert($data){
-        $this->db->insert('Contenir', $data);
+        $where = array(
+          'id_glose' => $data['id_glose'],
+          'id_ambigu' => $data['id_ambigu'],
+        );
+        $this->db->select('*');
+        $this->db->where($where);
+        $query = $this->db->get('Contenir');
+        if($query->num_rows()==0){
+          $this->db->insert('Contenir', $data);
+        }
+        
       }
      
 }

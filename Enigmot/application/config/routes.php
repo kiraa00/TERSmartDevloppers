@@ -54,4 +54,6 @@ $route['404_override'] = '';
 $route['install']='Installer';
 $route['create']='Create_Phrase';
 $route['jouer']='Jouer';
+$route['inscription']='Inscription';
+$route['connexion']='Connexion';
 $route['translate_uri_dashes'] = FALSE;

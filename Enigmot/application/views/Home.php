@@ -1,7 +1,3 @@
-	<?php echo base_url('assets/
-
-');?>
-
 	<!--================Home Banner Area =================-->
 	<section class="home_banner_area">
 		<div class="banner_inner">
@@ -20,8 +16,7 @@
 								Try Fashion
 							</h2>
 							<p>
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temp or incididunt ut labore et dolore
-								magna aliqua. Ut enim ad minim.
+								Discription du jeu.
 							</p>
 							<div class="d-flex align-items-center">
 								<a id="play-home-video" class="video-play-button" href="https://www.youtube.com/watch?v=vParh5wE-tM">
@@ -49,7 +44,7 @@
 						<h1>Un avocat se retrouve par terre</h1>
 						<p>Parle-t-on du fruit, de l'homme ou d'autre chose ?<br>
 							À vous de choisir en mettant le sens qui vous semble le plus approprié ;)</p>
-						<a class="primary_btn" href="#">JOUEZ MAINTENANT</a>
+						<a class="primary_btn" href="<?php echo base_url('index.php/jouer');?>">JOUEZ MAINTENANT</a>
 					</div>
 				</div>
 				<div class="col-lg-6">

@@ -10,6 +10,7 @@ class Create_Phrase extends CI_Controller {
         $this->load->model('Glose');
         $this->load->model('Mot');
         $this->load->model('Contenir');
+        $this->load->model('Phrase');
         // load form_validation library
 		//XMLHttpRequest
 		header('Access-Control-Allow-Origin: *');
@@ -40,5 +41,16 @@ class Create_Phrase extends CI_Controller {
         $this->Contenir->insert($dataC);
 
         echo json_encode($data['glose']);
+	}
+
+	public function recuperer_Gloses($mot){
+		$gloses = $this->Glose->getGlose($mot);
+		echo json_encode($gloses);
+	}
+
+	public function insertPhrase(){
+		$phrase = $this->input->post('phraseD');
+		$this->Phrase->insert($phrase);
+		redirect('Create_Phrase');
 	}
 }

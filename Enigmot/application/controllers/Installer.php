@@ -22,6 +22,7 @@ class Installer extends CI_Controller {
 
         $this->load->model('Contenir');
         $this->Contenir->createData(); 
+        redirect('Home');
     }
 
 }
