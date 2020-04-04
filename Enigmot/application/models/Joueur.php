@@ -7,7 +7,7 @@
       }
 
       public function createData()  
-      {  
+      {  $attributes = array('ENGINE' => 'InnoDB');
         $this->load->dbforge();
     
       	$fields = array(
@@ -51,7 +51,7 @@
             );
         $this->dbforge->add_field($fields);
         $this->dbforge->add_key('id_joueur',true);
-        $this->dbforge->create_table('Joueur');
+        $this->dbforge->create_table('Joueur',FALSE, $attributes);
       }
 
       public function verifyPseudoAndEmail($data) {
