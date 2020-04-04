@@ -7,7 +7,7 @@
       }
 
       public function createData()  
-      {  
+      {  $attributes = array('ENGINE' => 'InnoDB');
         $this->load->dbforge();
     
       	$fields = array(
@@ -33,7 +33,7 @@
 
         $this->dbforge->add_field($fields);
         $this->dbforge->add_key('id_ambigu',true);
-        $this->dbforge->create_table('Mot');
+        $this->dbforge->create_table('Mot',FALSE, $attributes);
       }
 
 

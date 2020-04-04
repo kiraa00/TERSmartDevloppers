@@ -8,6 +8,7 @@
 
       public function createData()  
       {  
+        $attributes = array('ENGINE' => 'InnoDB');
         $this->load->dbforge();
     
       	$fields = array(
@@ -57,7 +58,7 @@
         $this->dbforge->add_field($fields);
         $this->dbforge->add_key('id_phrase',true);
         $this->dbforge->add_field('CONSTRAINT FOREIGN KEY (id_Createur) REFERENCES Joueur(id_joueur)');
-        $this->dbforge->create_table('Phrase');
+        $this->dbforge->create_table('Phrase',FALSE, $attributes);
 
 
       }

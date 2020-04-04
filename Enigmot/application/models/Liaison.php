@@ -12,7 +12,7 @@
 
 
       public function createData()  
-      {  
+      {  $attributes = array('ENGINE' => 'InnoDB');
         $this->load->dbforge();
     
       	$fields = array(
@@ -45,7 +45,7 @@
         $this->dbforge->add_field('CONSTRAINT FOREIGN KEY (id_phrase) REFERENCES Phrase(id_phrase)');
         $this->dbforge->add_field('CONSTRAINT FOREIGN KEY (id_ambigu) REFERENCES Mot(id_ambigu)');
         $this->dbforge->add_field('CONSTRAINT FOREIGN KEY (id_glose) REFERENCES Glose(id_glose)');
-        $this->dbforge->create_table('Liaison');
+        $this->dbforge->create_table('Liaison',FALSE, $attributes);
 
 
       }
