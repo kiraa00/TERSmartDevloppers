@@ -15,7 +15,7 @@
 									<div class="container signin">
 									</div>
 								<hr>
-								<form>
+								
 								<label for="email"><b>Pseudo</b></label>
 								<input id="pseudo" autocomplete="off" type="text" placeholder="Pseudo" name="pseudo" required>
 								<div style="color:red;" id="errorPseudo" hidden role="alert"></div>
@@ -35,7 +35,7 @@
 
 								<p>En créant votre compte vous accepter nos conditions d'utilisation.</p>
 								<button onclick="verify_form()" type="submit" class="registerbtn">S'inscrire</button>
-								</form>
+								
 							</div>
 							<div class="container signin">
 							    <p>Vous avez dèjà un compte? <a href="<?php echo base_url('index.php/connexion');?>">Se connecter</a>.</p>

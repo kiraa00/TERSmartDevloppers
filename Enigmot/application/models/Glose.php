@@ -51,7 +51,7 @@
       public function getGlose($mot){
           $this->db->select('Glose');
           $this->db->from('Glose AS G');
-          $this->db->join('Contenir AS C', 'C.id_glose = G.id_glose');
+          $this->db->join('Liaison AS C', 'C.id_glose = G.id_glose');
           $this->db->join('Mot AS M', 'M.id_ambigu = C.id_ambigu');
           $this->db->where('Mot',$mot);
           $query = $this->db->get();

@@ -55,8 +55,8 @@
       }
 
       public function verifyPseudoAndEmail($data) {
-        $requetePseudo = $this->db->query("SELECT * FROM joueur WHERE pseudo = ?", $data['pseudo']);
-        $requeteEmail = $this->db->query("SELECT * FROM joueur WHERE email = ?", $data['email']);
+        $requetePseudo = $this->db->query("SELECT * FROM Joueur WHERE pseudo = ?", $data['pseudo']);
+        $requeteEmail = $this->db->query("SELECT * FROM Joueur WHERE email = ?", $data['email']);
 
         $pseudo = count($requetePseudo->result_array()) == 0;
         $email = count($requeteEmail->result_array()) == 0;
@@ -65,11 +65,11 @@
       }
 
       public function registerUser($user) {
-          $this->db->insert('joueur', $user);
+          $this->db->insert('Joueur', $user);
       }
 
       public function verifyUserWhenConnecting($data) {
-        $request = $requetePseudo = $this->db->query("SELECT * FROM joueur WHERE email = ? AND motdepasse = ?", $data);
+        $request = $requetePseudo = $this->db->query("SELECT * FROM Joueur WHERE email = ? AND motdepasse = ?", $data);
 
         if (count($request->result_array()) == 0) {
           return array("flag" => false, "reponse" => "");

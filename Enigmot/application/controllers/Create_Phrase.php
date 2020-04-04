@@ -10,7 +10,7 @@ class Create_Phrase extends CI_Controller {
         $this->load->helper(array('form', 'url'));
         $this->load->model('Glose');
         $this->load->model('Mot');
-        $this->load->model('Contenir');
+        $this->load->model('Liaison');
         $this->load->model('Phrase');
         // load form_validation library
 		//XMLHttpRequest
@@ -43,7 +43,7 @@ class Create_Phrase extends CI_Controller {
             'Nbr_choisi'  => 0,
         );
 
-        $this->Contenir->insert($dataC);
+        $this->Liaison->insert($dataC);
 
         echo json_encode($data['glose']);
 	}
