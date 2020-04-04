@@ -21,17 +21,18 @@
                                 'type' => 'varchar',
                                 'constraint' => '32',
                                  ),
-
-                'id_phrase' => array(
+                'ordre'  => array(
                              'type' => 'int',
-                             'constraint' => '15',
-                             'default' => null,
-                              ),                                                                            
+                             'constraint' => '11',
+                             ),
+                'nbr_reponse'  => array(
+                             'type' => 'int',
+                             'constraint' => '11',
+                             ),                                                  
             );
 
         $this->dbforge->add_field($fields);
         $this->dbforge->add_key('id_ambigu',true);
-        $this->dbforge->add_field('CONSTRAINT FOREIGN KEY (id_phrase) REFERENCES Phrase(id_phrase)');
         $this->dbforge->create_table('Mot');
       }
 

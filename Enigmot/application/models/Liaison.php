@@ -1,5 +1,5 @@
 <?php  
- class Contenir extends CI_Model  
+ class Liaison extends CI_Model  
  {  
       public function __construct(){
             parent::__construct();
@@ -26,18 +26,26 @@
                              'constraint' => '15',
                               ),
 
-                'Nbr_choisi'  => array(
+                'id_phrase' => array(
+                             'type' => 'int',
+                             'constraint' => '15',
+                              ),
+                
+                'Nbr_vote'  => array(
                              'type' => 'int',
                              'constraint' => '11',
-                             ), 
+                             ),
+
             );
 
         $this->dbforge->add_field($fields);
         $this->dbforge->add_key('id_glose',true);
         $this->dbforge->add_key('id_ambigu',true);
+        $this->dbforge->add_key('id_phrase',true);
+        $this->dbforge->add_field('CONSTRAINT FOREIGN KEY (id_phrase) REFERENCES Phrase(id_phrase)');
         $this->dbforge->add_field('CONSTRAINT FOREIGN KEY (id_ambigu) REFERENCES Mot(id_ambigu)');
         $this->dbforge->add_field('CONSTRAINT FOREIGN KEY (id_glose) REFERENCES Glose(id_glose)');
-        $this->dbforge->create_table('Contenir');
+        $this->dbforge->create_table('Liaison');
 
 
       }

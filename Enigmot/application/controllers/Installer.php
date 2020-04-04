@@ -20,8 +20,8 @@ class Installer extends CI_Controller {
         $this->load->model('Glose');
         $this->Glose->createData(); 
 
-        $this->load->model('Contenir');
-        $this->Contenir->createData(); 
+        $this->load->model('Liaison');
+        $this->Liaison->createData(); 
         redirect('Home');
     }
 
