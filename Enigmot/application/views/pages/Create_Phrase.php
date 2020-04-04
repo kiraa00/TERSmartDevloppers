@@ -17,7 +17,7 @@
 						    	<!-- hidden phrase à enregistré -->
 						    	<input id="phraseH" name="phraseH" type="hidden" value="">
 								<div class="input-group col-9">
-									  <input type="text" class="form-control" name="phraseD" id="phrase" required="required" placeholder="Saisissez votre phrase">
+									  <input type="text" class="form-control" name="phraseD" autocomplete="off" id="phrase" required="required" placeholder="Saisissez votre phrase">
 								</div>
 								<div class="col-9 pt-2">
 								<button id="Mot_butt" class="genric-btn primary circle medium

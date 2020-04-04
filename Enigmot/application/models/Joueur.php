@@ -17,37 +17,32 @@
                              'auto_increment'=>true,
                               ),
 
-                'Nom' => array(
+                'pseudo' => array(
                                 'type' => 'varchar',
                                 'constraint' => '32',
                                  ),
 
-                'Adresse' => array(
+                'email' => array(
                                 'type' => 'varchar',
                                 'constraint' => '32',
                                  ),
 
-                'Niveau'  => array(
+                'niveau'  => array(
                              'type' => 'int',
                              'constraint' => '11',
                              ),
 
-                'Xp'  => array(
+                'xp'  => array(
                              'type' => 'int',
                              'constraint' => '11',
                              ),
 
-                'Credit'  => array(
+                'credit'  => array(
                              'type' => 'int',
                              'constraint' => '11',
                              ),
 
-                'username' => array(
-                                   'type' => 'varchar',
-                                    'constraint' => '25',
-                                     ),
-
-                'password' => array(
+                'motdepasse' => array(
                                    'type' => 'varchar',
                                     'constraint' => '32',
                                      ),
@@ -57,9 +52,31 @@
         $this->dbforge->add_field($fields);
         $this->dbforge->add_key('id_joueur',true);
         $this->dbforge->create_table('Joueur');
+      }
 
+      public function verifyPseudoAndEmail($data) {
+        $requetePseudo = $this->db->query("SELECT * FROM joueur WHERE pseudo = ?", $data['pseudo']);
+        $requeteEmail = $this->db->query("SELECT * FROM joueur WHERE email = ?", $data['email']);
 
+        $pseudo = count($requetePseudo->result_array()) == 0;
+        $email = count($requeteEmail->result_array()) == 0;
+
+        return array("pseudo" => $pseudo, "email" => $email);
+      }
+
+      public function registerUser($user) {
+          $this->db->insert('joueur', $user);
+      }
+
+      public function verifyUserWhenConnecting($data) {
+        $request = $requetePseudo = $this->db->query("SELECT * FROM joueur WHERE email = ? AND motdepasse = ?", $data);
+
+        if (count($request->result_array()) == 0) {
+          return array("flag" => false, "reponse" => "");
+        } else {
+          return array("flag" => true, "reponse" => $request->result_array());
+        }
       }
      
 }
-  ?>
+?>

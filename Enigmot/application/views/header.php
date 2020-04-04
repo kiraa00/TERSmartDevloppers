@@ -39,10 +39,12 @@
 					<!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
 						<ul class="nav navbar-nav menu_nav justify-content-center">
-							<li class="nav-item active"><a class="nav-link" href="Home">Acceuil</a></li>
-							<li class="nav-item"><a class="nav-link" href="<?php echo base_url('index.php/jouer');?>">Jouer</a></li>
-							<li class="nav-item"><a class="nav-link" href="<?php echo base_url('index.php/create');?>">Créer</a>
-							<li class="nav-item submenu dropdown">
+							<li class="nav-item <?php if (isset($flagActif) && $flagActif === "home") {echo "active";} ?>"><a class="nav-link" href="home">Acceuil</a></li>
+							<li class="nav-item <?php if (isset($flagActif) && $flagActif === "jouer") {echo "active";} ?>"><a class="nav-link" href="<?php echo base_url('index.php/jouer');?>">Jouer</a></li>
+							<?php if (isset($_SESSION['user'])) { ?>
+								<li class="nav-item <?php if (isset($flagActif) && $flagActif === "creer") {echo "active";} ?>"><a class="nav-link" href="<?php echo base_url('index.php/create');?>">Créer</a>
+							<?php } ?>
+							<li class="nav-item submenu dropdown <?php if (isset($flagActif) && $flagActif === "classement") {echo "active";} ?>">
 								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 								 aria-expanded="false">Classement</a>
 								<ul class="dropdown-menu">
@@ -54,14 +56,18 @@
 						</ul>
 						<ul class="nav navbar-nav navbar-right" >
 							<ul class="nav navbar-nav navbar-right" class="primary_btn">
-							<li class="nav-item submenu dropdown" >
-								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								 aria-expanded="false" class="primary_btn">Inscription/Connexion</a>
-								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="<?php echo base_url('index.php/inscription');?>">Inscription</a></li>
-									<li class="nav-item"><a class="nav-link" href="<?php echo base_url('index.php/connexion');?>">Connexion</a></li>
-								</ul>
-							</li>
+							<?php if (!isset($_SESSION['user'])) { ?>
+								<li class="nav-item submenu dropdown <?php if (isset($flagActif) && $flagActif === "authentification") {echo "active";} ?>">
+									<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+									aria-expanded="false" class="primary_btn">Inscription/Connexion</a>
+									<ul class="dropdown-menu">
+										<li class="nav-item"><a class="nav-link" href="<?php echo base_url('index.php/inscription');?>">Inscription</a></li>
+										<li class="nav-item"><a class="nav-link" href="<?php echo base_url('index.php/connexion');?>">Connexion</a></li>
+									</ul>
+								</li>
+							<?php } else { ?>
+								<li class="nav-item"><a class="nav-link" href="deconnexion">Déconnexion</a></li>
+							<?php } ?>
 						</ul>
 						</ul>
 					</div>

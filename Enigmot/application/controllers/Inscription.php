@@ -3,25 +3,48 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Inscription extends CI_Controller {
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/user_guide/general/urls.html
-	 */
+	public function __construct(){
+		parent::__construct();
+		// load form and url helpers
+		$this->load->library('session');
+        $this->load->helper(array('form', 'url'));
+        $this->load->model('Joueur');
+
+		//XMLHttpRequest
+		header('Access-Control-Allow-Origin: *');
+	}
+
 	public function index()
 	{
-		$this->load->view('header');
-        $this->load->view('pages/Inscription');
-        $this->load->view('footer');
+		$this->load->view('header', ["flagActif" => "authentification"]);
+		if (isset($_SESSION['user'])) {
+			$this->load->view('Home');
+		} else {
+			$this->load->view('pages/Inscription');
+		}
+		$this->load->view('footer');
+	}
+
+	public function verifyPseudoAndEmail(){
+		$data=array(
+        	'pseudo'   =>  $this->input->post('pseudo'),
+			'email' =>  $this->input->post('email')
+        );
+
+		$reponse = $this->Joueur->verifyPseudoAndEmail($data);
+		echo json_encode($reponse);
+	}
+
+	public function registerUser(){
+		$data=array(
+        	'pseudo'   =>  $this->input->post('pseudo'),
+			'email' =>  $this->input->post('email'),
+			'niveau' => '0',
+			'xp' => '0',
+			'credit' => '0',
+            'motdepasse' =>  $this->input->post('password')
+        );
+
+		$this->Joueur->registerUser($data);
 	}
 }

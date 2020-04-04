@@ -32,12 +32,10 @@
         //ajouter le field MotAmbigu et récupérer les gloses associé
         $('#Mot_butt').click(function(){
             var mot = add_mot();
-            console.log($('#phrase').val());
             $.ajax({
                 type: "GET",
                 url: "Create_Phrase/recuperer_Gloses/"+mot,
                 success: function(data){
-                    console.log(data);
                     afficherGlose(data);
                 }  
             });
@@ -91,9 +89,9 @@
         let selection = '';
         $('#phrase').focus();
         selection = window.getSelection();
-        selection = selection.toString().replace( /\s/g, '');
+        selectionTest = selection.toString().replace( /\s/g, '');
         // && jQuery.inArray( selection , mots_ajoute)==-1
-        if(selection!='' ){
+        if(selectionTest != ''){
             mots_ajoute.push(selection);
             let divId='mot'+i;
             let selectId = 'gloses'+i;

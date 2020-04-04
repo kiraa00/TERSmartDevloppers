@@ -6,6 +6,7 @@ class Create_Phrase extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		// load form and url helpers
+		$this->load->library('session');
         $this->load->helper(array('form', 'url'));
         $this->load->model('Glose');
         $this->load->model('Mot');
@@ -18,9 +19,13 @@ class Create_Phrase extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('header');
-        $this->load->view('pages/Create_Phrase');
-        $this->load->view('footer');
+		$this->load->view('header', ["flagActif" => "creer"]);
+        if (isset($_SESSION['user'])) {
+			$this->load->view('pages/Create_Phrase');
+		} else {
+			$this->load->view('pages/connexion');
+		}
+		$this->load->view('footer');
 	}
 
 	public function ajouterGlose(){

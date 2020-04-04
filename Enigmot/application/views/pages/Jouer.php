@@ -14,8 +14,9 @@
 						<h2>Ici la phrase a jouer</h2>
 						<div class="text-center">
 							motAmbigu
-							<select class= "nice-select" name="selection_box">
+							<select class= "nice-select" style="height:100px;" name="selection_box">
 								<option>Selectionner un sens au mot </option>
+								<option>Selectionner  </option>
 							</select>
 							<button type="submit" class="registerbtn">Ajouter un sens</button>
 						</div>
