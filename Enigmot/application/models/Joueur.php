@@ -46,8 +46,6 @@
                                    'type' => 'varchar',
                                     'constraint' => '32',
                                      ),
-
-
             );
         $this->dbforge->add_field($fields);
         $this->dbforge->add_key('id_joueur',true);
@@ -77,6 +75,5 @@
           return array("flag" => true, "reponse" => $request->result_array());
         }
       }
-     
 }
 ?>

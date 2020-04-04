@@ -51,7 +51,7 @@
 						            </div>
 						            <form id="glose_form" method="post">
 						                <div class="modal-body">
-						                    <input id="glose_input" name="glose" placeholder="Saisissez une glose" class="form-control" type="text">
+						                    <input id="glose_input" autocomplete="off" name="glose" placeholder="Saisissez une glose" class="form-control" type="text">
 						                </div>
 						                <div class="modal-footer">
 						                    <button type="button" class="registerbtn" onclick="hide_form()">Cancel</button>
