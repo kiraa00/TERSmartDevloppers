@@ -12,7 +12,6 @@
 					</div>
 						<div class="col-lg-12 p-5" style="background-color: #5753967a;">
 						<h3>Creation d'une Phrase</h3>
-						<form method="post" action="Create_Phrase/insertPhrase">
 						    <div id="phrase_space" class="form-group">
 						    	<!-- hidden phrase à enregistré -->
 						    	<input id="phraseH" name="phraseH" type="hidden" value="">
@@ -21,7 +20,9 @@
 								</div>
 								<div class="col-9 pt-2">
 								<button id="Mot_butt" class="genric-btn primary circle medium
-						        " type="button">Ajouter un mot ambigu</button>
+								" type="button">Ajouter un mot ambigu</button>
+								<div id="messageError" hidden style="margin-top: 15px;" class="alert alert-danger" role="alert"></div>
+								<div id="messageSuccess" hidden style="margin-top: 15px;" class="alert alert-success" role="alert"></div>
 								</div>						 
 						    </div>
 						    <div id="Mots_space" class="row"></div>
@@ -29,12 +30,9 @@
 								<div class="col-md-9">
 								</div>
 								<div class="col-md-3">
-									<button class="genric-btn danger circle arrow" type="submit">Ajouter la phrase</button>
+									<button onclick="sendData()" class="genric-btn danger circle arrow" type="submit">Ajouter la phrase</button>
 								</div>
 							</div>
-
-
-						</form> 
 					</div>
 				</div>
 			</div>

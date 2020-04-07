@@ -17,29 +17,37 @@
                              'auto_increment'=>true,
                               ),
 
-                'Mot' => array(
+                'motAmbigu' => array(
                                 'type' => 'varchar',
                                 'constraint' => '32',
                                  ),
-                'ordre'  => array(
+
+                'position'  => array(
                              'type' => 'int',
                              'constraint' => '11',
                              ),
+
                 'nbr_reponse'  => array(
                              'type' => 'int',
                              'constraint' => '11',
-                             ),                                                  
+                             ),
+                             
+                'idPhrase' => array(
+                            'type' => 'int',
+                            'constraint' => '15',
+                             ),
             );
 
         $this->dbforge->add_field($fields);
         $this->dbforge->add_key('id_ambigu',true);
+        $this->dbforge->add_field('CONSTRAINT FOREIGN KEY (idPhrase) REFERENCES Phrase(id_phrase)');
         $this->dbforge->create_table('Mot',FALSE, $attributes);
       }
 
 
       public function insert($mot){
         $where = array(
-          'Mot' => $mot,
+          'motAmbigu' => $mot,
         );
         $this->db->select('*');
         $this->db->where($where);

@@ -17,7 +17,7 @@
                              'auto_increment'=>true,
                               ),
 
-                'Glose' => array(
+                'glose' => array(
                                 'type' => 'varchar',
                                 'constraint' => '32',
                                  ),
@@ -33,7 +33,7 @@
 
       public function insert($glose){
         $where = array(
-          'Glose' => $glose,
+          'glose' => $glose,
         );
         $this->db->select('*');
         $this->db->where($where);
