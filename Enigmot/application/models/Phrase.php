@@ -85,7 +85,7 @@ class Phrase extends CI_Model
 
       public function saveData($data) {
     
-          //  Insertion de la phrase dans la base de données et récuperation de son id
+        //  Insertion de la phrase dans la base de données et récuperation de son id
         
         $phrase = array(
           'Phrase' => $data['phrase'],

@@ -74,8 +74,12 @@
 
     function ajouter_glose(value){
         //ajoute la glose dans select
-        let option="<option>"+value+"</option>";
+        let option="<option selected>"+value+"</option>";
         $('#'+curr_selectId).append(option);
+        $('#'+curr_selectId).multiselect('destroy');
+        $('#'+curr_selectId).multiselect();
+        newChangeSelectName(curr_selectId);
+
         hide_form();
     }
 
@@ -92,18 +96,31 @@
             let buttonId = 'ajouter_glose'+i;
             let MotId = 'mot_ambigu'+i;
             let sup_mot_id='supprimer_mot'+i;
-            let form =  "<div id='"+divId+"'>"
-                        +"<label for='"+MotId+"'>Mot ambigu:  </label>"
-                        +"<input name='mot_ambiguD[]' type='text' id='"+MotId+"' value='"+selection+"'/>"
-                        +"<label for='"+selectId+"'>Glose:    </label>"
-                        +"<select class=\"nice-select\" name='selection_box' id='"+selectId+"' required='required'>"
-                        +"<option selected disabled>Choisissez une glose</option>"
-                        +"</select>"
-                        +"<button class='registerbtn' type='button' id='"+buttonId+"'>Ajouter glose</button>"
-                        +"<button class='registerbtn2' id='"+sup_mot_id+"' type='button'>Supprimer Mot</button>"
+            let form =  "<div id='"+divId+"' class='row row-eq-height'>"
+                        +"<div class='col-xs-12 col-sm-3 col-md-3'>"
+                        +"<label class='control-label required'>Mot ambigu</label>"
+                        +"<input type='text' class='form-control widthInput' name='mot_ambiguD[]' id='"+MotId+"' autocomplete='off' value='"+selection+"'>"
+                        +"</div>"
+                        +"<div class='col-xs-12 col-sm-4 col-md-4 selectMultiple selectMultipleRight'>"
+                        +"<label class='control-label'>Glose associée</label>"
+                        +"<div>"
+                        +"<select class='gloses form-control widthSelect' multiple name='selection_box' id='"+selectId+"' required='required'></select>"
+                        +"</div>"
+                        +"</div>"
+                        +"<div class='col-xs-12 col-sm-5 col-md-5 actionMargin'>"
+                        +"<div class='form-group'>"
+                        +"<label class='control-label'>Actions</label>"
+                        +"<div class='divActionBtn'>"
+                        +"<button id='"+buttonId+"' type='button' class='btn btn-primary btnAjouterMargin'>Ajouter une glose</button>"
+                        +"<button id='"+sup_mot_id+"' type='button' class='btn btn-danger actionBtnMargin'>Supprimer le mot ambigu</button>"
+                        +"</div>"
+                        +"</div>"
+                        +"</div>"
+                        +"<script id=\"script-\""+selectId+">$(function() {$('#"+selectId+"').multiselect({includeSelectAllOption: true}); changeSelectName();});</script>"
                         +"</div>";
             curr_selectId=selectId;
             $('#Mots_space').append(form);
+            let scriptElement = document.getElementById("select-script");
             $('#'+divId).append("<input name='ordre[]' type='hidden' value='"+i+"'>");
             $('#'+sup_mot_id).click({id:divId, select:selection }, supp_mot);
             $('#'+buttonId).click({selectId:selectId, MotId:MotId}, show_form);
@@ -123,7 +140,6 @@
     }
 
     function show_form(param){
-        console.log(mots_ajoute);
         curr_selectId=param.data.selectId;
         curr_mot=param.data.MotId;
         $('#glose_form')[0].reset(); // reset form on modals
@@ -248,3 +264,29 @@
             return false;
         }
     }
+
+    function changeSelectName() {        
+        let val = $("#gloses"+(i-1)).val();
+
+        if (val !== undefined && val.toString() !== "") {
+            arrayVal = val.toString().split(",");
+            document.getElementsByClassName("multiselect-selected-text")[0].innerHTML = "Selecionner les gloses (" +arrayVal.length+ ")";
+        } else {
+            document.getElementsByClassName("multiselect-selected-text")[0].innerHTML = "Selecionner les gloses (0)";
+        }
+
+        document.getElementsByClassName("multiselect-selected-text")[0].setAttribute("class", "count");
+    }
+
+    function newChangeSelectName(param) {
+        let val = $("#"+param).val();
+
+        if (val !== undefined && val.toString() !== "") {
+            arrayVal = val.toString().split(",");
+            arrayParam = param.split("gloses");
+            if (document.getElementsByClassName("multiselect-selected-text")[0] !== undefined) {
+                document.getElementsByClassName("multiselect-selected-text")[0].innerHTML = "Selecionner les gloses (" +arrayVal.length+ ")";
+                document.getElementsByClassName("multiselect-selected-text")[0].setAttribute("class", "count");
+            }
+        }
+    } // change ta maniere de pensée, c'est le 2 qui as fait la demande et lui, il te recupere le 1 (comme tu le voulais), mais c'est plutot le 0 qu'il faut modifier, le seule element existant

@@ -10,52 +10,39 @@
 						</div>
 						<h2>Create Phrase</h2>
 					</div>
-						<div class="col-lg-12 p-5" style="background-color: #5753967a;">
+					<div class="col-lg-12 p-4" style="background-color: #5753967a;">
 						<h3>Creation d'une Phrase</h3>
-						    <div id="phrase_space" class="form-group">
-						    	<!-- hidden phrase à enregistré -->
-						    	<input id="phraseH" name="phraseH" type="hidden" value="">
-								<div class="input-group col-9">
-									  <input type="text" class="form-control" name="phraseD" autocomplete="off" id="phrase" required="required" placeholder="Saisissez votre phrase">
-								</div>
-								<div class="col-9 pt-2">
-								<button id="Mot_butt" class="genric-btn primary circle medium
-								" type="button">Ajouter un mot ambigu</button>
-								<div id="messageError" hidden style="margin-top: 15px;" class="alert alert-danger" role="alert"></div>
-								<div id="messageSuccess" hidden style="margin-top: 15px;" class="alert alert-success" role="alert"></div>
-								</div>						 
-						    </div>
-						    <div id="Mots_space" class="row"></div>
-						    <div class="row">
-								<div class="col-md-9">
-								</div>
-								<div class="col-md-3">
-									<button onclick="sendData()" class="genric-btn danger circle arrow" type="submit">Ajouter la phrase</button>
-								</div>
-							</div>
+						<div id="messageError" hidden style="margin-top: 15px; font-size: 13px;" class="alert alert-danger" role="alert"></div>
+						<div id="messageSuccess" hidden style="margin-top: 15px; font-size: 13px;" class="alert alert-success" role="alert"></div>
+						<input type="text" class="form-control" name="phraseD" autocomplete="off" id="phrase" required="required" placeholder="Saisissez votre phrase">
+						<button id="Mot_butt" class="genric-btn primary circle medium "type="button">Ajouter un mot ambigu</button>
+						<div style="margin-top: 20px;" id="Mots_space" ></div>
+						<button id="btnAjouter" onclick="sendData()" class="genric-btn danger circle medium" type="submit">Ajouter la phrase</button>
 					</div>
 				</div>
 			</div>
 		</section>
 
-						<div class="modal fade" id="addGlose" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-						    <div class="modal-dialog modal-dialog-centered" role="document">
-						        <div class="modal-content">
+		<div class="modal fade" id="addGlose" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
 
-						            <div class="modal-header">
-						            	<h3 class="modal-title" class="center"id="myModalLabel">Ajouter Glose</h4>
-						                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						                
-						            </div>
-						            <form id="glose_form" method="post">
-						                <div class="modal-body">
-						                    <input id="glose_input" autocomplete="off" name="glose" placeholder="Saisissez une glose" class="form-control" type="text">
-						                </div>
-						                <div class="modal-footer">
-						                    <button type="button" class="registerbtn" onclick="hide_form()">Cancel</button>
-						                    <button type="button" id="btnAddGlose" class="registerbtn2">Ajouter la glose</button>
-						                </div>
-									</form>
-								</div>
-							</div>
+					<div class="modal-header">
+						<h3 class="modal-title" class="center"id="myModalLabel">Ajouter Glose</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						
+					</div>
+					<form id="glose_form" method="post">
+						<div class="modal-body">
+							<input id="glose_input" autocomplete="off" name="glose" placeholder="Saisissez une glose" class="form-control" type="text">
 						</div>
+						<div class="modal-footer">
+							<button type="button" class="registerbtn" onclick="hide_form()">Cancel</button>
+							<button type="button" id="btnAddGlose" class="registerbtn2">Ajouter la glose</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<script id="select-script"></script>
