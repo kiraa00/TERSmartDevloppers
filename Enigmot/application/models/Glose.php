@@ -48,19 +48,16 @@
         return $id;
       }
 
-      public function getGlose($mot){
-          $this->db->select('Glose');
-          $this->db->from('Glose AS G');
-          $this->db->join('Liaison AS C', 'C.id_glose = G.id_glose');
-          $this->db->join('Mot AS M', 'M.id_ambigu = C.id_ambigu');
-          $this->db->where('Mot',$mot);
-          $query = $this->db->get();
-          if($query->num_rows()==0){
-            return null;
-          }else{
-            return $query->result();  
+      public function getGlose($data){
+        $requestString = "SELECT DISTINCT g.glose FROM glose g, mot m, liaison l WHERE m.id_ambigu = l.idMotAmbigu AND g.id_glose = l.idGlose AND m.motAmbigu = ?;";
+
+        $request = $this->db->query($requestString, $data);
+  
+          if (count($request->result_array()) != 0) {
+            return array("flag" => true, "reponse" => $request->result_array());
+          } else {
+            return array("flag" => false, "reponse" => "");
           }
-          
       }
      
 }

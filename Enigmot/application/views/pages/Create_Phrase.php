@@ -14,9 +14,9 @@
 						<h3>Creation d'une Phrase</h3>
 						<div id="messageError" hidden style="margin-top: 15px; font-size: 13px;" class="alert alert-danger" role="alert"></div>
 						<div id="messageSuccess" hidden style="margin-top: 15px; font-size: 13px;" class="alert alert-success" role="alert"></div>
-						<input type="text" class="form-control" name="phraseD" autocomplete="off" id="phrase" required="required" placeholder="Saisissez votre phrase">
+						<div style="margin-bottom: 20px;" class="form-control" name="phraseD" autocomplete="off" id="phrase" required="required" placeholder="Saisissez votre phrase" contenteditable></div>
 						<button id="Mot_butt" class="genric-btn primary circle medium "type="button">Ajouter un mot ambigu</button>
-						<div style="margin-top: 20px;" id="Mots_space" ></div>
+						<div style="margin-top: 15px;" id="Mots_space" ></div>
 						<button id="btnAjouter" onclick="sendData()" class="genric-btn danger circle medium" type="submit">Ajouter la phrase</button>
 					</div>
 				</div>

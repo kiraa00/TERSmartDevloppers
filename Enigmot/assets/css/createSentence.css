@@ -2,6 +2,20 @@
     width: 241px;
 }
 
+.amb {
+    color: rgb(255, 188, 0); 
+    padding: 5px 2px; 
+    font-weight: bold;
+}
+
+/* .amb:hover {
+    background-color: #2b245d99;
+} */
+
+.ambColor {
+    background-color: #2b245d99;
+}
+
 @media screen and (max-width: 1199px) {
     .divActionBtn {
         display: flex;
