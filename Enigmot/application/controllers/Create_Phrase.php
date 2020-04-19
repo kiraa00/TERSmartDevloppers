@@ -56,6 +56,6 @@ class Create_Phrase extends CI_Controller {
 	public function insertPhrase(){
 		$phrase = $this->input->post('phraseD');
 		$this->Phrase->insert($phrase);
-		redirect('Create_Phrase');
+		echo json_encode($this->input->post('gloseD'));
 	}
 }

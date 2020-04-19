@@ -8,25 +8,26 @@
             console.log("adding the glose ...");
             var glose = $('#glose_input').val();
             var Mot = $('#'+curr_mot).val();
+            ajouter_glose(glose);
             // $.post('ajouterGlose', {"_token": "{{ csrf_token() }}",glose:glose, motAmbigu:Mot}, function(data){
             //     console.log(data);
             // });
-            var dataSet = {"glose" : glose, "motAmbigu" : Mot}
-            $.ajax({
-                type: "POST",
-                url: "Create_Phrase/ajouterGlose",
-                data: dataSet,
-                success: function(data){
-                    console.log(data);
-                    ajouter_glose(glose);
-                    // raffraichirGlose();
-                    swal(
-                        'Good job!',
-                        'Data has been save!',
-                        'success'
-                    )                    
-                }  
-            });
+            // var dataSet = {"glose" : glose, "motAmbigu" : Mot}
+            // $.ajax({
+            //     type: "POST",
+            //     url: "Create_Phrase/ajouterGlose",
+            //     data: dataSet,
+            //     success: function(data){
+            //         console.log(data);
+                    
+            //         // raffraichirGlose();
+            //         swal(
+            //             'Good job!',
+            //             'Data has been save!',
+            //             'success'
+            //         )                    
+            //     }  
+            // });
         });
 
         //ajouter le field MotAmbigu et récupérer les gloses associé
@@ -64,7 +65,7 @@
         arr = JSON.parse(data);
         console.log(arr);
         $.each( arr, function( index, val ){
-            var option="<option>"+val['Glose']+"</option>";
+            var option="<option selected>"+val['Glose']+"</option>";
             if(glose == ''){
                 $('#'+curr_selectId).append(option);
             }else{
@@ -102,7 +103,7 @@
                         +"<label for='"+MotId+"'>Mot ambigu:  </label>"
                         +"<input name='mot_ambiguD[]' type='text' id='"+MotId+"' value='"+selection+"'/>"
                         +"<label for='"+selectId+"'>Glose:    </label>"
-                        +"<select name='gloseD[]' id='"+selectId+"' required='required'>"
+                        +"<select name='gloseD[]' id='"+selectId+"' required='required' multiple='multiple'>"
                         +"<option selected disabled>Choisissez une glose</option>"
                         +"</select>"
                         +"<button class='registerbtn' type='button' id='"+buttonId+"'>Ajouter glose</button>"
