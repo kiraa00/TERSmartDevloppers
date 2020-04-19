@@ -37,8 +37,8 @@ class Inscription extends CI_Controller {
 
 	public function registerUser(){
 		$data=array(
-        	'pseudo'   =>  $this->input->post('pseudo'),
-			'email' =>  $this->input->post('email'),
+        	'pseudo' => $this->input->post('pseudo'),
+			'email' => $this->input->post('email'),
 			'niveau' => '0',
 			'xp' => '0',
 			'credit' => '0',

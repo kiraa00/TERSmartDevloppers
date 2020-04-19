@@ -25,6 +25,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	<script src="<?php echo base_url('assets/js/sweetalert.js');?>"></script>
 	<script src="<?php echo base_url('assets/js/popper.js');?>"></script>
 	<script src="<?php echo base_url('assets/js/bootstrap.min.js');?>"></script>
+	<script src="<?php echo base_url('assets/js/bootstrap-multiselect.js');?>"></script>
 	<script src="<?php echo base_url('assets/js/stellar.js');?>"></script>
 	<script src="<?php echo base_url('assets/js/jquery.magnific-popup.min.js');?>"></script>
 	<script src="<?php echo base_url('assets/vendors/nice-select/js/jquery.nice-select.min.js');?>"></script>

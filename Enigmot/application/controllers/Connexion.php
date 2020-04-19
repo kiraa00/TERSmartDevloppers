@@ -36,7 +36,7 @@ class Connexion extends CI_Controller {
 		if ($reponse['flag'] == false) {
 			echo json_encode(array("reponse" => false));
 		} else {
-			$this->session->set_userdata('user', $reponse['reponse']);
+			$this->session->set_userdata('user', $reponse['reponse'][0]);
 			echo json_encode(array("reponse" => $_SESSION['user']));
 		}
 	}

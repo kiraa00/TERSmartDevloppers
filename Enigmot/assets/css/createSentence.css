@@ -1,0 +1,107 @@
+.multiselect-container {
+    width: 241px;
+}
+
+.amb {
+    color: rgb(255, 188, 0); 
+    padding: 5px 2px; 
+    font-weight: bold;
+}
+
+/* .amb:hover {
+    background-color: #2b245d99;
+} */
+
+.ambColor {
+    background-color: #2b245d99;
+}
+
+@media screen and (max-width: 1199px) {
+    .divActionBtn {
+        display: flex;
+    }
+}
+
+@media screen and (min-width: 576px)
+{
+    .selectMultiple {
+        margin-top: 5px;
+    }
+}
+
+@media screen and (max-width: 575px)
+{
+    .actionMargin {
+        margin-top: 20px;
+    }
+
+    .widthSelect {
+        width: 100% !important;
+    }
+}
+
+@media screen and (min-width: 433px)
+{
+    .btnAjouterMargin {
+        margin-right: 20px;
+    }
+}
+
+@media screen and (max-width: 454px)
+{
+    .divActionBtn {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 452px)
+{
+    .btnAjouterMargin {
+        margin-bottom: 10px;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .selectMultipleRight {
+        margin-right: 1px;
+    }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1199px)
+{
+    .actionMargin {
+        margin-left: -25px;
+        margin-top: 5px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px)
+{
+    .selectMultiple {
+        margin-top: 5px;
+        margin-left: 75px;
+    }
+
+    .widthInput {
+        width: 225px !important;
+    }
+}
+
+@media screen and (min-width: 576px) and (max-width: 767px) {
+    .selectMultiple {
+        margin-top: 5px;
+        margin-left: 99px;
+    }
+
+    .widthInput {
+        width: 200px !important;
+    }
+}
+
+
+@media screen and (min-width: 1200px)
+{
+    .actionMargin {
+        margin-top: 5px;
+    }
+}

@@ -28,7 +28,15 @@ class Create_Phrase extends CI_Controller {
 		$this->load->view('footer');
 	}
 
-	public function ajouterGlose(){
+	public function saveData() {
+		
+		$dataSet = json_decode($this->input->post("data"), true);
+		$reponse = $this->Phrase->saveData($dataSet);
+		
+		echo json_encode(array("reponse" => $reponse));
+	}
+
+	/*public function ajouterGlose(){
 		$data=array(
         	'glose'   =>  $this->input->post('glose'),
             'motAmbigu' =>  $this->input->post('motAmbigu'),
@@ -46,16 +54,24 @@ class Create_Phrase extends CI_Controller {
         $this->Liaison->insert($dataC);
 
         echo json_encode($data['glose']);
-	}
+	}*/
 
-	public function recuperer_Gloses($mot){
-		$gloses = $this->Glose->getGlose($mot);
+	public function getGloses(){
+
+		$data=array(
+        	'mot'   =>  $this->input->post('data'),
+        );
+
+		$gloses = $this->Glose->getGlose($data);
 		echo json_encode($gloses);
 	}
 
-	public function insertPhrase(){
+	/*public function insertPhrase(){
 		$phrase = $this->input->post('phraseD');
 		$this->Phrase->insert($phrase);
 		echo json_encode($this->input->post('gloseD'));
 	}
+
+		redirect('Create_Phrase');
+	}*/
 }

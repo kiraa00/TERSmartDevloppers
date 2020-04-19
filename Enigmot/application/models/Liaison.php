@@ -16,22 +16,23 @@
         $this->load->dbforge();
     
       	$fields = array(
-                'id_glose' => array(
-                             'type' => 'int',
-                             'constraint' => '15',
+                'idLisaison' => array(
+                              'type' => 'int',
+                              'constraint' => '15',
+                              'auto_increment'=>true,
                               ),
 
-                'id_ambigu' => array(
-                             'type' => 'int',
-                             'constraint' => '15',
+                'idMotAmbigu' => array(
+                              'type' => 'int',
+                              'constraint' => '15',
                               ),
 
-                'id_phrase' => array(
+                'idGlose' => array(
                              'type' => 'int',
                              'constraint' => '15',
                               ),
                 
-                'Nbr_vote'  => array(
+                'nbrVote'  => array(
                              'type' => 'int',
                              'constraint' => '11',
                              ),
@@ -39,12 +40,11 @@
             );
 
         $this->dbforge->add_field($fields);
-        $this->dbforge->add_key('id_glose',true);
-        $this->dbforge->add_key('id_ambigu',true);
-        $this->dbforge->add_key('id_phrase',true);
-        $this->dbforge->add_field('CONSTRAINT FOREIGN KEY (id_phrase) REFERENCES Phrase(id_phrase)');
-        $this->dbforge->add_field('CONSTRAINT FOREIGN KEY (id_ambigu) REFERENCES Mot(id_ambigu)');
-        $this->dbforge->add_field('CONSTRAINT FOREIGN KEY (id_glose) REFERENCES Glose(id_glose)');
+        $this->dbforge->add_key('idLisaison',true);
+        $this->dbforge->add_key('idMotAmbigu',true);
+        $this->dbforge->add_key('idGlose',true);
+        $this->dbforge->add_field('CONSTRAINT FOREIGN KEY (idMotAmbigu) REFERENCES Mot(id_ambigu)');
+        $this->dbforge->add_field('CONSTRAINT FOREIGN KEY (idGlose) REFERENCES Glose(id_glose)');
         $this->dbforge->create_table('Liaison',FALSE, $attributes);
 
 

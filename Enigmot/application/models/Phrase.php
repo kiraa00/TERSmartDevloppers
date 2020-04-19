@@ -1,6 +1,6 @@
 <?php  
- class Phrase extends CI_Model  
- {  
+class Phrase extends CI_Model  
+{  
       public function __construct(){
             parent::__construct();
             $this->load->database();
@@ -23,7 +23,7 @@
                                 'constraint' => '250',
                                  ),
 
-                'Nbr_like'  => array(
+                'nbr_like'  => array(
                              'type' => 'int',
                              'constraint' => '11',
                              ),
@@ -34,22 +34,22 @@
                              'default' => null,
                              ),
 
-                'Type' => array(
+                'type' => array(
                           'type' => 'ENUM("ambiguité","rattachement")',
                           'default' => 'ambiguité',
                           'null' => FALSE,
                           ),
-                'Facile'  => array(
+                'facile'  => array(
                              'type' => 'int',
                              'constraint' => '11',
                              ),
 
-                'Moyenne'  => array(
+                'moyenne'  => array(
                              'type' => 'int',
                              'constraint' => '11',
                              ),
 
-                'Difficile'  => array(
+                'difficile'  => array(
                              'type' => 'int',
                              'constraint' => '11',
                              ),                                             
@@ -63,25 +63,102 @@
 
       }
      
-     public function insert($phrase){
+      public function insert($phrase){
         $data = array(
                 'Phrase' => $phrase,
 
-                'Nbr_like'  => 0,
+                'nbr_like'  => 0,
 
                 'id_Createur'  => null,
 
-                'Type' => "ambiguité",
+                'type' => "ambiguité",
                 
-                'Facile'  => 0,
+                'facile'  => 0,
 
-                'Moyenne'  => 1,
+                'moyenne'  => 1,
 
-                'Difficile'  => 0,
+                'difficile'  => 0,
               );
 
         $this->db->insert('Phrase', $data);
+      }
 
-     }
+      public function saveData($data) {
+    
+        //  Insertion de la phrase dans la base de données et récuperation de son id
+        
+        $phrase = array(
+          'Phrase' => $data['phrase'],
+          'nbr_like'  => 0,
+          'id_Createur'  => $_SESSION['user']['id_joueur'],
+          'type' => "ambigu",
+          'facile'  => 0,
+          'moyenne'  => 1,
+          'difficile'  => 0
+        );
+
+        $this->db->insert('Phrase', $phrase);
+        $idPhrase = $this->db->insert_id();
+
+        //  Insertion du mot ambigu dans la base de données
+
+        for ($i = 0; $i < count($data['motsAmbigus']); $i++) {
+          $motAmbiguCourant = $data['motsAmbigus'][$i];
+
+          $motAmbigu = array(
+            'motAmbigu' => $motAmbiguCourant['motAmbigu'],
+            'position'  => $motAmbiguCourant['position'],
+            'nbr_reponse'  => 0,
+            'idPhrase' => $idPhrase
+          );
+
+          $this->db->insert('mot', $motAmbigu);
+          $idMotAmbigu = $this->db->insert_id();
+
+          //  Insertion des gloses ambigus dans la base de données
+
+          for ($j = 0; $j < count($motAmbiguCourant['gloses']); $j++) {
+            $gloseCourante = $motAmbiguCourant['gloses'][$j];
+
+            $glose = array(
+              'glose' => $gloseCourante['valeur']
+            );
+
+            // Verification de l'existance de la glose avant insertion
+
+            $gloseDB = $this->db->query("SELECT * FROM glose WHERE glose = ?", $glose);
+            $idGlose = 0;
+
+            if (count($gloseDB->result_array()) == 0) {
+              $this->db->insert('glose', $glose);
+              $idGlose = $this->db->insert_id();
+            } else {
+              $idGlose = $gloseDB->result_array()[0]['id_glose'];
+            }
+
+        //  Insertion de la laison entre le mot ambigu et la glose
+
+            $liaison = [];
+
+            if ($gloseCourante['selected'] == true) {
+              $liaison = array(
+                'idMotAmbigu' => $idMotAmbigu,
+                'idGlose'  => $idGlose,
+                'nbrVote'  => 1,
+              );
+            } else {
+              $liaison = array(
+                'idMotAmbigu' => $idMotAmbigu,
+                'idGlose'  => $idGlose,
+                'nbrVote'  => 0,
+              );
+            }
+
+            $this->db->insert('liaison', $liaison);
+          }
+        }
+        
+        return true;
+      }
 }
-  ?>
+?>
