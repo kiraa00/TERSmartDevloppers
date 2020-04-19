@@ -1,0 +1,15 @@
+.phraseGame {
+    color: white;
+    font-family: cursive;
+    margin-bottom: 10px;
+}
+
+.btn-like {
+    font-size: 12px;
+    padding: 0px 6px;
+}
+
+.btn-error {
+    padding: 0px 5px;
+    font-size: 13px;
+}

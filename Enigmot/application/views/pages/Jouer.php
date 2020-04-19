@@ -10,17 +10,41 @@
 						</div>
 						<h2>Jouer Phrase</h2>
 					</div>
-						<div class="col-lg-12 p-5" style="background-color: #5753967a;">
-						<h2>Ici la phrase a jouer</h2>
-						<div class="text-center">
-							motAmbigu
-							<select class= "nice-select" style="height:100px;" name="selection_box">
-								<option>Selectionner un sens au mot </option>
-								<option>Selectionner  </option>
-							</select>
-							<button type="submit" class="registerbtn">Ajouter un sens</button>
+					<div class="col-lg-12 p-5" style="background-color: #5753967a; text-align:center; color: white;">
+						<h3 id="result" class="phraseGame">Les <amb id="ma1" class="ma color-red" title="Ce mot est ambigu (id : 1)">verts</amb> sont contre le nucléaire.</h3>
+						<div class="form-group">
+							<button id="phraseLike" class="btn btn-light btn-like">
+								<i class="fa fa-thumbs-up" aria-hidden="true"></i>J'aime cette phrase
+							</button>&nbsp;&nbsp;&nbsp;
+							<button id="phraseLike" class="btn btn-primary btn-like">
+								<i class="fa fa-thumbs-up" aria-hidden="true"></i> Partager
+							</button>&nbsp;&nbsp;&nbsp;
+							<button id="phraseLike" class="btn btn-info btn-like">
+								<i class="fa fa-thumbs-up" aria-hidden="true"></i> Tweeter
+							</button>&nbsp;&nbsp;&nbsp;
+							<button id="phraseSignal" class="btn btn-danger btn-error" data-toggle="modall" data-target="#modal">
+								<i class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></i>Signaler un élément
+							</button>
 						</div>
-						<button type="submit" class="registerbtn">Valider</button>
+						<br>
+						<div class="form-group">
+							<div style='margin-bottom: 15px; padding-bottom: -20px;' id='"+divId+"' class='row row-eq-height'>
+								<div class="col-xs-12 col-sm-3 col-md-3 col-sm-offset-1 col-md-offset-1 text-right text-left-xs amb">
+									disposition
+								</div>
+								<div class="">
+									<select class="form-control">
+										<option selected="" disabled="" value="">Choisissez une glose (3 existantes)</option>
+										<option value="1554">service</option>
+										<option value="1555">agencement</option>
+										<option value="1556">état d'esprit</option>
+									</select>
+								</div>
+								<div class="col-xs-12 col-sm-2 col-md-2">
+									<button type="button" class="btn btn-primary addGloseModal" data-toggle="modal" data-target="#modal">Ajouter une glose</button>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>

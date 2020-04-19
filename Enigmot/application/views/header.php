@@ -12,6 +12,7 @@
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap-multiselect.css');?>">
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/select-checkbox.css');?>">
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/createSentence.css');?>">
+	<link rel="stylesheet" href="<?php echo base_url('assets/css/game.css');?>">
 	<link rel="stylesheet" href="<?php echo base_url('assets/vendors/linericon/style.css');?>">
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/font-awesome.min.css');?>">
 	<link rel="stylesheet" href="<?php echo base_url('assets/vendors/owl-carousel/owl.carousel.min.css');?>">
@@ -56,22 +57,32 @@
 									<li class="nav-item"><a class="nav-link" href="classement_mesPhrases.html">Mes Phrases</a>
 								</ul>
 							</li>
+							<?php if (isset($_SESSION['user'])) { ?>
+								<li class="nav-item submenu dropdown <?php if (isset($flagActif) && $flagActif === "profil") {echo "active";} ?>">
+									<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+									aria-expanded="false" class="primary_btn">Crédits/Points</a>
+									<ul class="dropdown-menu">
+										<li class="nav-item"><a class="nav-link styleNavCoin" href="#"><?php echo $_SESSION['user']['credit'] ?> Crédits</a></li>
+										<li class="nav-item"><a class="nav-link styleNavCoin" href="#"><?php echo $_SESSION['user']['xp'] ?> Points</a></li>
+									</ul>
+								</li>
+							<?php } ?>
 						</ul>
 						<ul class="nav navbar-nav navbar-right" >
 							<ul class="nav navbar-nav navbar-right" class="primary_btn">
-							<?php if (!isset($_SESSION['user'])) { ?>
-								<li class="nav-item submenu dropdown <?php if (isset($flagActif) && $flagActif === "authentification") {echo "active";} ?>">
-									<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-									aria-expanded="false" class="primary_btn">Inscription/Connexion</a>
-									<ul class="dropdown-menu">
-										<li class="nav-item"><a class="nav-link" href="<?php echo base_url('index.php/inscription');?>">Inscription</a></li>
-										<li class="nav-item"><a class="nav-link" href="<?php echo base_url('index.php/connexion');?>">Connexion</a></li>
-									</ul>
-								</li>
-							<?php } else { ?>
-								<li class="nav-item"><a class="nav-link" href="deconnexion">Déconnexion</a></li>
-							<?php } ?>
-						</ul>
+								<?php if (!isset($_SESSION['user'])) { ?>
+									<li class="nav-item submenu dropdown <?php if (isset($flagActif) && $flagActif === "authentification") {echo "active";} ?>">
+										<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+										aria-expanded="false" class="primary_btn">Inscription/Connexion</a>
+										<ul class="dropdown-menu">
+											<li class="nav-item"><a class="nav-link" href="<?php echo base_url('index.php/inscription');?>">Inscription</a></li>
+											<li class="nav-item"><a class="nav-link" href="<?php echo base_url('index.php/connexion');?>">Connexion</a></li>
+										</ul>
+									</li>
+								<?php } else { ?>
+									<li class="nav-item"><a class="nav-link" href="deconnexion">Déconnexion</a></li>
+								<?php } ?>
+							</ul>
 						</ul>
 					</div>
 				</div>

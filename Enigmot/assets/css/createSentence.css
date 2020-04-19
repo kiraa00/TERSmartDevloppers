@@ -1,5 +1,11 @@
+.styleNavCoin {
+    font-weight: bold !important;
+    font-size: 13px !important;
+    font-family: cursive !important;
+}
+
 .multiselect-container {
-    width: 241px;
+    min-width: 241px;
 }
 
 .amb {
@@ -8,9 +14,44 @@
     font-weight: bold;
 }
 
-/* .amb:hover {
-    background-color: #2b245d99;
-} */
+.btn-warning {
+    background-color: #f0ad4e !important;
+    border-color: #eea236 !important;
+}
+
+.btn-warning:hover {
+    background-color: orange !important;
+    border-color: orange !important;
+}
+
+.inputPopup {
+    color: #555;
+    background-color: #fff !important;
+    border: 1px solid #ccc !important;
+}
+
+.msgErrorPopup {
+    display: block;
+    color: red;
+    margin-top: -19px;
+}
+
+.btnClosePopup {
+    margin-top: -33px !important;
+    margin-right: -28px !important;
+    color: rgb(0, 0, 0);
+    font-size: 30px;
+}
+
+.btnClosePopup:hover {
+    color: red !important;
+}
+
+.h4Message {
+    font-size: 15px;
+    color: green;
+    margin-bottom: -5px;
+}
 
 .ambColor {
     background-color: #2b245d99;

@@ -30,10 +30,28 @@ class Create_Phrase extends CI_Controller {
 
 	public function saveData() {
 		
+		//recuperation des données et preparation du calcul de cout
 		$dataSet = json_decode($this->input->post("data"), true);
-		$reponse = $this->Phrase->saveData($dataSet);
+		$cost = 0;
+
+		//Calcul du cout total de création de la phrase
+        for ($i = 0; $i < count($dataSet['motsAmbigus']); $i++) {
+			$cost = $cost + 50;
+			$motAmbiguCourant = $dataSet['motsAmbigus'][$i];
+			
+			for ($j = 0; $j < count($motAmbiguCourant['gloses']); $j++) {
+				$cost = $cost + 50;
+			}
 		
-		echo json_encode(array("reponse" => $reponse));
+		}
+
+		// Si le cout est inferieure à son credit, on insert dans la base sinon, on rejete
+		if ($_SESSION['user']['credit'] >= $cost) {
+			$reponse = $this->Phrase->saveData($dataSet, $cost);
+			echo json_encode(array("reponse" => $reponse, "cost" => $cost));
+		} else {
+			echo json_encode(array("reponse" => false, "cost" => $cost));
+		}		
 	}
 
 	/*public function ajouterGlose(){
@@ -57,7 +75,6 @@ class Create_Phrase extends CI_Controller {
 	}*/
 
 	public function getGloses(){
-
 		$data=array(
         	'mot'   =>  $this->input->post('data'),
         );

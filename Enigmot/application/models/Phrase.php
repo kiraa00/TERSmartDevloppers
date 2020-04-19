@@ -83,8 +83,7 @@ class Phrase extends CI_Model
         $this->db->insert('Phrase', $data);
       }
 
-      public function saveData($data) {
-    
+      public function saveData($data, $cost) {
         //  Insertion de la phrase dans la base de données et récuperation de son id
         
         $phrase = array(
@@ -158,6 +157,14 @@ class Phrase extends CI_Model
           }
         }
         
+        $dataCost = array(
+          'credit' =>  $_SESSION['user']['credit'] - $cost,
+          'id_joueur' => $_SESSION['user']['id_joueur']
+        );
+
+        $this->db->update('Joueur', $dataCost);
+        $_SESSION['user']['credit'] = $_SESSION['user']['credit'] - $cost;
+
         return true;
       }
 }
