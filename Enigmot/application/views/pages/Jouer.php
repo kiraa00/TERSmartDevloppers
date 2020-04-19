@@ -44,6 +44,22 @@
 									<button type="button" class="btn btn-primary addGloseModal" data-toggle="modal" data-target="#modal">Ajouter une glose</button>
 								</div>
 							</div>
+							<div style='margin-bottom: 15px; padding-bottom: -20px;' id='"+divId+"' class='row row-eq-height'>
+								<div class="col-xs-12 col-sm-3 col-md-3 col-sm-offset-1 col-md-offset-1 text-right text-left-xs amb">
+									disposition
+								</div>
+								<div class="">
+									<select class="form-control">
+										<option selected="" disabled="" value="">Choisissez une glose (3 existantes)</option>
+										<option value="1554">service</option>
+										<option value="1555">agencement</option>
+										<option value="1556">état d'esprit</option>
+									</select>
+								</div>
+								<div class="col-xs-12 col-sm-2 col-md-2">
+									<button type="button" class="btn btn-primary addGloseModal" data-toggle="modal" data-target="#modal">Ajouter une glose</button>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>

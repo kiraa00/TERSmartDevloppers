@@ -35,8 +35,8 @@ class Phrase extends CI_Model
                              ),
 
                 'type' => array(
-                          'type' => 'ENUM("ambiguité","rattachement")',
-                          'default' => 'ambiguité',
+                          'type' => 'ENUM("ambigu","rattachement")',
+                          'default' => 'ambigu',
                           'null' => FALSE,
                           ),
                 'facile'  => array(
@@ -71,7 +71,7 @@ class Phrase extends CI_Model
 
                 'id_Createur'  => null,
 
-                'type' => "ambiguité",
+                'type' => "ambigu",
                 
                 'facile'  => 0,
 
@@ -111,7 +111,7 @@ class Phrase extends CI_Model
             'idPhrase' => $idPhrase
           );
 
-          $this->db->insert('mot', $motAmbigu);
+          $this->db->insert('Mot', $motAmbigu);
           $idMotAmbigu = $this->db->insert_id();
 
           //  Insertion des gloses ambigus dans la base de données
@@ -125,11 +125,11 @@ class Phrase extends CI_Model
 
             // Verification de l'existance de la glose avant insertion
 
-            $gloseDB = $this->db->query("SELECT * FROM glose WHERE glose = ?", $glose);
+            $gloseDB = $this->db->query("SELECT * FROM Glose WHERE glose = ?", $glose);
             $idGlose = 0;
 
             if (count($gloseDB->result_array()) == 0) {
-              $this->db->insert('glose', $glose);
+              $this->db->insert('Glose', $glose);
               $idGlose = $this->db->insert_id();
             } else {
               $idGlose = $gloseDB->result_array()[0]['id_glose'];
@@ -153,7 +153,7 @@ class Phrase extends CI_Model
               );
             }
 
-            $this->db->insert('liaison', $liaison);
+            $this->db->insert('Liaison', $liaison);
           }
         }
         
