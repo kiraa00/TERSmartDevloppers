@@ -8,6 +8,12 @@
     min-width: 241px;
 }
 
+.ref {
+    color: #3fcaff; 
+    padding: 5px 2px; 
+    font-weight: bold;
+}
+
 .amb {
     color: rgb(255, 188, 0); 
     padding: 5px 2px; 
@@ -54,7 +60,11 @@
 }
 
 .ambColor {
-    background-color: #2b245d99;
+    background-color: #2b245d99 !important;
+}
+
+.list {
+    width: 100%;
 }
 
 @media screen and (max-width: 1199px) {
@@ -80,6 +90,24 @@
         width: 100% !important;
     }
 }
+
+@media screen and (min-width: 576px) and (max-width: 991px) 
+{
+    .widthSelect {
+        margin-left: 90px;
+        margin-top: 3px;
+        min-width: 255px;
+    }
+}
+
+@media screen and (min-width: 992px)
+{
+    .widthSelect {
+        margin-top: 3px;
+        min-width: 255px;
+    }
+}
+
 
 @media screen and (min-width: 433px)
 {
