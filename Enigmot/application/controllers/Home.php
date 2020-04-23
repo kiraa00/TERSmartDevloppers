@@ -14,8 +14,15 @@ class Home extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('header', ["flagActif" => "home"]);
+		$headerData = array(
+			"cssFile" => "",
+			"flagActif" => "home",
+		);
+		$footerData = array(
+			"javaFile" => "",
+		);
+		$this->load->view('header', $headerData);
         $this->load->view('Home');
-		$this->load->view('footer');
+		$this->load->view('footer',$footerData);
 	}
 }

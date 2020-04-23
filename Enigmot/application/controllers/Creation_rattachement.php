@@ -19,13 +19,20 @@ class Creation_rattachement extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('header', ["flagActif" => "creer"]);
+		$headerData = array(
+			"cssFile" => "assets/css/creation_rattachement.css",
+			"flagActif" => "creer",
+		);
+		$footerData = array(
+			"javaFile" => "creation_rattachement.js",
+		);
+		$this->load->view('header', $headerData);
         if (isset($_SESSION['user'])) {
 			$this->load->view('pages/creation_rattachement');
 		} else {
 			$this->load->view('pages/connexion');
 		}
-		$this->load->view('footer');
+		$this->load->view('footer',$footerData);
 	}
 
 	public function saveData() {

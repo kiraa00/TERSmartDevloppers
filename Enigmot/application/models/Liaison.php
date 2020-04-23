@@ -72,12 +72,11 @@
       );
       $this->db->select('*');
       $this->db->where($where);
-      $query = $this->db->get('Liaison');
-      $nbrVote = $query->row()->nbrVote;
-      $update = array(
-        'nbrVote' => $nbrVote+1,
-      );
-      $this->db->update('Liaison', $update, $where);
+      $query=$this->db->get('Liaison');
+      $nbrVote=$query->row()->nbrVote;
+      $this->db->set('nbrVote',"nbrVote+1",FALSE);
+      $this->db->where($where);
+      $this->db->update('Liaison');
       return $nbrVote;
      }
 }

@@ -24,19 +24,17 @@ class Jouer extends CI_Controller {
 		$data = $this->getPhrase();
 		if($data!=null){
 			$footerData = array(
-			"javaFile" => "assets/js/game.js",
-		);
-		//rules validation
-		$this->form_validation->set_rules('idGlose[]', 'idGlose[]', 'required', array('required' => 'vous avez pas choisit la glose'));	
-		$this->load->view('header', ["flagActif" => "jouer"]);     
-        if ($this->form_validation->run() == FALSE)
-        {
+				"javaFile" => "assets/js/game.js",
+			);
+			$headerData = array(
+				"cssFile" => 'assets/css/game.css',
+				"flagActif" => "jouer",
+			);
+			//rules validation
+			$this->form_validation->set_rules('idGlose[]', 'idGlose[]', 'required', array('required' => 'vous avez pas choisit la glose'));	
+			$this->load->view('header',$headerData);     
 			$this->load->view('pages/Jouer',$data);
-        }
-        	
-        
-
-        $this->load->view('footer',$footerData);
+	        $this->load->view('footer',$footerData);
 		}else{
 			redirect('Create_Phrase');
 		}
@@ -87,24 +85,27 @@ class Jouer extends CI_Controller {
 		$user = null;
 		if(isset($this->session->user)){
 			$user = $this->session->user;
-		}
-		$data = array(
-            'Phrase'      => $this->input->post('idPhrase'),
-            'Mot'        => $this->input->post('idMot'),
-            'Gloses'      => $this->input->post('idGlose'),
-            'Joueur'		=> $user['id_joueur'],
-		);
-		$gainTotale = 0;
-		for($i=0;$i<count($data['Mot']);$i++){
-			$nbr_reponse = $this->Mot->jouer($data['Mot'][$i]);
-			$nbr_Vote = $this->Liaison->jouer($data['Mot'][$i],$data['Gloses'][$i]);
-			if($nbr_reponse==0){
-				$nbr_reponse=1;
+		
+			$data = array(
+	            'Phrase'      => $this->input->post('idPhrase'),
+	            'Mot'        => $this->input->post('idMot'),
+	            'Gloses'      => $this->input->post('idGlose'),
+	            'Joueur'		=> $user['id_joueur'],
+			);
+			$gainTotale = 0;
+			for($i=0;$i<count($data['Mot']);$i++){
+				$nbr_reponse = $this->Mot->jouer($data['Mot'][$i]);
+				$nbr_Vote = $this->Liaison->jouer($data['Mot'][$i],$data['Gloses'][$i]);
+				if($nbr_reponse==0){
+					$nbr_reponse=1;
+				}
+				$gainTotale +=($nbr_Vote/$nbr_reponse)*100; 
 			}
-			$gainTotale +=($nbr_Vote/$nbr_reponse)*100; 
+			$gainTotale = ceil($gainTotale);
+			$_SESSION['user']['credit'] = $_SESSION['user']['credit'] + $gainTotale;
+			$this->JouerModel->jouer($data['Phrase'],$data['Joueur'],$gainTotale);
+			$this->Joueur->jouer($data['Joueur'],$gainTotale);
 		}
-		$this->JouerModel->jouer($data['Phrase'],$data['Joueur'],$gainTotale);
-		$this->Joueur->jouer($data['Joueur'],$gainTotale);
 		redirect('Jouer');
 
 	}

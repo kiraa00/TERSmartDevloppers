@@ -14,12 +14,19 @@ class Profil extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('header', ["flagActif" => "profil"]);
+		$headerData = array(
+			"cssFile" => "assets/css/profil.css",
+			"flagActif" => "profil",
+		);
+		$footerData = array(
+			"javaFile" => "",
+		);
+		$this->load->view('header', $headerData);
         if (isset($_SESSION['user'])) {
 			$this->load->view('pages/profil');
 		} else {
 			$this->load->view('pages/connexion');
 		}
-		$this->load->view('footer');
+		$this->load->view('footer',$footerData);
 	}
 }
