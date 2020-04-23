@@ -27,3 +27,7 @@ amb {
 
     display: inline-grid;
 }
+
+.ambColor {
+    background-color: #2b245d99 !important;
+}
