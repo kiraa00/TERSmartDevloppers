@@ -27,14 +27,12 @@ class Jouer extends CI_Controller {
 			"javaFile" => "assets/js/game.js",
 		);
 		//rules validation
-		$this->form_validation->set_rules('idGlose[]', 'idGlose[]', 'required', array('required' => 'vous avez pas choisit la glose'));
-		
-		$this->load->view('header', ["flagActif" => "jouer"]);
-        
+		$this->form_validation->set_rules('idGlose[]', 'idGlose[]', 'required', array('required' => 'vous avez pas choisit la glose'));	
+		$this->load->view('header', ["flagActif" => "jouer"]);     
         if ($this->form_validation->run() == FALSE)
-            {
-				$this->load->view('pages/Jouer',$data);
-           }
+        {
+			$this->load->view('pages/Jouer',$data);
+        }
         	
         
 
@@ -107,6 +105,7 @@ class Jouer extends CI_Controller {
 		}
 		$this->JouerModel->jouer($data['Phrase'],$data['Joueur'],$gainTotale);
 		$this->Joueur->jouer($data['Joueur'],$gainTotale);
+		redirect('Jouer');
 
 	}
 

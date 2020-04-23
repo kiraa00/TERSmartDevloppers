@@ -172,9 +172,8 @@ class Phrase extends CI_Model
         
         $dataCost = array(
           'credit' =>  $_SESSION['user']['credit'] - $cost,
-          'id_joueur' => $_SESSION['user']['id_joueur']
         );
-
+        $this->db->where('id_joueur',$_SESSION['user']['id_joueur']);
         $this->db->update('Joueur', $dataCost);
         $_SESSION['user']['credit'] = $_SESSION['user']['credit'] - $cost;
 
@@ -191,6 +190,13 @@ class Phrase extends CI_Model
          $this->db->where('id_joueur !=',$user);
          $this->db->order_by('id_phrase', 'RANDOM');
          $query = $this->db->get();
+         if($query->num_rows()==0){
+          $this->db->select('*');
+          $this->db->where('type','ambigu');
+          $this->db->where('id_Createur !=',$user);
+          $this->db->order_by('id_phrase', 'RANDOM');
+          $query = $this->db->get('Phrase');
+        }
          return $query->row();
       }
 }

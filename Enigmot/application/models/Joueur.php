@@ -77,6 +77,8 @@
       }
 
       public function jouer($joueur,$gain){
+        $this->db->set('credit',"credit+$gain",FALSE);
+        $this->db->where('id_joueur',$joueur);
         $this->db->update('Joueur');
       }
 }

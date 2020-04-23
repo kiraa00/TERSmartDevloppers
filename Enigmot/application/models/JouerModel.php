@@ -43,7 +43,20 @@
           'id_joueur' => $joueur,
           'Gain' => $gain,
         );
-        $this->db->insert('Jouer',$data);
+        $where = array(
+          'id_phrase' => $phrase,
+          'id_joueur' => $joueur,
+        );
+        $this->db->select('*');
+        $this->db->where($where);
+        $query=$this->db->get('Jouer');
+        if($query->num_rows()==0){
+          $this->db->insert('Jouer',$data);
+        }else{
+          $this->db->set('Gain',"Gain+$gain",FALSE);
+          $this->db->where($where);
+          $this->db->update('Jouer');
+        }
       } 
 }
   ?>
