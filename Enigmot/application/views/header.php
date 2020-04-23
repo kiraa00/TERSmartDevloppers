@@ -13,6 +13,8 @@
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/select-checkbox.css');?>">
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/createSentence.css');?>">
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/game.css');?>">
+	<link rel="stylesheet" href="<?php echo base_url('assets/css/profil.css');?>">
+	<link rel="stylesheet" href="<?php echo base_url('assets/css/creation_rattachement.css');?>">
 	<link rel="stylesheet" href="<?php echo base_url('assets/vendors/linericon/style.css');?>">
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/font-awesome.min.css');?>">
 	<link rel="stylesheet" href="<?php echo base_url('assets/vendors/owl-carousel/owl.carousel.min.css');?>">
@@ -46,7 +48,14 @@
 							<li class="nav-item <?php if (isset($flagActif) && $flagActif === "home") {echo "active";} ?>"><a class="nav-link" href="home">Acceuil</a></li>
 							<li class="nav-item <?php if (isset($flagActif) && $flagActif === "jouer") {echo "active";} ?>"><a class="nav-link" href="<?php echo base_url('index.php/jouer');?>">Jouer</a></li>
 							<?php if (isset($_SESSION['user'])) { ?>
-								<li class="nav-item <?php if (isset($flagActif) && $flagActif === "creer") {echo "active";} ?>"><a class="nav-link" href="<?php echo base_url('index.php/create');?>">Créer</a>
+								<li class="nav-item submenu dropdown <?php if (isset($flagActif) && $flagActif === "creer") {echo "active";} ?>">
+									<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+									aria-expanded="false">Créer</a>
+									<ul style="min-width: 206px;" class="dropdown-menu">
+										<li class="nav-item <?php if (isset($flagActif) && $flagActif === "creer") {echo "active";} ?>"><a class="nav-link" href="<?php echo base_url('index.php/create');?>">Version ambigus</a>
+										<li class="nav-item <?php if (isset($flagActif) && $flagActif === "creer") {echo "active";} ?>"><a class="nav-link" href="<?php echo base_url('index.php/creation_rattachement');?>">Version rattachement</a>
+									</ul>
+								</li>
 							<?php } ?>
 							<li class="nav-item submenu dropdown <?php if (isset($flagActif) && $flagActif === "classement") {echo "active";} ?>">
 								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -58,7 +67,7 @@
 								</ul>
 							</li>
 							<?php if (isset($_SESSION['user'])) { ?>
-								<li class="nav-item submenu dropdown <?php if (isset($flagActif) && $flagActif === "profil") {echo "active";} ?>">
+								<li class="nav-item submenu dropdown">
 									<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 									aria-expanded="false" class="primary_btn">Crédits/Points</a>
 									<ul class="dropdown-menu">
@@ -67,6 +76,7 @@
 									</ul>
 								</li>
 							<?php } ?>
+							<li class="nav-item <?php if (isset($flagActif) && $flagActif === "profil") {echo "active";} ?>"><a class="nav-link" href="profil">Profil</a></li>
 						</ul>
 						<ul class="nav navbar-nav navbar-right" >
 							<ul class="nav navbar-nav navbar-right" class="primary_btn">

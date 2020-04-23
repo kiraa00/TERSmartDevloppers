@@ -83,18 +83,31 @@ class Phrase extends CI_Model
         $this->db->insert('Phrase', $data);
       }
 
-      public function saveData($data, $cost) {
+      public function saveData($data, $cost, $type) {
         //  Insertion de la phrase dans la base de données et récuperation de son id
-        
-        $phrase = array(
-          'Phrase' => $data['phrase'],
-          'nbr_like'  => 0,
-          'id_Createur'  => $_SESSION['user']['id_joueur'],
-          'type' => "ambigu",
-          'facile'  => 0,
-          'moyenne'  => 1,
-          'difficile'  => 0
-        );
+        $phrase;
+
+        if ($type == "amb") {
+          $phrase = array(
+            'Phrase' => $data['phrase'],
+            'nbr_like'  => 0,
+            'id_Createur'  => $_SESSION['user']['id_joueur'],
+            'type' => "ambigu",
+            'facile'  => 0,
+            'moyenne'  => 1,
+            'difficile'  => 0
+          );
+        } else {
+          $phrase = array(
+            'Phrase' => $data['phrase'],
+            'nbr_like'  => 0,
+            'id_Createur'  => $_SESSION['user']['id_joueur'],
+            'type' => "rattachement",
+            'facile'  => 0,
+            'moyenne'  => 1,
+            'difficile'  => 0
+          );
+        }
 
         $this->db->insert('Phrase', $phrase);
         $idPhrase = $this->db->insert_id();
@@ -123,7 +136,7 @@ class Phrase extends CI_Model
               'glose' => $gloseCourante['valeur']
             );
 
-            // Verification de l'existance de la glose avant insertion
+            // Verification de l'existance de la glose avant l'insertion
 
             $gloseDB = $this->db->query("SELECT * FROM Glose WHERE glose = ?", $glose);
             $idGlose = 0;

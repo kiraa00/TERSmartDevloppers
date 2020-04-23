@@ -44,6 +44,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	<script src="<?php echo base_url($javaFile);?>"></script>
 	<script src="<?php echo base_url('assets/js/inscription.js');?>"></script>
 	<script src="<?php echo base_url('assets/js/connexion.js');?>"></script>
+	<script src="<?php echo base_url('assets/js/creation_rattachement.js');?>"></script>
 </body>
 
 </html>

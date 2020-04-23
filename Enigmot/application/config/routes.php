@@ -56,4 +56,6 @@ $route['create']='Create_Phrase';
 $route['jouer']='Jouer';
 $route['inscription']='Inscription';
 $route['connexion']='Connexion';
+$route['creation_rattachement']='Creation_rattachement';
+$route['profil']='Profil';
 $route['translate_uri_dashes'] = FALSE;
