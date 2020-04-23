@@ -167,5 +167,18 @@ class Phrase extends CI_Model
 
         return true;
       }
+
+      public function getRandomPhrase(){
+        $user = ($this->session->user)['id_joueur'];
+         $this->db->select('*');
+         $this->db->from('Phrase');
+         $this->db->join('Jouer','Jouer.id_phrase=Phrase.id_phrase','Right');
+         $this->db->where('type','ambigu');
+         $this->db->where('id_Createur !=',$user);
+         $this->db->where('id_joueur !=',$user);
+         $this->db->order_by('id_phrase', 'RANDOM');
+         $query = $this->db->get();
+         return $query->row();
+      }
 }
 ?>

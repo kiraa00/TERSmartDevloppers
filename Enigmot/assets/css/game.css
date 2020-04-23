@@ -3,13 +3,27 @@
     font-family: cursive;
     margin-bottom: 10px;
 }
-
+.motGame{
+	display: inline-flex;
+}
 .btn-like {
     font-size: 12px;
     padding: 0px 6px;
 }
-
 .btn-error {
     padding: 0px 5px;
     font-size: 13px;
+}
+.nice-select{
+	padding-top:0;
+}
+amb {
+	color: rgb(255, 188, 0); 
+    padding: 5px 2px; 
+    font-weight: bold;
+}
+#motForm{
+    vertical-align: middle;
+
+    display: inline-grid;
 }

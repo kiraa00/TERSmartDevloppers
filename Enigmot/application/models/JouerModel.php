@@ -1,5 +1,5 @@
 <?php  
- class Jouer extends CI_Model  
+ class JouerModel extends CI_Model  
  {  
       public function __construct(){
             parent::__construct();
@@ -36,6 +36,14 @@
 
 
       }
-     
+
+      public function jouer($phrase,$joueur,$gain){
+        $data = array(
+          'id_phrase' => $phrase,
+          'id_joueur' => $joueur,
+          'Gain' => $gain,
+        );
+        $this->db->insert('Jouer',$data);
+      } 
 }
   ?>

@@ -75,5 +75,9 @@
           return array("flag" => true, "reponse" => $request->result_array());
         }
       }
+
+      public function jouer($joueur,$gain){
+        $this->db->update('Joueur');
+      }
 }
 ?>
