@@ -41,7 +41,7 @@
 								$MotAmbigu = ($Ambigu['mot'])->motAmbigu;
 								$currSelect = "select".$idMot;
 								$i = $Ambigu['nbrGlose'];
-								echo "<div class='row motGame form-inline' id='m$MotPosition'>";
+								echo "<div class='row motGame form-inline' id='dm$MotPosition' onmouseover='showShadow(this)' onmouseout='hideShadow(this)'>";
 								echo 	"<div class='row pl-0 m-1'>";
 								echo 		"<input name='idMot[]' type='text' value='$idMot' hidden>";
 								echo		"<div class='amb mr-2'>";

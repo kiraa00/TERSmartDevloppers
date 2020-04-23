@@ -15,7 +15,8 @@
     font-size: 13px;
 }
 .nice-select{
-	padding-top:0;
+    padding-top:0;
+    min-width: 252px;
 }
 amb {
 	color: rgb(255, 188, 0); 
@@ -24,6 +25,9 @@ amb {
 }
 #motForm{
     vertical-align: middle;
-
     display: inline-grid;
+}
+
+.ambColor {
+    background-color: #2b245d99 !important;
 }

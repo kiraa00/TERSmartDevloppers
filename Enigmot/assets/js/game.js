@@ -33,7 +33,9 @@ $(document).ready(function(){
 		        )                                    
             }  
         });
-    });	
+    });
+    $("amb").attr("onMouseOver", function(){ showShadow(this) });
+    $("amb").attr("onMouseOut", function(){ hideShadow(this) });	
 });
 
 function addGlose(Select,MotId){
@@ -61,4 +63,32 @@ function hide_form(){
     curr_select='';
     idMot='';
     $('#addGlose').modal('hide');
+}
+
+function showShadow(element){
+    var idDiv,idAmb;
+    console.log(element.id);
+    if(element.id[0]=='d'){
+        idDiv = element.id;
+        idAmb= idDiv.substring(1,idDiv.length);
+    }else{
+        idDiv = 'd'+element.id;
+        idAmb = element.id;
+    }
+    $('#'+idDiv).addClass('ambColor');
+    $('#'+idAmb).addClass('ambColor');
+
+}
+
+function hideShadow(element){
+    var idDiv,idAmb;
+    if(element.id[0]=='d'){
+        idDiv = element.id;
+        idAmb= idDiv.substring(1,idDiv.length);
+    }else{
+        idDiv = 'd'+element.id;
+        idAmb = element.id;
+    }
+    $('#'+idDiv).removeClass('ambColor');
+    $('#'+idAmb).removeClass('ambColor');
 }
