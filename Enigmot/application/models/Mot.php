@@ -59,7 +59,30 @@
           $id = $query->row()->id_ambigu;
         }
         return $id;
-      }      
+      }
+
+      public function getMotByPhrase($id){
+        $this->db->select('*');
+        $this->db->where('idPhrase',$id);
+        $this->db->order_by('position', 'ASC');
+        $query = $this->db->get('Mot');
+        return $query->result();
+      } 
+
+      public function jouer($mot){
+        $where = array(
+          'id_ambigu' => $mot,
+        );
+        $this->db->select('*');
+        $this->db->where($where);
+        $query = $this->db->get('Mot');
+        $nbr_reponse = $query->row()->nbr_reponse;
+        $update = array(
+          'nbr_reponse' => $nbr_reponse+1,
+        );
+        $this->db->update('Mot', $update, $where);
+        return $nbr_reponse;
+      }   
      
 }
   ?>

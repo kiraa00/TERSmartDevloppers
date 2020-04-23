@@ -16,13 +16,20 @@ class Inscription extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('header', ["flagActif" => "authentification"]);
+		$headerData = array(
+			"cssFile" => "",
+			"flagActif" => "authentification",
+		);
+		$footerData = array(
+			"javaFile" => "",
+		);
+		$this->load->view('header', $headerData);
 		if (isset($_SESSION['user'])) {
 			$this->load->view('Home');
 		} else {
 			$this->load->view('pages/Inscription');
 		}
-		$this->load->view('footer');
+		$this->load->view('footer',$footerData);
 	}
 
 	public function verifyPseudoAndEmail(){

@@ -53,17 +53,31 @@
 
       public function insert($data){
         $where = array(
-          'id_glose' => $data['id_glose'],
-          'id_ambigu' => $data['id_ambigu'],
+          'idGlose' => $data['idGlose'],
+          'idMotAmbigu' => $data['idMotAmbigu'],
         );
         $this->db->select('*');
         $this->db->where($where);
-        $query = $this->db->get('Contenir');
+        $query = $this->db->get('Liaison');
         if($query->num_rows()==0){
-          $this->db->insert('Contenir', $data);
+          $this->db->insert('Liaison', $data);
         }
         
       }
-     
+     public function jouer($Mot,$Glose){
+      $where = array(
+        'idMotAmbigu' => $Mot,
+        'idGlose' => $Glose,
+
+      );
+      $this->db->select('*');
+      $this->db->where($where);
+      $query=$this->db->get('Liaison');
+      $nbrVote=$query->row()->nbrVote;
+      $this->db->set('nbrVote',"nbrVote+1",FALSE);
+      $this->db->where($where);
+      $this->db->update('Liaison');
+      return $nbrVote;
+     }
 }
   ?>

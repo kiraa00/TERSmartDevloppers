@@ -1,0 +1,66 @@
+p {
+    color: white;
+}
+
+li{
+    color: white;
+}
+
+.colstyle{
+    background-color: #5753967a;
+    margin-top:10px;
+    padding:10px;display:flex;
+}
+
+.rowdiv li a {
+    text-decoration: none;
+    color: white;
+    
+}
+.rowdiv li a:hover {
+    text-decoration: none;
+    background-color: #3383FF;
+    color: white;
+
+      
+}
+
+ul{
+    display: inline;
+}
+.activeprofil{
+    background-color: #3383FF;
+    color: white;
+    
+    
+}
+
+.linkProfil{
+    text-decoration: none;
+}
+
+.inline{
+   text-decoration: none;
+   list-style:none;
+   display:inline-block;
+   
+}
+
+.ul-inline{ 
+    
+    list-style: none;
+}
+
+.ul-inline li {
+    display: inline;
+}
+
+.noactive{
+    background-color:#5753967a;
+    padding: 10px;
+    
+}
+
+.rowdiv{
+    margin-left: -40px;
+}

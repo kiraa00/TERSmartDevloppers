@@ -12,8 +12,7 @@
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap-multiselect.css');?>">
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/select-checkbox.css');?>">
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/createSentence.css');?>">
-	<link rel="stylesheet" href="<?php echo base_url('assets/css/game.css');?>">
-	<link rel="stylesheet" href="<?php echo base_url('assets/css/profil.css');?>">
+	<link rel="stylesheet" href="<?php echo base_url($cssFile);?>">
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/creation_rattachement.css');?>">
 	<link rel="stylesheet" href="<?php echo base_url('assets/vendors/linericon/style.css');?>">
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/font-awesome.min.css');?>">

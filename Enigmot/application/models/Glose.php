@@ -4,6 +4,7 @@
       public function __construct(){
             parent::__construct();
             $this->load->database();
+            $this->load->model('Liaison');
       }
       
       public function createData()  
@@ -47,7 +48,7 @@
       }
 
       public function getGlose($data){
-        $requestString = "SELECT DISTINCT g.glose FROM glose g, mot m, liaison l WHERE m.id_ambigu = l.idMotAmbigu AND g.id_glose = l.idGlose AND m.motAmbigu = ?;";
+        $requestString = "SELECT DISTINCT g.glose FROM Glose g, Mot m, Liaison l WHERE m.id_ambigu = l.idMotAmbigu AND g.id_glose = l.idGlose AND m.motAmbigu = ?;";
 
         $request = $this->db->query($requestString, $data);
   
@@ -56,6 +57,15 @@
           } else {
             return array("flag" => false, "reponse" => "");
           }
+      }
+
+      public function getGlosesByMotID($id){
+        $this->db->select('*');
+        $this->db->from('Glose');
+        $this->db->join('Liaison', 'Liaison.idGlose = Glose.id_glose');
+        $this->db->where('idMotAmbigu',$id);
+        $query = $this->db->get();
+        return $query->result();
       }
      
 }

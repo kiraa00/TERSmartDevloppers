@@ -19,13 +19,20 @@ class Create_Phrase extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('header', ["flagActif" => "creer"]);
+		$headerData = array(
+			"cssFile" => 'assets/css/createSentence.css',
+			"flagActif" => "creer",
+		);
+		$footerData = array(
+			"javaFile" => "assets/js/Create.js",
+		);
+		$this->load->view('header', $headerData);
         if (isset($_SESSION['user'])) {
 			$this->load->view('pages/Create_Phrase');
 		} else {
 			$this->load->view('pages/connexion');
 		}
-		$this->load->view('footer');
+		$this->load->view('footer',$footerData);
 	}
 
 	public function saveData() {
