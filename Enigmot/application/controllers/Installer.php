@@ -11,8 +11,8 @@ class Installer extends CI_Controller {
         $this->load->model('Phrase');
         $this->Phrase->createData();
 
-        $this->load->model('Jouer');
-        $this->Jouer->createData();    
+        $this->load->model('JouerModel');
+        $this->JouerModel->createData();    
 
         $this->load->model('Mot');
         $this->Mot->createData(); 

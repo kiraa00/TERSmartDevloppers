@@ -28,8 +28,6 @@
         $this->dbforge->add_field($fields);
         $this->dbforge->add_key('id_glose',true);
         $this->dbforge->create_table('Glose',FALSE, $attributes);
-
-
       }
 
       public function insert($glose){

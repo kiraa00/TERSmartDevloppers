@@ -18,6 +18,8 @@
     font-size: 13px;
 }
 .nice-select{
+    padding-top:0;
+    min-width: 252px;
 	padding-top:0;
     width:inherit;
 }
