@@ -1,5 +1,19 @@
-// Déclaration de la variable globale i
+// Affichage du swal lorsqu'une phrase a bien été créé
+var url = document.location.href.split("?/");
+var enigmot = document.location.href.split("ENIGMOT");
+
+if (url[1] !== undefined && !isNaN(parseInt(enigmot[1])) && url[1] == "creation") {
+    swal(
+        'Votre phrase a bien été enregistré',
+        'La création de cette phrase vous a coûtée '+enigmot[1]+' crédits.',
+        'success'
+    ) 
+}
+
+// Déclaration des variables globales
 var i = 1;
+var cost = 0;
+var arrayGlose = Array();
 
 //Verification du mot sélectionner dans la phrase
 function verifyAndGetWord() {
@@ -136,10 +150,16 @@ function addMotAmb(){
     document.execCommand('insertHTML', true, "<amb id=m"+i+" class='amb'>" + selection.toString().trim() + "</amb>");
     $('#divAmbigu').append(form);
     $("#"+curr_selectId).niceSelect();
+    $(".list").niceScroll();
+    $(".list").addClass("scrollGloses");
 
     $('#'+sup_mot_id).click({selectId:selectId, divId:divId, MotId:"m"+i}, suppressDiv);
     $('#'+buttonId).click({selectId:selectId, divId:divId, MotId:"m"+i}, addRattachement);
     
+    arrayGlose[i] = 0;
+    cost+=50;
+    document.getElementById("cost").innerHTML = cost;
+
     i++;
     return selection;
 }
@@ -173,6 +193,8 @@ function addEventBlurSentence(param) {
         if ($("#"+param.data.idR)[0] !== undefined) {
             $("#"+param.data.idROption)[0].innerHTML = $("#"+param.data.idR)[0].innerHTML.replace(/&nbsp;/g, ' ');
             $("#"+param.data.idS).niceSelect("update");
+            $(".list").niceScroll();
+            $(".list").addClass("scrollGloses");
             addIdOption(param.data.idM);
             addEventMoussReference(param.data.idM, param.data.idS, param.data.idD);
         }
@@ -207,6 +229,8 @@ function addRattachement(param) {
 
     $("#"+selectId).append(option);
     $("#"+selectId).niceSelect("update");
+    $(".list").niceScroll();
+    $(".list").addClass("scrollGloses");
 
     let positionOption = addIdOption(motId);    
 
@@ -223,6 +247,11 @@ function addRattachement(param) {
 
     addEventMoussReference(motId, selectId, divId);
     addEventBlurReference(optionId, refId, selectId, motId, divId);
+
+    let positionGlose = selectId[selectId.length - 1];
+    arrayGlose[positionGlose] = arrayGlose[positionGlose] + 1;
+    cost+=25;
+    document.getElementById("cost").innerHTML = cost;
 }
 
 function addEventMoussReference(motId, selectId, divId) {
@@ -260,15 +289,27 @@ function suppressDiv(param){
 
     $("#"+divId).remove();
 
+    //Ré-calcule du couts et ré-ajout des évenements lorsqu'un mot est supprimé
+    let positionGlose = selectId[selectId.length - 1];
+    arrayGlose[positionGlose] = 0;
+    let nbrGloses = 0;
+    cost = 0;
+    
     for (let k = 1; k < i; k++) {
         if (document.getElementById("m"+k) !== null) {
             $('#m'+k).unbind();
             $('#m'+k).mouseover({idM:"m"+k, idD:"div"+k}, addEventMoussover);
             $('#m'+k).mouseout({idM:"m"+k, idD:"div"+k}, addEventMoussout);
-
+            
             addEventMoussReference("m"+k, "gloses"+k, "div"+k);
+            
+            cost = cost + 50;
+            nbrGloses = nbrGloses + arrayGlose[k];
         }
     }
+
+    cost = cost + nbrGloses * 25;
+    document.getElementById("cost").innerHTML = cost;
 }
 
 function sendDataR() {
@@ -416,6 +457,14 @@ function getSentenceR() {
     phrase = phrase.replace(/class='ref'/g, "");
     phrase = phrase.replace(/  /g, "");
     phrase = phrase.replace(/ >/g, ">");
+    if (phrase[0] !== "<") {
+        phrase = phrase[0].toUpperCase() + phrase.substring(1, phrase.length);
+    } else if (phrase[1] === "a"){
+        phrase = phrase.substring(0, 13) + phrase[13].toUpperCase() + phrase.substring(14, phrase.length);
+    } else {
+        phrase = phrase.substring(0, 18) + phrase[18].toUpperCase() + phrase.substring(19, phrase.length);
+    }
+    phrase = phrase + ".";
 
     //Construction du JSON à envoyer au controller
     reponse = "{\"phrase\": \"" +phrase+ "\",\"motsAmbigus\": [" + reponse;
@@ -455,3 +504,11 @@ function getWordsAndRattachement(param, position){
         return false;
     }
 }
+
+$("#phrase").on('keypress', function(e) {
+    var keyCode = e.which;
+
+    if (keyCode == 13) {
+        return false;
+    }
+});

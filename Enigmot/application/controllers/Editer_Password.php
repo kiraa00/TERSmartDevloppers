@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Profil extends CI_Controller {
+class Editer_Password extends CI_Controller {
 
 	public function __construct(){
 		parent::__construct();
@@ -23,7 +23,7 @@ class Profil extends CI_Controller {
 		);
 		$this->load->view('header', $headerData);
         if (isset($_SESSION['user'])) {
-			$this->load->view('pages/profil');
+			$this->load->view('pages/editPassword');
 		} else {
 			$this->load->view('pages/connexion');
 		}

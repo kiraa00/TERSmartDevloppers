@@ -2,20 +2,20 @@
 		<section class="banner_area" style="padding-bottom: 50px;">
 			<div class="banner_inner d-flex align-items-center" style="min-height: 100vh">
 				<div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
-				<div class="container">
+				<div class="container conteneur">
 					<div class="banner_content text-center p-5">
 						<div class="page_link">
 							<a href="Home">Acceuil</a>
-							<a href="create">Création</a>
+							<a href="create">Création Version Ambigus</a>
 						</div>
-						<h2>Création d'une phrase</h2>
+						<h2>Création d'une phrase à mots ambigus</h2>
 					</div>
 					<div class="col-lg-12 p-4" style="background-color: #5753967a;">
 						<h3>Creation d'une Phrase</h3>
 						<?php if($_SESSION["user"]["credit"] < 100) { ?>
-							<div style="margin-top: 15px; font-size: 13px;" class="alert alert-danger" role="alert">Vous n'avez pas assez de crédits pour pouvoir créer une phrase.</div>
+							<div style="margin-top: 15px; font-size: 13px;" class="alert alert-danger" role="alert">Vous n'avez pas assez de crédits pour pouvoir créer une phrase à mots ambigus.</div>
 						<?php } else { ?>
-							<div style="margin-top: 15px; font-size: 13px;" class="alert alert-success" role="alert">Pour chaque mot ambigu ajouté, cela vous coûtera 50 crédits.<br>Pour chaque glose sélectionner dans les listes déroulante, cela vous coûtera 50 crédits.</div>
+							<div style="margin-top: 15px; font-size: 13px;" class="alert alert-success" role="alert">Pour chaque mot ambigu ajouté, cela vous coûtera 50 crédits.<br>Pour chaque glose sélectionner dans les listes déroulante, cela vous coûtera 50 crédits.<br>Coût de la création de la phrase : <cost id="cost">0</cost> crédits</div>
 						<?php } ?>
 						<div style="margin-bottom: 20px;" class="form-control" name="phraseD" autocomplete="off" id="phrase" required="required" placeholder="Saisissez votre phrase" contenteditable></div>
 						<div id="messageError" hidden style="margin-top: 15px; font-size: 13px;" class="alert alert-danger" role="alert"></div>
