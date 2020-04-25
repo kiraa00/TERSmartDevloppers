@@ -4,7 +4,10 @@
     margin-bottom: 10px;
 }
 .motGame{
-	display: inline-flex;
+	display: flex;
+    justify-content: center;
+    padding-bottom: 7px;
+    padding-top: 16px;
 }
 .btn-like {
     font-size: 12px;
@@ -16,6 +19,7 @@
 }
 .nice-select{
 	padding-top:0;
+    width:inherit;
 }
 amb {
 	color: rgb(255, 188, 0); 
@@ -24,10 +28,15 @@ amb {
 }
 #motForm{
     vertical-align: middle;
-
-    display: inline-grid;
+    display: block;
 }
 
 .ambColor {
     background-color: #2b245d99 !important;
+}
+.size20 {
+    font-size: 20px;
+}
+.champ{
+    display: contents;
 }

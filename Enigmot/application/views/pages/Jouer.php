@@ -35,19 +35,23 @@
 						<br>
 						<div id="motForm" class="form-group">
 						<?php
+						$idDiv=0;
 							foreach ($dataAmbigu as $Ambigu) {
 								$idMot = ($Ambigu['mot'])->id_ambigu;
 								$MotPosition = ($Ambigu['mot'])->position;
 								$MotAmbigu = ($Ambigu['mot'])->motAmbigu;
 								$currSelect = "select".$idMot;
 								$i = $Ambigu['nbrGlose'];
-								echo "<div class='row motGame form-inline' id='dm$MotPosition' onmouseover='showShadow(this)' onmouseout='hideShadow(this)'>";
-								echo 	"<div class='row pl-0 m-1'>";
+								$idDiv++;
+								echo "<div class='row motGame' id='dm$MotPosition' onmouseover='showShadow(this)' onmouseout='hideShadow(this)'>";
+								echo 	"<div id='champs$idDiv' class='champ'>";
 								echo 		"<input name='idMot[]' type='text' value='$idMot' hidden>";
-								echo		"<div class='amb mr-2'>";
-								echo 			"<h3>$MotAmbigu</h3>";
+								echo		"<div class='col-xs-12 col-sm-3 col-md-3 col-sm-offset-1 col-md-offset-1 text-right text-left-xs'>";
+								echo 			"<label class='amb control-label required pull-left' for='champs$idDiv'>";
+								echo 				"<h3>$MotAmbigu</h3>";
+								echo			"</label>";
 								echo 		"</div>";
-								echo		"<div>";
+								echo		"<div class='col-xs-12 col-sm-4 col-md-4'>";
 								echo			"<select class='form-control' name='idGlose[]' id='$currSelect' value='";echo set_value('idGlose[]');echo  "  ' >";
 								echo				"<option selected='' disabled='' value='$i'> Choisissez une glose ($i existantes)</option>";
 								foreach ($Ambigu['gloses'] as $glose) {
@@ -55,21 +59,23 @@
 								}
 								echo			"</select>";
 								echo		"</div>";
-								echo 	"</div>";
-								echo	"<div class='pl-0 m-1'>";
+								echo		"<div class='col-xs-12 col-sm-3 col-md-3'>";
 								if (isset($_SESSION['user'])) {
-									echo		"<button id='addBtn' type='button' class='pull-left genric-btn danger circle' data-toggle='modal' data-target='#modal' onclick='addGlose($currSelect,$idMot)'>Ajouter une glose</button>";
+									echo		"<button id='addBtn' type='button' class='genric-btn info radius' data-toggle='modal' data-target='#modal' onclick='addGlose($currSelect,$idMot)'>Ajouter une glose</button>";
 								}
-								echo "</div>";
+								echo 		"</div>";
+								echo 	"</div>";
 								echo "</div>";
 							}
 
 						?>
 						</div>
 
-						<div>
-							<button class="pull-right btn-lg genric-btn success circle arrow" type="submit">Valider<span class="lnr lnr-arrow-right"></span></button>
+						<div class="row pull-right" style="padding-bottom: 10px;">
+							<button class="pull-right btn-lg genric-btn primary radius" type="submit">Valider</button>
+							<a href="/jouer"><button class="pull-right genric-btn primary-border circle arrow" >passer phrase<span class="lnr lnr-arrow-right"></span></button></a>
 						</div>
+
 						</form>
 					</div>
 
