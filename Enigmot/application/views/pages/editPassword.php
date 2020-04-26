@@ -22,11 +22,11 @@
                                
                                         
                                                 <div style="font-size: 13px;" class="alert alert-danger" role="alert">Ici tu gérera tes differentes erreurs .</div>
-                                                <p >Mot de passe actuel<b>*</b></p>
+                                                <p >Mot de passe actuel <b>*</b></p>
                                                 <input type="password" id="form1" class="form-control">
-                                                <p >Nouveau mot de passe<b>*</b></p>
+                                                <p >Nouveau mot de passe <b>*</b></p>
                                                 <input type="password" id="form1" class="form-control">
-                                                <p >Confirmation du mot de passe<b>*</b></p> 
+                                                <p >Confirmation du mot de passe <b>*</b></p> 
                                                 <input type="password" id="form1" class="form-control">
 
                                                 <div class="buttonvalidation">        

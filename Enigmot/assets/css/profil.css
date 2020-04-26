@@ -41,6 +41,7 @@ ul{
 }
 
 .inline{
+    margin: auto;
    text-decoration: none;
    list-style:none;
    display:inline-block;
@@ -50,6 +51,7 @@ ul{
 .ul-inline{ 
     
     list-style: none;
+    margin: auto;
 }
 
 .ul-inline li {
@@ -136,3 +138,16 @@ margin-left: 20px;
     width: 40%;
 }
 
+#marge{
+    margin: 20px;
+}
+
+label{
+    color: white;
+}
+
+.radiosex{
+    display: inline-flex;
+    margin-bottom: 15px;
+    text-align: center;
+}
