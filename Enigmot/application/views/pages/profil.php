@@ -26,13 +26,13 @@
                                             <p><b>Crédits :</b> 0</p>
                                             <p> Vous avez créé :</p>
                                             <div class="ulmarge">
-                                                <ul >
-                                                    <li>0 phrases
-                                                        <a href="#" style="color:white;">(Voir)</a>
-                                                    </li>
-                                                    <li>0 gloses</li>
-                                                    <li>0 mots ambigus</li>
-                                                </ul>
+                                            <ul >
+                                                <li>0 phrases
+                                                    <a href="#" style="color:white;">(Voir)</a>
+                                                </li>
+                                                <li>0 gloses</li>
+                                                <li>0 mots ambigus</li>
+                                            </ul>
                                             </div>
                                         </div>
                                         <div class="col-md-6 text-right">
