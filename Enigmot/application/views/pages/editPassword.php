@@ -19,8 +19,9 @@
                                 </div>
                                 <br>
                                 <div class="col-lg-12 p-4" style="background-color: #5753967a; margin-top:-18px;" >
-                                        <div class="com" >
-                                                <div style="font-size: 13px;" class="alert alert-danger" role="alert">Ici tu gérera tes differents erreurs .</div>
+                               
+                                        
+                                                <div style="font-size: 13px;" class="alert alert-danger" role="alert">Ici tu gérera tes differentes erreurs .</div>
                                                 <p >Mot de passe actuel<b>*</b></p>
                                                 <input type="password" id="form1" class="form-control">
                                                 <p >Nouveau mot de passe<b>*</b></p>
@@ -30,10 +31,7 @@
 
                                                 <div class="buttonvalidation">        
                                                     <a class="validerButton" href="#" >Valider</a>
-                                                </div>
-
-
-                                        </div>
+                                                </div>                                
                                 </div>
                             </div> 
                         </div>  
