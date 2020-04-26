@@ -12,7 +12,7 @@
                             <div class="container-fluid">
                                 <div class="rowdiv">
                                     <ul class="ul-inline">
-                                        <li><a class="noactive" href="<?php echo base_url('index.php/profil');?>">Profil</a></li>
+                                        <li><a class="activeprofil" href="<?php echo base_url('index.php/profil');?>">Profil</a></li>
                                         <li><a class="noactive" href="<?php echo base_url('index.php/editInfo');?>">Modification</a></li>
                                         <li><a class="noactive" href="<?php echo base_url('index.php/editPassword');?>">Mot de passe</a></li>
                                     </ul>
@@ -24,14 +24,16 @@
                                             <p><b>Parties : </b> 0 / 481</p>
                                             <p><b>Points :</b> 0 (mois : 0 / semaine : 0)</p>
                                             <p><b>Crédits :</b> 0</p>
-                                               <p> Vous avez créé :</p>
-                                            <ul>
-                                                <li>0 phrases
-                                                    <a href="/classement/personnel" style="color:white;">(Voir)</a>
-                                                </li>
-                                                <li>0 gloses</li>
-                                                <li>0 mots ambigus</li>
-                                            </ul>
+                                            <p> Vous avez créé :</p>
+                                            <div class="ulmarge">
+                                                <ul >
+                                                    <li>0 phrases
+                                                        <a href="#" style="color:white;">(Voir)</a>
+                                                    </li>
+                                                    <li>0 gloses</li>
+                                                    <li>0 mots ambigus</li>
+                                                </ul>
+                                            </div>
                                         </div>
                                         <div class="col-md-6 text-right">
                                             <p><b>Date d'inscription :</b> 16/04/2020 à 20:44</p>
