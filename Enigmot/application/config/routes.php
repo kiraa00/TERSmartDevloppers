@@ -58,4 +58,7 @@ $route['inscription']='Inscription';
 $route['connexion']='Connexion';
 $route['creation_rattachement']='Creation_rattachement';
 $route['profil']='Profil';
+$route['editInfo']='Editer_Information';
+$route['editPassword']='Editer_Password';
+$route['creation']='Creation';
 $route['translate_uri_dashes'] = FALSE;

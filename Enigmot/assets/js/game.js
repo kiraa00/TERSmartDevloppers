@@ -34,8 +34,8 @@ $(document).ready(function(){
             }  
         });
     });
-    $("amb").attr("onMouseOver", function(){ showShadow(this) });
-    $("amb").attr("onMouseOut", function(){ hideShadow(this) });	
+    $("amb").attr("onMouseOver","showShadow(this)");
+    $("amb").attr("onMouseOut", "hideShadow(this)");	
 });
 
 function addGlose(Select,MotId){
@@ -67,7 +67,6 @@ function hide_form(){
 
 function showShadow(element){
     var idDiv,idAmb;
-    console.log(element.id);
     if(element.id[0]=='d'){
         idDiv = element.id;
         idAmb= idDiv.substring(1,idDiv.length);

@@ -6,7 +6,11 @@
   box-sizing: border-box;
   clear: both;
   cursor: pointer;
-  display: block;
+
+
+  display: inline-table;
+  padding-bottom: 0;
+
   float: left;
   font-family: inherit;
   font-size: 14px;
@@ -25,7 +29,7 @@
       -ms-user-select: none;
           user-select: none;
   white-space: nowrap;
-  width: auto; }
+  width: inherit; }
   .nice-select:hover {
     border-color: #dbdbdb; }
   .nice-select:active, .nice-select.open, .nice-select:focus {

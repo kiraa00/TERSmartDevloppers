@@ -117,12 +117,22 @@ class Phrase extends CI_Model
         for ($i = 0; $i < count($data['motsAmbigus']); $i++) {
           $motAmbiguCourant = $data['motsAmbigus'][$i];
 
-          $motAmbigu = array(
-            'motAmbigu' => $motAmbiguCourant['motAmbigu'],
-            'position'  => $motAmbiguCourant['position'],
-            'nbr_reponse'  => 0,
-            'idPhrase' => $idPhrase
-          );
+          if ($type == "amb") {
+            $motAmbigu = array(
+              'motAmbigu' => $motAmbiguCourant['motAmbigu'],
+              'position'  => $motAmbiguCourant['position'],
+              'nbr_reponse'  => 1,
+              'idPhrase' => $idPhrase
+            );
+          } else {
+            $motAmbigu = array(
+              'motAmbigu' => $motAmbiguCourant['motAmbigu'],
+              'position'  => $motAmbiguCourant['position'],
+              'nbr_reponse'  => 1,
+              'idPhrase' => $idPhrase,
+              'type' => "rattachement"
+            );
+          }
 
           $this->db->insert('Mot', $motAmbigu);
           $idMotAmbigu = $this->db->insert_id();

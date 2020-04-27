@@ -36,6 +36,12 @@
                             'type' => 'int',
                             'constraint' => '15',
                              ),
+
+                'type' => array(
+                'type' => 'ENUM("ambigu","rattachement")',
+                'default' => 'ambigu',
+                'null' => FALSE,
+                ),
             );
 
         $this->dbforge->add_field($fields);

@@ -24,7 +24,7 @@ class Creation_rattachement extends CI_Controller {
 			"flagActif" => "creer",
 		);
 		$footerData = array(
-			"javaFile" => "creation_rattachement.js",
+			"javaFile" => "assets/js/creation_rattachement.js",
 		);
 		$this->load->view('header', $headerData);
         if (isset($_SESSION['user'])) {

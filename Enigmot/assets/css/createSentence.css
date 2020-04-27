@@ -1,3 +1,7 @@
+.nice-select {
+    padding-top: 0;
+}
+
 .styleNavCoin {
     font-weight: bold !important;
     font-size: 13px !important;
@@ -67,9 +71,162 @@
     width: 100%;
 }
 
-@media screen and (max-width: 1199px) {
-    .divActionBtn {
-        display: flex;
+.divActionBtn {
+    display: flex;
+}
+
+.scrollGloses {
+    border-radius: 0px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.conteneur {
+    padding-top: 3%;
+    padding-bottom: 10% !important;
+}
+
+@media screen and (min-width: 1450px){
+    .conteneur {
+        max-width: 90% !important;
+    }
+
+    .selectGloseMargin {
+        margin-right: -45px;
+    }
+
+    .selectMultipleRight {
+        margin-right: -80px !important;
+        margin-left: -10px;
+    }
+}
+
+@media screen and (max-width: 575px){
+    .selectGloseMargin {
+        margin-top: 20px !important;
+    }
+
+    .selectGloseWidth {
+        min-width: 255px;
+    }
+}
+
+@media screen and (min-width: 576px) and (max-width: 746px){
+    .conteneur {
+        max-width: 100% !important;
+    }
+
+    .selectGloseWidth {
+        min-width: 255px;
+    }
+
+    .selectMultipleRight {
+        margin-right: 27px !important;
+    }
+
+    .selectGloseMargin {
+        margin-right: 292px !important;
+    }
+
+    .selectMultiple {
+        margin-left: 80px !important;
+    }
+
+    .actionMargin {
+        margin-top: 20px;
+    }
+}
+
+@media screen and (min-width: 747px) and (max-width: 767px){
+    .conteneur {
+        max-width: 100% !important;
+    }
+
+    .selectGloseWidth {
+        min-width: 255px;
+    }
+
+    .selectMultipleRight {
+        margin-right: 40px !important;
+    }
+
+    .selectGloseMargin {
+        margin-right: 103px !important;
+    }
+
+    .selectMultiple {
+        margin-left: 45px !important;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 840px){
+    .conteneur {
+        max-width: 100% !important;
+    }
+
+    .selectGloseWidth {
+        min-width: 255px;
+    }
+
+    .selectMultipleRight {
+        margin-right: 27px !important;
+    }
+
+    .selectGloseMargin {
+        margin-right: 103px !important;
+    }
+
+    .selectMultiple {
+        margin-left: 70px !important;
+    }
+}
+
+@media screen and (min-width: 841px) and (max-width: 991px){
+    .conteneur {
+        max-width: 100% !important;
+    }
+
+    .selectGloseWidth {
+        margin-top: 3px;
+        min-width: 255px;
+    }
+
+    .selectGloseMargin {
+        margin-left: -15px !important;
+    }
+
+    .selectMultiple {
+        margin-left: 40px !important;
+    }
+}
+
+@media screen and (min-width: 900px) and (max-width: 991px){
+
+    .selectGloseMargin {
+        margin-left: -35px;
+    }
+
+    .selectGloseWidth {
+        margin-top: 3px;
+        min-width: 255px;
+    }
+
+}
+
+@media screen and (min-width: 992px) {
+    .selectGloseMargin {
+        margin-left: -20px;
+    }
+
+    .selectGloseWidth {
+        margin-top: 3px;
+        min-width: 255px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .selectGloseMargin {
+        margin-left: -90px;
     }
 }
 
@@ -139,7 +296,6 @@
 @media screen and (min-width: 992px) and (max-width: 1199px)
 {
     .actionMargin {
-        margin-left: -25px;
         margin-top: 5px;
     }
 }
@@ -148,7 +304,7 @@
 {
     .selectMultiple {
         margin-top: 5px;
-        margin-left: 75px;
+        margin-left: 25px;
     }
 
     .widthInput {

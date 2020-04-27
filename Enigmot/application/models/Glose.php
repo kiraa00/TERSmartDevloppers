@@ -48,7 +48,7 @@
       }
 
       public function getGlose($data){
-        $requestString = "SELECT DISTINCT g.glose FROM Glose g, Mot m, Liaison l WHERE m.id_ambigu = l.idMotAmbigu AND g.id_glose = l.idGlose AND m.motAmbigu = ?;";
+        $requestString = "SELECT DISTINCT g.glose FROM Glose g, Mot m, Liaison l WHERE m.id_ambigu = l.idMotAmbigu AND g.id_glose = l.idGlose AND m.motAmbigu = ? AND m.type = 'ambigu';";
 
         $request = $this->db->query($requestString, $data);
   
