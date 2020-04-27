@@ -151,3 +151,25 @@ label{
     margin-bottom: 15px;
     text-align: center;
 }
+
+.row {
+    overflow:hidden;
+    width:auto;
+    display:inline;
+    text-align: center;
+}
+
+.abc{
+    float:right;
+    margin-left:10px;
+}
+
+.titleGame{
+    color: white;
+    background-color: white;
+}
+
+.imgsmyle{
+    width: 50px;
+    height: 50px;
+}
