@@ -12,10 +12,6 @@
                             <div class="container-fluid">
                                 <div class="rowdiv">
                                     <ul class="ul-inline">
-<<<<<<< HEAD
-                                        <li><a class="noactive" href="<?php echo base_url('index.php/profil');?>">Profil</a></li>
-=======
->>>>>>> 87fdbe671101d27dc38629bc638e778b2c0a88db
                                         <li><a class="activeprofil" href="<?php echo base_url('index.php/profil');?>">Profil</a></li>
                                         <li><a class="noactive" href="<?php echo base_url('index.php/editInfo');?>">Modification</a></li>
                                         <li><a class="noactive" href="<?php echo base_url('index.php/editPassword');?>">Mot de passe</a></li>
