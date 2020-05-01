@@ -3,13 +3,13 @@
 			<div class="row single-footer-widget">	
 			</div>
 
-			<div class="footer_style" style="text-align:center;">
+			<div class="footer_style" style="text-align:center;padding-bottom:20px;">
 					
 					<a style="color:white;margin-left:15px;" href="<?php echo base_url('index.php/mentions');?>" >Mentions légales</a>
 					<a style="color:white;margin-left:15px;" href="<?php echo base_url('index.php/conditions');?>">Conditions d'utilisation</a>
-					<a style="color:white;margin-left:15px;" href="<?php echo base_url('index.php/a-propos');?>">À propos d'Ambiguss</a>
+					<a style="color:white;margin-left:15px;" href="<?php echo base_url('index.php/a-propos');?>">À propos d'Enigmots</a>
 					<a style="color:white;margin-left:15px;" href="<?php echo base_url('index.php/export');?>">Export</a>
-					<a style="color:white;margin-left:15px;" href="#">Contact</a><br>
+					<a style="color:white;margin-left:15px;" href="<?php echo base_url('index.php/Contact');?>">Contact</a><br>
 					<a style="color:white;margin-left:15px;" href="<?php echo base_url('index.php');?>">• Enigmot © 2020•</a>
 				
 			</div>

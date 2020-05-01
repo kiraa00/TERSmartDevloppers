@@ -6,7 +6,7 @@
                     <h2 style="text-transform: none;">Conditions d'utilisation</h2>
                 </div>
                 <div class="col-md-12" style="color:white;">
-                    <div class="col-lg-12 p-4" style="background-color: #5753967a;margin-bottom:40px">
+                    <div class="col-lg-12 p-4" style="background-color: #5753967a;margin-bottom:40px;border-radius:10px">
                         <h4 style="text-align:center;"><b>ARTICLE 1 : Objet</b></h4>
                         <p >
                             Les présentes « conditions générales d'utilisation » ont pour objet l'encadrement juridique des modalités de mise à disposition
@@ -94,7 +94,7 @@
 					Les marques, logos, signes et tout autre contenu du site font l'objet d'une protection par le Code de la propriété intellectuelle
 					et plus particulièrement par le droit d'auteur.<br>
 					L'Utilisateur sollicite l'autorisation préalable du site pour toute reproduction, publication, copie des différents contenus.<br>
-					Le code source d'Enigmots est publié sur <a href="https://github.com/kiraa00/TERSmartDevloppers/commits/develop">Github</a> sous licence MIT.<br>
+					Le code source d'Enigmots est publié sur <a href="https://github.com/kiraa00/TERSmartDevloppers/commits/develop"><i><u>Github</u></i></a> sous licence MIT.<br>
 					Tout contenu mis en ligne par l'Utilisateur est de sa seule responsabilité. L'Utilisateur s'engage à ne pas mettre en ligne de
 					contenus pouvant porter atteinte aux intérêts de tierces personnes. Tout recours en justice engagé par un tiers lésé contre le
 					site sera pris en charge par l'Utilisateur.<br>

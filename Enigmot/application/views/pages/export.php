@@ -6,7 +6,7 @@
                 <h2 style="text-transform: none;">Export</h2>
             </div>
             <div class="col-md-12">
-                <div class="col-lg-12 p-4" style="background-color: #5753967a;">
+                <div class="col-lg-12 p-4" style="background-color: #5753967a;border-radius:10px">
                     <div class="row" >
                         <div class="col-md-12" style="text-align:center;">
                                 <p>Enigmots met à disposition les données que nous récupérons sous forme de fichier JSON.<br>
@@ -14,10 +14,10 @@
                                 </p> 
                                 <div class="clss">
                                     <img class="download" src="<?php echo base_url('assets/img/download.png');?>" alt="" >
-                                    <a class="" href="#" download>Toutes les phrases avec leurs réponses</a>
+                                    <a class="" href="#" download><i>Toutes les phrases avec leurs réponses</i></a>
                                     <br>
                                     <img class="download" src="<?php echo base_url('assets/img/download.png');?>" alt="" >
-                                    <a   href="#" download  >  Tous les mots ambigus avec leurs gloses</a>
+                                    <a   href="#" download ><i>Tous les mots ambigus avec leurs gloses</i></a>
                             </div>    
                         </div>  
                     </div> 
