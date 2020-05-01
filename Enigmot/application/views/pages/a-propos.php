@@ -11,7 +11,7 @@
                        <p> Enigmot est un site web réalisé dans le cadre d'un TER (Travail d'Étude et de Recherche) de première année de master informatique .
                             Il permet de produire des corpus de phrases annotées sémantiquement, permettant ainsi d'identifier le sens correct d'un mot.</p>
                             <p><b>Tuteur :</b> Mathieu Lafourcade</p>
-                            <p><b>Membres :</b> Mohamed Hassan Ibrahim,Nasser Omar Soubagle,Bachir Rehhali , Chahinez Benallal</p>
+                            <p><b>Membres :</b> Bachir Rehhali,Mohamed Hassan Ibrahim,Nasser Omar Soubagle,Chahinez Benallal</p>
                             <p><b>Github :</b> <a   href="https://github.com/kiraa00/TERSmartDevloppers/tree/develop">Enigmots</a></p>
                             <p><b>Version actuelle :</b>1.0.1 (20/05/2020)</p>
                             <p> Enigmot est un site web réalisé dans le cadre d'un TER (Travail d'Étude et de Recherche) de première année de master informatique .

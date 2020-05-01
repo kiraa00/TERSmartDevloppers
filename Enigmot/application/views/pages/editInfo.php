@@ -13,8 +13,8 @@
                                 <div class="rowdiv">
                                     <ul class="ul-inline">
                                         <li><a class="noactive" href="<?php echo base_url('index.php/profil');?>">Profil</a></li>
-                                        <li><a class="activeprofil" href="<?php echo base_url('index.php/editInfo');?>">Modification</a></li>
-                                        <li><a class="noactive" href="<?php echo base_url('index.php/editPassword');?>">Mot de passe</a></li>
+                                        <li><a class="activeprofil" href="<?php echo base_url('index.php/editInfo');?>" >Modification</a></li>
+                                        <li><a class="noactive" href="<?php echo base_url('index.php/editPassword');?>" >Mot de passe</a></li>
                                     </ul>
                                 </div>
                                 <br>
@@ -37,7 +37,7 @@
                                         <p >Date de naissance</p>
 
                                         <div>
-                                            <input  type="number" placeholder="Jour" id="example-number-input" style="margin-top:10px;">
+                                            <input  type="number" placeholder="Jour" id="example-number-input" style="margin-top:10px;" min="0" >
                                             <input  type="number" placeholder="Mois" id="example-number-input" style="margin-top:10px;">
                                             <input  type="number" placeholder="Année" id="example-number-input" style="margin-top:10px;">
                                         </div>
