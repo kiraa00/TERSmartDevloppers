@@ -79,5 +79,16 @@
       $this->db->update('Liaison');
       return $nbrVote;
      }
+
+     public function getLiaisons() {
+      $requete = $this->db->query("SELECT * FROM Liaison;");
+      $isEmpty = count($requete->result_array()) == 0;
+      
+      if ($isEmpty) {
+        return false;
+      } else {
+        return $requete->result_array();
+      }
+    }
 }
   ?>

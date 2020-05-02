@@ -83,6 +83,24 @@ class Phrase extends CI_Model
         $this->db->insert('Phrase', $data);
       }
 
+      public function getPhrases($type) {
+        $requetePhrase;
+
+        if ($type == "ambigu") {
+          $requetePhrase = $this->db->query("SELECT id_phrase, Phrase FROM Phrase WHERE type = 'ambigu';");
+        } else {
+          $requetePhrase = $this->db->query("SELECT id_phrase, Phrase FROM Phrase WHERE type = 'rattachement';");
+        }
+
+        $isEmpty = count($requetePhrase->result_array()) == 0;
+        
+        if ($isEmpty) {
+          return false;
+        } else {
+          return $requetePhrase->result_array();
+        }
+      }
+
       public function saveData($data, $cost, $type) {
         //  Insertion de la phrase dans la base de données et récuperation de son id
         $phrase;

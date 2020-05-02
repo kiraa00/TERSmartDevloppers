@@ -67,6 +67,16 @@
         $query = $this->db->get();
         return $query->result();
       }
-     
+
+      public function getGloses() {
+        $requete = $this->db->query("SELECT * FROM Glose;");
+        $isEmpty = count($requete->result_array()) == 0;
+        
+        if ($isEmpty) {
+          return false;
+        } else {
+          return $requete->result_array();
+        }
+      }
 }
   ?>
