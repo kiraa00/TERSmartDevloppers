@@ -22,7 +22,7 @@
 					En aucun cas ces données ne seront communiquées ou vendues à des tiers.<br>
 					Conformément à la loi "Informatique et libertés" du 6 janvier 1978 modifiée en 2004, vous bénéficiez d’un droit d’accès et de
 					rectification aux informations qui vous concernent, que vous pouvez exercer en utilisant le
-					<a href="#" ><u style="color:white;">formulaire de contact</u></a>.<br>
+					<a href="<?php echo base_url('index.php/Contact');?>" ><u style="color:white;">formulaire de contact</u></a>.<br>
 					Vous pouvez également, pour des motifs légitimes, vous opposer au traitement des données vous concernant.
 				</p>
 				<hr>
