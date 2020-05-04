@@ -6,9 +6,9 @@
 					<div class="banner_content text-center p-5">
 						<div class="page_link">
 							<a href="Home">Home</a>
-							<a href="create">Jouer Phrase</a>
+							<a href="<?php echo base_url('index.php/jouer');?>">Jouer Phrase</a>
 						</div>
-						<h2>Jouer Phrase</h2>
+						<h2><?php echo $Title; ?></h2>
 					</div>
 					<div class="col-lg-12 p-5" style="background-color: #5753967a; text-align:center; color: white;">
 						<?php echo validation_errors(); ?>
@@ -73,7 +73,7 @@
 
 						<div class="row pull-right" style="padding-bottom: 10px;">
 							<button class="pull-right btn-lg genric-btn primary radius" type="submit">Valider</button>
-							<a href="/jouer"><button class="pull-right genric-btn primary-border circle arrow" >passer phrase<span class="lnr lnr-arrow-right"></span></button></a>
+							<a href="<?php echo base_url('index.php/jouer');?>"><button class="pull-right genric-btn primary-border circle arrow" >passer phrase<span class="lnr lnr-arrow-right"></span></button></a>
 						</div>
 
 						</form>

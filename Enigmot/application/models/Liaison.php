@@ -79,5 +79,16 @@
       $this->db->update('Liaison');
       return $nbrVote;
      }
+
+     public function getVote($mot,$glose){
+      $where = array(
+        'idMotAmbigu' => $mot,
+        'idGlose' => $glose,
+      );      
+      $this->db->select('*');
+      $this->db->where($where);
+      $query=$this->db->get('Liaison');
+      return $query->row()->nbrVote;
+     }
 }
   ?>

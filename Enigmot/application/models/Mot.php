@@ -90,5 +90,11 @@
         return $nbr_reponse;
       }   
      
+      public function getMotById($id){
+        $this->db->select('*');
+        $this->db->where('id_ambigu',$id);
+        $query = $this->db->get('Mot');
+        return $query->row();
+      }
 }
   ?>
