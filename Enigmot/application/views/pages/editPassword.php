@@ -14,12 +14,12 @@
                                     <ul class="ul-inline">
                                         <li><a class="noactive" href="<?php echo base_url('index.php/profil');?>">Profil</a></li>
                                         <li><a class="noactive" href="<?php echo base_url('index.php/editInfo');?>">Modification</a></li>
+
                                         <li><a class="activeprofil" href="<?php echo base_url('index.php/editPassword');?>">Mot de passe</a></li>
                                     </ul>
                                 </div>
                                 <br>
-                                <div class="col-lg-12 p-4" style="background-color: #5753967a; margin-top:-18px;" >
-                               
+                                <div class="col-lg-12 p-4" style="background-color: #5753967a; margin-top:-18px;" >                               
                                         
                                                 <div style="font-size: 13px;" class="alert alert-danger" role="alert">Ici tu gérera tes differentes erreurs .</div>
                                                 <p >Mot de passe actuel <b>*</b></p>

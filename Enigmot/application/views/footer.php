@@ -1,20 +1,19 @@
 <footer class="footer_area section_gap_top">
 		<div class="container">
-			<div class="row single-footer-widget">
-				<div class="col-lg-6 col-md-6 col-sm-12">
-					<div class="copy_right_text">
-						<p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-					</div>
-				</div>
-				<div class="col-lg-6 col-md-6 col-sm-12">
-					<div class="social_widget">
-						<a href="#"><i class="fa fa-facebook"></i></a>
-						<a href="#"><i class="fa fa-twitter"></i></a>
-					</div>
-				</div>
+			<div class="row single-footer-widget">	
 			</div>
+
+			<div class="footer_style" style="text-align:center;padding-bottom:20px;">
+					
+					<a style="color:white;margin-left:15px;" href="<?php echo base_url('index.php/mentions');?>" >Mentions légales</a>
+					<a style="color:white;margin-left:15px;" href="<?php echo base_url('index.php/conditions');?>">Conditions d'utilisation</a>
+					<a style="color:white;margin-left:15px;" href="<?php echo base_url('index.php/a-propos');?>">À propos d'Enigmots</a>
+					<a style="color:white;margin-left:15px;" href="<?php echo base_url('index.php/export');?>">Export</a>
+					<a style="color:white;margin-left:15px;" href="<?php echo base_url('index.php/Contact');?>">Contact</a><br>
+					<a style="color:white;margin-left:15px;" href="<?php echo base_url('index.php');?>">• Enigmot © 2020•</a>
+				
+			</div>
+			
 		</div>
 	</footer>
 	<!--================End Footer Area =================-->
