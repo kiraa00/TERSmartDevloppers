@@ -22,11 +22,7 @@ class APropos extends CI_Controller {
 			"javaFile" => "assets/js/a-propos.js",
 		);
 		$this->load->view('header', $headerData);
-        if (isset($_SESSION['user'])) {
-			$this->load->view('pages/a-propos');
-		} else {
-			$this->load->view('pages/connexion');
-		}
+		$this->load->view('pages/a-propos');
 		$this->load->view('footer',$footerData);
 	}
 }

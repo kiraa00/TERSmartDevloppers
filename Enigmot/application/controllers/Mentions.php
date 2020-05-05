@@ -22,11 +22,7 @@ class Mentions extends CI_Controller {
 			"javaFile" => "assets/js/mentions.js",
 		);
 		$this->load->view('header', $headerData);
-        if (isset($_SESSION['user'])) {
-			$this->load->view('pages/mentions');
-		} else {
-			$this->load->view('pages/connexion');
-		}
+		$this->load->view('pages/mentions');
 		$this->load->view('footer',$footerData);
 	}
 }

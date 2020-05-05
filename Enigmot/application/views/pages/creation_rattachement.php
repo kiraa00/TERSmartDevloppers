@@ -8,7 +8,7 @@
                     <a href="Home">Acceuil</a>
                     <a href="create">Création Version Rattachement</a>
                 </div>
-                <h2>Création d'une phrase à mots rattachés</h2>
+                <h2>Création d'une phrase à rattachements ambigus</h2>
             </div>
             <div class="col-lg-12 p-4" style="background-color: #5753967a;">
                 <h3>Creation d'une Phrase</h3>

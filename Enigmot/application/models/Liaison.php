@@ -80,7 +80,18 @@
       return $nbrVote;
      }
 
-     public function getVote($mot,$glose){
+     public function getLiaisons() {
+      $requete = $this->db->query("SELECT * FROM Liaison;");
+      $isEmpty = count($requete->result_array()) == 0;
+      
+      if ($isEmpty) {
+        return false;
+      } else {
+        return $requete->result_array();
+      }
+    }
+
+    public function getVote($mot,$glose){
       $where = array(
         'idMotAmbigu' => $mot,
         'idGlose' => $glose,

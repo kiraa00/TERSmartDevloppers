@@ -90,6 +90,22 @@
         return $nbr_reponse;
       }   
      
+      public function getMots($type) {
+        if ($type == "ambigu") {
+          $requete = $this->db->query("SELECT id_ambigu, motAmbigu, position, nbr_reponse, idPhrase FROM Mot WHERE type = 'ambigu';");
+        } else {
+          $requete = $this->db->query("SELECT id_ambigu, motAmbigu, position, nbr_reponse, idPhrase FROM Mot WHERE type = 'rattachement';");
+        }
+
+        $isEmpty = count($requete->result_array()) == 0;
+        
+        if ($isEmpty) {
+          return false;
+        } else {
+          return $requete->result_array();
+        }
+      }
+
       public function getMotById($id){
         $this->db->select('*');
         $this->db->where('id_ambigu',$id);
