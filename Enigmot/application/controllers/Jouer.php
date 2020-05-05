@@ -24,6 +24,7 @@ class Jouer extends CI_Controller {
 		$data = $this->getPhrase($type);
 		if($data!=null){
 			$data['Title']="Jouer Phrase ".$type;
+			$data['url']="jouer/$type";
 			$footerData = array(
 				"javaFile" => "assets/js/game.js",
 			);

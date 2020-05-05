@@ -73,7 +73,7 @@
 
 						<div class="row pull-right" style="padding-bottom: 10px;">
 							<button id="valider" class="pull-right btn-lg genric-btn primary radius" type="submit">Valider</button>
-							<a href="<?php echo base_url('index.php/jouer');?>"><button type="button" class="pull-right genric-btn primary-border circle arrow" >passer phrase<span class="lnr lnr-arrow-right"></span></button></a>
+							<a href="<?php echo base_url('index.php/$url');?>"><button type="button" class="pull-right genric-btn primary-border circle arrow" >passer phrase<span class="lnr lnr-arrow-right"></span></button></a>
 						</div>
 
 						</form>
