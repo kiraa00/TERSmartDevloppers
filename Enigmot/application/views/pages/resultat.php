@@ -9,7 +9,7 @@
                         </div>
                         <h2>Résultat de votre partie</h2>
                     </div>
-                    <div class="col-lg-12 p-5" style="background-color: #4a2fff; text-align:center; color: white;font-family: auto;">
+                    <div class="col-lg-12 p-5" style="background-color: #5753967a; text-align:center; color: white;font-family: auto;">
                         <h2 name="resultatPhrase"><?php echo $resultat ?></h2>
                         <br>
                         <span class="color-yellow">la phrase était :</span>

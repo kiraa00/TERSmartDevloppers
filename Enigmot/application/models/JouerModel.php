@@ -57,6 +57,19 @@
           $this->db->where($where);
           $this->db->update('Jouer');
         }
+      }
+
+      public function aJouer($joueur,$phrase){
+        $where = array(
+          'id_phrase' => $phrase,
+          'id_joueur' => $joueur,
+        );
+        $this->db->select('*');
+        $this->db->where($where);
+        $query = $this->db->get('Jouer');
+       if($query->num_rows()!=0){
+          return true;
+        }
       } 
 }
   ?>

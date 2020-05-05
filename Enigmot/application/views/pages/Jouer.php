@@ -12,7 +12,7 @@
 					</div>
 					<div class="col-lg-12 p-5" style="background-color: #5753967a; text-align:center; color: white;">
 						<?php echo validation_errors(); ?>
-						<?php echo form_open('Jouer/saveData'); ?> 
+						<?php echo form_open('Jouer/saveData',array('class'=>'jouerForm')); ?> 
 						<input id="idPhrase" name="idPhrase" type="text" value="<?php echo $phrase->id_phrase ?>" hidden/>
 						<h3 id="result" class="phraseGame">
 							<?php echo $phrase->Phrase ?>
@@ -52,7 +52,7 @@
 								echo			"</label>";
 								echo 		"</div>";
 								echo		"<div class='col-xs-12 col-sm-4 col-md-4'>";
-								echo			"<select class='form-control' name='idGlose[]' id='$currSelect' value='";echo set_value('idGlose[]');echo  "  ' >";
+								echo			"<select class='form-control gloseValid' name='idGlose[]' id='$currSelect' required value=''>";
 								echo				"<option selected='' disabled='' value='$i'> Choisissez une glose ($i existantes)</option>";
 								foreach ($Ambigu['gloses'] as $glose) {
 									echo			"<option value='$glose->id_glose'>$glose->glose</option>";
@@ -72,8 +72,8 @@
 						</div>
 
 						<div class="row pull-right" style="padding-bottom: 10px;">
-							<button class="pull-right btn-lg genric-btn primary radius" type="submit">Valider</button>
-							<a href="<?php echo base_url('index.php/jouer');?>"><button class="pull-right genric-btn primary-border circle arrow" >passer phrase<span class="lnr lnr-arrow-right"></span></button></a>
+							<button id="valider" class="pull-right btn-lg genric-btn primary radius" type="submit">Valider</button>
+							<a href="<?php echo base_url('index.php/jouer');?>"><button type="button" class="pull-right genric-btn primary-border circle arrow" >passer phrase<span class="lnr lnr-arrow-right"></span></button></a>
 						</div>
 
 						</form>
