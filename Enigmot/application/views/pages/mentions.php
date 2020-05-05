@@ -6,7 +6,7 @@
                 <h2 style="text-transform: none;">Mentions légales</h2>
             </div>
             <div class="col-md-12">
-                <div class="col-lg-12 p-4" style="background-color: #5753967a;border-radius:10px;margin-bottom:50px;color:white;">
+                <div class="col-lg-12 p-4" style="background-color: #5753967a;border-radius:10px;margin-bottom:50px;color:white; text-align: center;">
                     <div class="row" >
                         <div class="col-md-12">
                             <div class="container-fluid" >

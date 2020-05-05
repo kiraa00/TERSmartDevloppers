@@ -22,11 +22,7 @@ class Contact extends CI_Controller {
 			"javaFile" => "assets/js/Contact.js",
 		);
 		$this->load->view('header', $headerData);
-        if (isset($_SESSION['user'])) {
-			$this->load->view('pages/Contact');
-		} else {
-			$this->load->view('pages/connexion');
-		}
+		$this->load->view('pages/Contact');
 		$this->load->view('footer',$footerData);
 	}
 }

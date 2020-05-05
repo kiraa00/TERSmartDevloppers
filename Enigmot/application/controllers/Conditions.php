@@ -22,11 +22,7 @@ class Conditions extends CI_Controller {
 			"javaFile" => "assets/js/conditions.js",
 		);
 		$this->load->view('header', $headerData);
-        if (isset($_SESSION['user'])) {
-			$this->load->view('pages/conditions');
-		} else {
-			$this->load->view('pages/connexion');
-		}
+		$this->load->view('pages/conditions');
 		$this->load->view('footer',$footerData);
 	}
 }

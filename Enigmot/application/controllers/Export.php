@@ -27,11 +27,7 @@ class Export extends CI_Controller {
 			"javaFile" => "assets/js/export.js",
 		);
 		$this->load->view('header', $headerData);
-        if (isset($_SESSION['user'])) {
-			$this->load->view('pages/export');
-		} else {
-			$this->load->view('pages/connexion');
-		}
+		$this->load->view('pages/export');
 		$this->load->view('footer',$footerData);
 	}
 
