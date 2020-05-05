@@ -1,6 +1,17 @@
 var curr_selectId;
 var idMot;
 $(document).ready(function(){
+    // $('form').on('submit', function(form){
+    //     form.preventDefault();
+    //     var empty = false;
+    //     $('.gloseValid').each(function(index) {
+    //         console.log(index+": "+this.value);
+    //         if($(this).val()==""){
+    //             empty = true;
+    //         }
+    //     });
+    //     console.log(empty);
+    // });
 	$('#btnAddGlose').click(function(){
         document.getElementById("msgErrorPopup").setAttribute("hidden", "hidden");
         

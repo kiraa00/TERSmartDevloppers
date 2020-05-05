@@ -42,3 +42,8 @@ amb {
 .champ{
     display: contents;
 }
+ref {
+    color: #3fcaff; 
+    padding: 5px 2px; 
+    font-weight: bold;
+}

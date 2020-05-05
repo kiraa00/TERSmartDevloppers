@@ -105,5 +105,12 @@
           return $requete->result_array();
         }
       }
+
+      public function getMotById($id){
+        $this->db->select('*');
+        $this->db->where('id_ambigu',$id);
+        $query = $this->db->get('Mot');
+        return $query->row();
+      }
 }
   ?>

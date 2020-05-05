@@ -81,5 +81,12 @@
         $this->db->where('id_joueur',$joueur);
         $this->db->update('Joueur');
       }
+
+      public function getJoueurById($id){
+        $this->db->select('*');
+        $this->db->where('id_joueur',$id);
+        $query = $this->db->get('Joueur');
+        return $query->row();
+      }
 }
 ?>

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Profil extends CI_Controller {
+class Resultat_Controller extends CI_Controller {
 
 	public function __construct(){
 		parent::__construct();
@@ -15,17 +15,17 @@ class Profil extends CI_Controller {
 	public function index()
 	{
 		$headerData = array(
-			"cssFile" => "assets/css/profil.css",
-			"flagActif" => "profil",
+			"cssFile" => "",
+			"flagActif" => "Résultats",
 		);
 		$footerData = array(
-			"javaFile" => "assets/js/profil.js",
+			"javaFile" => "",
 		);
 		$this->load->view('header', $headerData);
         if (isset($_SESSION['user'])) {
-			$this->load->view('pages/profil');
+			$this->load->view('pages/resultat');
 		} else {
-			$this->load->view('pages/connexion');
+			$this->load->view('pages/resultat');
 		}
 		$this->load->view('footer',$footerData);
 	}

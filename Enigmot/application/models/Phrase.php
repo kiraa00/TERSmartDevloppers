@@ -208,24 +208,31 @@ class Phrase extends CI_Model
         return true;
       }
 
-      public function getRandomPhrase(){
+      public function getRandomPhrase($type){
         $user = ($this->session->user)['id_joueur'];
          $this->db->select('*');
          $this->db->from('Phrase');
          $this->db->join('Jouer','Jouer.id_phrase=Phrase.id_phrase','Right');
-         $this->db->where('type','ambigu');
+         $this->db->where('type',$type);
          $this->db->where('id_Createur !=',$user);
          $this->db->where('id_joueur !=',$user);
          $this->db->order_by('id_phrase', 'RANDOM');
          $query = $this->db->get();
          if($query->num_rows()==0){
           $this->db->select('*');
-          $this->db->where('type','ambigu');
+          $this->db->where('type',$type);
           $this->db->where('id_Createur !=',$user);
           $this->db->order_by('id_phrase', 'RANDOM');
           $query = $this->db->get('Phrase');
         }
          return $query->row();
+      }
+
+      public function getPhraseById($id){
+        $this->db->select('*');
+        $this->db->where('id_phrase',$id);
+        $query = $this->db->get('Phrase');
+        return $query->row();
       }
 }
 ?>

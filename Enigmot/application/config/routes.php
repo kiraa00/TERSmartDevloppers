@@ -53,6 +53,7 @@ $route['default_controller'] = 'Home';
 $route['404_override'] = '';
 $route['install']='Installer';
 $route['create']='Create_Phrase';
+$route['jouer/rattachement']='Jouer/index/rattachement';
 $route['jouer']='Jouer';
 $route['inscription']='Inscription';
 $route['connexion']='Connexion';

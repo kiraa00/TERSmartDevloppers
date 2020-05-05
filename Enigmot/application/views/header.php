@@ -43,7 +43,13 @@
 					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
 						<ul class="nav navbar-nav menu_nav justify-content-center">
 							<li class="nav-item <?php if (isset($flagActif) && $flagActif === "home") {echo "active";} ?>"><a class="nav-link" href="home">Acceuil</a></li>
-							<li class="nav-item <?php if (isset($flagActif) && $flagActif === "jouer") {echo "active";} ?>"><a class="nav-link" href="<?php echo base_url('index.php/jouer');?>">Jouer</a></li>
+							<li class="nav-item submenu dropdown <?php if (isset($flagActif) && $flagActif === "jouer") {echo "active";} ?>">
+								<a class="nav-link" href="<?php echo base_url('index.php/jouer');?>">Jouer</a>
+								<ul style="min-width: 206px;" class="dropdown-menu">
+									<li class="nav-item <?php if (isset($flagActif) && $flagActif === "creer") {echo "active";} ?>"><a class="nav-link" href="<?php echo base_url('index.php/jouer');?>">Version ambigus</a>
+									<li class="nav-item <?php if (isset($flagActif) && $flagActif === "creer") {echo "active";} ?>"><a class="nav-link" href="<?php echo base_url('index.php/jouer/rattachement');?>">Version rattachement</a>
+								</ul>
+							</li>
 							<?php if (isset($_SESSION['user'])) { ?>
 								<li class="nav-item submenu dropdown <?php if (isset($flagActif) && $flagActif === "creer") {echo "active";} ?>">
 									<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -87,7 +93,7 @@
 										</ul>
 									</li>
 								<?php } else { ?>
-									<li class="nav-item"><a class="nav-link" href="deconnexion">Déconnexion</a></li>
+									<li class="nav-item"><a class="nav-link" href="<?php echo base_url('index.php/deconnexion');?>">Déconnexion</a></li>
 								<?php } ?>
 							</ul>
 						</ul>
