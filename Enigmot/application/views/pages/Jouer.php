@@ -52,7 +52,7 @@
 								echo			"</label>";
 								echo 		"</div>";
 								echo		"<div class='col-xs-12 col-sm-4 col-md-4'>";
-								echo			"<select class='form-control gloseValid' name='idGlose[]' id='$currSelect' required value=''>";
+								echo			"<select class='form-control gloseValid' name='idGlose[]' id='$currSelect' required='' value=''>";
 								echo				"<option selected='' disabled='' value='$i'> Choisissez une glose ($i existantes)</option>";
 								foreach ($Ambigu['gloses'] as $glose) {
 									echo			"<option value='$glose->id_glose'>$glose->glose</option>";
