@@ -210,19 +210,24 @@ class Phrase extends CI_Model
 
       public function getRandomPhrase($type){
         $user = ($this->session->user)['id_joueur'];
-         $this->db->select('*');
-         $this->db->from('Phrase');
-         $this->db->join('Jouer','Jouer.id_phrase=Phrase.id_phrase','Right');
-         $this->db->where('type',$type);
-         $this->db->where('id_Createur !=',$user);
-         $this->db->where('id_joueur !=',$user);
-         $this->db->order_by('id_phrase', 'RANDOM');
-         $query = $this->db->get();
-         if($query->num_rows()==0){
+         // $this->db->select('*');
+         // $this->db->from('Phrase');
+         // $this->db->join('Jouer','Jouer.id_phrase=Phrase.id_phrase','Right');
+         // $this->db->where('type',$type);
+         // $this->db->where('id_Createur !=',$user);
+         // $this->db->where('Jouer.id_joueur !=',$user);
+         // $this->db->order_by('id_phrase', 'RANDOM');
+        if(isset($user)){
+          $query = $this->db->query("SELECT * FROM Phrase WHERE Phrase.id_phrase NOT IN(SELECT Jouer.id_phrase From Phrase,Jouer WHERE Phrase.id_phrase=Jouer.id_phrase AND Jouer.id_joueur=$user) AND Phrase.id_Createur != $user AND Phrase.type='$type' ORDER BY RAND();");
+          $nbr_rows=$query->num_rows();
+        }else{
+          $nbr_rows=0;
+        }
+        if($nbr_rows==0){
           $this->db->select('*');
           $this->db->where('type',$type);
           $this->db->where('id_Createur !=',$user);
-          $this->db->order_by('id_phrase', 'RANDOM');
+          $this->db->order_by('id_phrase' ,'RANDOM');
           $query = $this->db->get('Phrase');
         }
          return $query->row();

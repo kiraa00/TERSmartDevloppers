@@ -66,4 +66,5 @@ $route['a-propos']='APropos';
 $route['export']='Export';
 $route['conditions']='Conditions';
 $route['contact']='Contact';
+$route['classementJ']='ClassementJ';
 $route['translate_uri_dashes'] = FALSE;

@@ -10,7 +10,7 @@
 						</div>
 						<h2>Création d'une phrase à mots ambigus</h2>
 					</div>
-					<div class="col-lg-12 p-4" style="background-color: #5753967a;">
+					<div class="col-lg-12 p-4" style="background-color: #5753967a;color: #777777;">
 						<h3>Creation d'une Phrase</h3>
 						<?php if($_SESSION["user"]["credit"] < 100) { ?>
 							<div style="margin-top: 15px; font-size: 13px;" class="alert alert-danger" role="alert">Vous n'avez pas assez de crédits pour pouvoir créer une phrase à mots ambigus.</div>
