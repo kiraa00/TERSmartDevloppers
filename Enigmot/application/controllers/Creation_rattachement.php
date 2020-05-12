@@ -12,6 +12,7 @@ class Creation_rattachement extends CI_Controller {
         $this->load->model('Mot');
         $this->load->model('Liaison');
         $this->load->model('Phrase');
+        $this->load->model('Joueur');
         // load form_validation library
 		//XMLHttpRequest
 		header('Access-Control-Allow-Origin: *');
@@ -53,7 +54,8 @@ class Creation_rattachement extends CI_Controller {
 
 		// Si le cout est inferieure à son credit, on insert dans la base sinon, on rejete
 		if ($_SESSION['user']['credit'] >= $cost) {
-			$reponse = $this->Phrase->saveData($dataSet, $cost, "rat");
+			$titre = $this->Joueur->getTitre(25);
+			$reponse = $this->Phrase->saveData($dataSet, $cost, "rat", $titre);
 			echo json_encode(array("reponse" => $reponse, "cost" => $cost));
 		} else {
 			echo json_encode(array("reponse" => false, "cost" => $cost));

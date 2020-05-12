@@ -10,7 +10,7 @@
 					<a style="color:white;margin-left:15px;" href="<?php echo base_url('index.php/a-propos');?>">À propos d'Enigmots</a>
 					<a style="color:white;margin-left:15px;" href="<?php echo base_url('index.php/export');?>">Export</a>
 					<a style="color:white;margin-left:15px;" href="<?php echo base_url('index.php/Contact');?>">Contact</a><br>
-					<a style="color:white;margin-left:15px;" href="<?php echo base_url('index.php');?>">~ Enigmots © 2020 ~</a>
+					<a style="color:white;margin-left:15px;" href="<?php echo base_url('index.php');?>">~ Enigmots © <?php echo date("Y"); ?> ~</a>
 				
 			</div>
 			
@@ -26,9 +26,7 @@
 	
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-	
-	<script src="<?php echo base_url('assets/js/jquery.dataTables.min.js');?>"></script>
-	<script src="<?php echo base_url('assets/js/dataTables.bootstrap.js');?>"></script>	
+	<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.6.8-fix/jquery.nicescroll.min.js"> </script>
 	<script src="<?php echo base_url('assets/js/sweetalert.js');?>"></script>
 	<script src="<?php echo base_url('assets/js/popper.js');?>"></script>

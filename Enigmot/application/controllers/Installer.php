@@ -22,6 +22,9 @@ class Installer extends CI_Controller {
 
         $this->load->model('Liaison');
         $this->Liaison->createData(); 
+
+        $this->load->model('ContactModel');
+        $this->ContactModel->createData(); 
         redirect('Home');
     }
 

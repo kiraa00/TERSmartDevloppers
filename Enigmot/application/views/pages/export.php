@@ -14,10 +14,10 @@
                                 </p> 
                                 <div class="clss">
                                     <img class="download" src="<?php echo base_url('assets/img/download.png');?>" alt="" >
-                                    <a class="" href="Export/exportPhraseAmbigus?type=ambigu" download="Enigmot-Phrases-Ambigus"><i>Toutes les phrases avec leurs réponses (Version mot ambigu)</i></a>
+                                    <a class="" href="Export/exportPhraseAmbigus?type=ambigu" download="Enigmot-Phrases-Ambigus.json"><i>Toutes les phrases avec leurs réponses (Version mot ambigu)</i></a>
                                     <br>
                                     <img class="download" src="<?php echo base_url('assets/img/download.png');?>" alt="" >
-                                    <a   href="Export/exportPhraseAmbigus?type=rattachement" download="Enigmot-Phrases-Rattachements" ><i>Toutes les phrases avec leurs réponses (Version rattachement ambigu)</i></a>
+                                    <a   href="Export/exportPhraseAmbigus?type=rattachement" download="Enigmot-Phrases-Rattachements.json" ><i>Toutes les phrases avec leurs réponses (Version rattachement ambigu)</i></a>
                             </div>    
                         </div>  
                     </div> 

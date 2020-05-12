@@ -17,7 +17,7 @@ class ClassementJ extends CI_Controller {
 	{
 		$headerData = array(
 			"cssFile" => "assets/css/ClassementJ.css",
-			"flagActif" => "Classement Joueur",
+			"flagActif" => "classement",
 		);
 		$footerData = array(
 			"javaFile" => "assets/js/ClassementJoueur.js",
@@ -37,7 +37,7 @@ public function ajax_list(){
 			$row[] = $no;
 			$row[] = $joueur->pseudo;
 			$row[] = $joueur->credit;
-			$row[] = $joueur->xp;
+			$row[] = $joueur->point;
 			$row[] = "à définir";
 			$row[] = "à définir";
 				//add html for actio

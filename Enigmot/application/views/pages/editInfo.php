@@ -18,31 +18,26 @@
                                     </ul>
                                 </div>
                                 <br>
-                                <div class="col-lg-12 p-4" style="background-color: #5753967a; margin-top:-18px;text-align:center;" >
-                                    
-                                        <p >Email <b>*</b></p>
-                                        <input type="text" id="form1" class="form-control" style="width:50%;">  
-                                        <p >Genre</p>
+                                <div class="col-lg-12 p-4" style="background-color: #5753967a; margin-top:-18px;text-align:center;" > 
+                                        <p style="margin-bottom: 5px;"><b>Genre</b></p>
                                         <div class="radiosex">
                                             <div class="custom-control custom-radio">
-                                                <input type="radio" class="custom-control-input" id="defaultGroupExample1" name="groupOfDefaultRadios">
-                                                <label class="custom-control-label" for="defaultGroupExample1">Homme</label>
+                                                <input type="radio" class="custom-control-input" id="homme" name="genre" value="Homme" <?php if ($_SESSION['user']['genre'] === "Homme") {?> checked <?php } ?>>
+                                                <label class="custom-control-label" for="homme">Homme</label>
                                             </div>
 
                                             <div class="custom-control custom-radio" style="margin-left:10px;">
-                                            <input type="radio" class="custom-control-input" id="defaultGroupExample2" name="groupOfDefaultRadios" checked>
-                                            <label class="custom-control-label" for="defaultGroupExample2" >Femme</label>
+                                                <input type="radio" class="custom-control-input" id="femme" name="genre" value="Femme" <?php if ($_SESSION['user']['genre'] === "Femme") {?> checked <?php } ?>>
+                                                <label class="custom-control-label" for="femme" >Femme</label>
                                             </div>
                                         </div>
-                                        <p >Date de naissance</p>
+                                        <p style="margin-top: 20px; margin-bottom: 5px;"><b>Date de naissance</b></p>
 
                                         <div>
-                                            <input  type="number" placeholder="Jour" id="example-number-input" style="margin-top:10px;" min="0" >
-                                            <input  type="number" placeholder="Mois" id="example-number-input" style="margin-top:10px;">
-                                            <input  type="number" placeholder="Année" id="example-number-input" style="margin-top:10px;">
+                                            <input type="date" max="<?php echo date("Y-m-d") ?>" min="1900-01-01" id="dateNaissance" style="margin-top:10px;" min="0" value="<?php echo $_SESSION['user']['dateNaissance']?>">
                                         </div>
                                         <div class="buttonvalidation" style="margin-top:20px;">        
-                                            <a class="validerButton" href="#" >Valider</a>
+                                            <button class="btn btn-primary" onclick="modifyInfo()">Valider</button>
                                         </div>  
 
                                 </div>  

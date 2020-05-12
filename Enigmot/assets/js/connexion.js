@@ -52,7 +52,6 @@ function verify_form_connexion(){
         data: dataSet,
         success: function(data){
             var reponse = JSON.parse(data);
-            console.log(reponse);
             if (reponse['reponse'] === false) {
                 messageError.removeAttribute("hidden");
                 messageError.innerHTML = "Adresse e-mail ou mot de passe eronné.";

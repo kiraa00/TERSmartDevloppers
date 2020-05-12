@@ -3,32 +3,33 @@
                 <div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
                 <div class="container">
                     <div class="banner_content text-center p-5">
-                        <div class="page_link">
-                            <a href="Home">Home</a>
-                            <a href="create">Jouer Phrase</a>
-                        </div>
-                        <h2>Résultat de votre partie</h2>
+                        <h2>Résultat de la partie</h2>
                     </div>
                     <div class="col-lg-12 p-5" style="background-color: #5753967a; text-align:center; color: white;font-family: auto;">
                         <h2 name="resultatPhrase"><?php echo $resultat ?></h2>
                         <br>
-                        <span class="color-yellow">la phrase était :</span>
+                        <span class="color-yellow" style="font-size: 15px;">La phrase était :</span>
                         <br>
                         <h2><?php echo $phrase ?></h2>
-                        <span>par <?php echo $createur ?></span>
+                        <span style="font-size: 15px;">Par <?php echo $createur ?></span>
                         <br>
                         <br>
                         <ul>
-                            <span class="color-yellow">Les votes précédents:</span>
+                            <span class="color-yellow" style="margin-left: -44px; font-size: 15px;">Les votes précédents étaient :</span>
                             <br>
                             <br>
                             <?php
                                 foreach ($dataMots as $mot) {
-
-                                    echo "<li id='dm".$mot['motObject']->position."' onmouseover='showShadow(this)' onmouseout='hideShadow(this)'><ambmot class='amb'>".$mot['motObject']->motAmbigu."</ambmot>: ";
+                                    $i = 0;
+                                    echo "<li style='list-style: none; font-size: 20px; padding: 10px; margin-left: -36px;' id='dm".$mot['motObject']->position."' onmouseover='showShadow(this)' onmouseout='hideShadow(this)'><ambmot class='amb'>".$mot['motObject']->motAmbigu."</ambmot>: ";
                                     foreach ($mot['gloses'] as $glose) {
                                         echo $glose['gloseName']." ";
-                                        echo $glose['vote'].", ";
+                                        if ($i < count($mot['gloses']) - 1) {
+                                            echo $glose['vote'].", ";
+                                        } else {
+                                            echo $glose['vote']. ".";
+                                        }
+                                        $i++;
                                     }
 
                                     echo "</li>";

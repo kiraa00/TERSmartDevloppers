@@ -4,10 +4,6 @@
 				<div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
 				<div class="container">
 					<div class="banner_content text-center p-5">
-						<div class="page_link">
-							<a href="Home">Home</a>
-							<a href="<?php echo base_url('index.php/jouer');?>">Jouer Phrase</a>
-						</div>
 						<h2>Jouer Phrase <?php echo $Type; ?></h2>
 					</div>
 					<div class="col-lg-12 p-5" style="background-color: #5753967a; text-align:center; color: white;">
@@ -19,16 +15,16 @@
 						</h3>
 
 						<div class="form-group">
-							<button id="phraseLike" class="btn-sm btn-light btn-like">
+							<button id="phraseLike" type="button" class="btn-sm btn-light btn-like">
 								<i class="fa fa-thumbs-up" aria-hidden="true"></i>J'aime cette phrase
 							</button>&nbsp;&nbsp;&nbsp;
-							<button id="phraseLike" class="btn-sm btn-primary btn-like">
+							<button id="phraseLike" type="button" class="btn-sm btn-primary btn-like">
 								<i class="fa fa-thumbs-up" aria-hidden="true"></i> Partager
 							</button>&nbsp;&nbsp;&nbsp;
-							<button id="phraseLike" class="btn-sm btn-info btn-like">
+							<button id="phraseLike" type="button" class="btn-sm btn-info btn-like">
 								<i class="fa fa-thumbs-up" aria-hidden="true"></i> Tweeter
 							</button>&nbsp;&nbsp;&nbsp;
-							<button id="phraseSignal" class="btn-sm btn-danger btn-error" data-toggle="modall" data-target="#modal">
+							<button id="phraseSignal" type="button" class="btn-sm btn-danger btn-error" data-toggle="modall" data-target="#modal">
 								<i class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></i>Signaler un élément
 							</button>
 						</div>
@@ -74,8 +70,8 @@
 						</div>
 
 						<div class="row pull-right" style="padding-bottom: 10px;">
-							<button id="valider" class="pull-right genric-btn primary radius" type="submit">Valider</button>
-							<a href="<?php echo base_url('index.php/jouer');?>"><button type="button" class="pull-right genric-btn primary-border circle arrow" >passer phrase<span class="lnr lnr-arrow-right"></span></button></a>
+							<button id="valider" class="btn btn-primary" type="submit">Valider</button>
+							<a style="margin-left: 7px;" href="<?php echo base_url('index.php/jouer');?>"><button type="button" class="btn btn-light" >Passer cette phrase</button></a>
 						</div>
 
 						</form>

@@ -11,19 +11,15 @@
 					<div class="col-lg-6">
 						<div class="banner_content">
 							<h2>
-								Bienvenu sur Enigmots <br>
-								Jeu de mots<br>
-								Try Fashion
+								Bienvenue sur Enigmots <br>
+								Jeu de mots
 							</h2>
-							<p>
-								Discription du jeu.
-							</p>
 							<div class="d-flex align-items-center">
 								<a id="play-home-video" class="video-play-button" href="https://www.youtube.com/watch?v=vParh5wE-tM">
 									<span></span>
 								</a>
 								<div class="watch_video text-uppercase">
-									watch the video
+									Démonstration du jeu
 								</div>
 							</div>
 						</div>

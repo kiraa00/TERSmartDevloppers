@@ -49,8 +49,8 @@ $(document).ready(function(){
         ajouter_glose(glose.toLowerCase());
 
         swal(
-            'Glose Ajouté!',
-            'Vous pouvez la selectionner dans la liste deroulante.',
+            'Glose Ajouté !',
+            'Vous pouvez la selectionner dans la liste déroulante.',
             'success'
         )
     });
