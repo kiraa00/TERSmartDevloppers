@@ -129,7 +129,7 @@ class Jouer extends CI_Controller {
 				if($dejaJouer){
 					$resultat = "Vous avez déjà joué cette phrase, vous ne gagnez donc pas de points.";
 				}else{
-				$resultat = "Connectez-vous pour enregistrer vos parties vos parties et avoir accès à toutes les phrases et fonctionnalités !";
+				$resultat = "Connectez-vous pour enregistrer vos parties et avoir accès à toutes les phrases et fonctionnalités !";
 				}
 			}
 			//----- récupération de la phrase jouer ------

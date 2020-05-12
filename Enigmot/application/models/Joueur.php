@@ -2,7 +2,7 @@
  class Joueur extends CI_Model  
  {  
       var $table = 'Joueur';
-      var $column = array('id_joueur','pseudo','point','titre','nbrPhraseCree','nbrPartieJouee','dateInscription');
+      var $column = array('id_joueur', 'pseudo', 'titre', 'dateInscription', 'point', 'nbrPhraseCree', 'nbrMotAmbigu', 'nbrPartieJouee');
       var $order = array('point' => 'desc');
 
       public function __construct(){

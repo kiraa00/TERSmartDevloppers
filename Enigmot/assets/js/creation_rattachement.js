@@ -487,9 +487,9 @@ function getWordsAndRattachement(param, position){
                 }
             
                 if (options[k].text === optionSelected) {
-                    reponse = reponse.concat("{\"selected\": true, \"valeur\": \"" +options[k].text+ "\", \"identifiant\": \"id='ref" +k+ "\"}")
+                    reponse = reponse.concat("{\"selected\": true, \"valeur\": \"" +options[k].text+ "\", \"identifiant\": \"ref" +k+ "\"}")
                 } else {
-                    reponse = reponse.concat("{\"selected\": false, \"valeur\": \"" +options[k].text+ "\", \"identifiant\": \"id='ref" +k+ "\"}")
+                    reponse = reponse.concat("{\"selected\": false, \"valeur\": \"" +options[k].text+ "\", \"identifiant\": \"ref" +k+ "\"}")
                 }
         
                 if (k === options.length - 1) {

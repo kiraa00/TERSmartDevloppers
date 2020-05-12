@@ -185,14 +185,14 @@ class Phrase extends CI_Model
           } else {
             if ($gloseCourante['selected'] == true) {
               $liaison = array(
-                'idLiaison' => $gloseCourante['identifiant'] . "_m" . ($i+1) ."'",
+                'idLiaison' => $gloseCourante['identifiant'] . "_m" . ($i+1),
                 'idMotAmbigu' => $idMotAmbigu,
                 'idGlose'  => $idGlose,
                 'nbrVote'  => 1,
               );
             } else {
               $liaison = array(
-                'idLiaison' => $gloseCourante['identifiant'] . "_m" . ($i+1) ."'",
+                'idLiaison' => $gloseCourante['identifiant'] . "_m" . ($i+1),
                 'idMotAmbigu' => $idMotAmbigu,
                 'idGlose'  => $idGlose,
                 'nbrVote'  => 0,
