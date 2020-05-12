@@ -25,6 +25,7 @@
                 'idLiaison' => array(
                               'type' => 'varchar',
                               'constraint' => '32',
+                              'default' =>"",
                               ),
 
                 'idMotAmbigu' => array(

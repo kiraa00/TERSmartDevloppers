@@ -11,24 +11,26 @@
                         <thead class="">
                             <tr>  
                                 <th scope="col">#</th>  
-                                <th scope="col">Pseudo</th>
-                                <th scope="col">Crédit</th>  
-                                <th scope="col">Points gagnés</th> 
+                                <th scope="col">Pseudo</th> 
+                                <th scope="col">Points gagnés</th>
+                                <th scope="col">Niveau</th>
                                 <th scope="col">Phrase Créées</th>  
-                                <th scope="col">Partie jouées</th>  
+                                <th scope="col">Partie jouées</th>
+                                <th scope="col">Date d'inscription</th>  
                             </tr> 
                         </thead>
                         <tbody>
                         </tbody>
                         <tfoot>
-                            <tr>
+                            <tr>  
                                 <th scope="col">#</th>  
-                                <th scope="col">Pseudo</th>
-                                <th scope="col">Crédit</th>  
-                                <th scope="col">Points gagnés</th> 
+                                <th scope="col">Pseudo</th> 
+                                <th scope="col">Points gagnés</th>
+                                <th scope="col">Niveau</th>
                                 <th scope="col">Phrase Créées</th>  
-                                <th scope="col">Partie jouées</th> 
-                            </tr>
+                                <th scope="col">Partie jouées</th>
+                                <th scope="col">Date d'inscription</th>  
+                            </tr> 
                         </tfoot>
                     </table> 
                 </div>    

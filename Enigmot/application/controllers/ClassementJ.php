@@ -36,11 +36,12 @@ public function ajax_list(){
 			$row = array();
 			$row[] = $no;
 			$row[] = $joueur->pseudo;
-			$row[] = $joueur->credit;
 			$row[] = $joueur->point;
-			$row[] = "à définir";
-			$row[] = "à définir";
-				//add html for actio
+			$row[] = $joueur->titre;
+			$row[] = $joueur->nbrPhraseCree;
+			$row[] = $joueur->nbrPartieJouee;
+			$row[] = $joueur->dateInscription;
+				//add html for action
 			$data[] = $row;
 		}
 		$output = array(

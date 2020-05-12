@@ -2,12 +2,8 @@
  class Joueur extends CI_Model  
  {  
       var $table = 'Joueur';
-<<<<<<< HEAD
-      var $column = array('id_joueur','pseudo','xp','credit');
-=======
-      var $column = array('id_joueur','pseudo','point','credit');
->>>>>>> e699ac10034cdf0c7f73586b364725743e69779e
-      var $order = array('credit' => 'desc');
+      var $column = array('id_joueur','pseudo','point','titre','nbrPhraseCree','nbrPartieJouee','dateInscription');
+      var $order = array('point' => 'desc');
 
       public function __construct(){
             parent::__construct();
@@ -53,6 +49,7 @@
                 'genre' => array(
                                 'type' => 'varchar',
                                 'constraint' => '32',
+                                'default' =>"",
                                 ),
 
                 'titre' => array(
@@ -64,6 +61,7 @@
                 'dateNaissance' => array(
                                    'type' => 'varchar',
                                     'constraint' => '32',
+                                    'default' =>"",
                                      ),
 
                 'nbrPhraseCree' => array(
@@ -96,6 +94,7 @@
 
                 'derniereConnexion' => array(
                                    'type' => 'datetime',
+                                   'default' =>"0000-00-00 00:00:00",
                                      ),
 
                 'dateInscription datetime Not NULL default current_timestamp',
