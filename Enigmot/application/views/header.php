@@ -9,9 +9,8 @@
 	<title>ENIGMOTS</title>
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-	<link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css" rel="stylesheet">
-	<link href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.bootstrap4.min.css" rel="stylesheet">
+	<link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 
 
@@ -30,7 +29,6 @@
 	<link rel="stylesheet" href="<?php echo base_url('assets/vendors/animate-css/animate.css');?>">
 	<link rel="stylesheet" href="<?php echo base_url('assets/vendors/flaticon/flaticon.css');?>">
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/sweetalert.css');?>">
-	<link rel="stylesheet" href="<?php echo base_url('assets/css/dataTables.bootstrap.css');?>">
 	<!-- main css -->
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/style.css');?>">
 
@@ -44,7 +42,15 @@
 			<nav class="navbar navbar-expand-lg navbar-light">
 				<div class="container">
 					<!-- Brand and toggle get grouped for better mobile display -->
-					<a class="navbar-brand logo_h"  href="index.html"><img src="<?php echo base_url('assets/img/logo.png');?>" class="Mon_logo" alt=""></a>
+					<div>
+						<a class="navbar-brand logo_h"  href="<?php echo base_url('index.php/home');?>"><img src="<?php echo base_url('assets/img/logo.png');?>" class="Mon_logo" alt=""></a>
+						<br><?php if (isset($_SESSION['user'])) { ?>
+							<p style="margin-left: 4px; color: rgb(255, 188, 0); font-weight: bold;">
+								Crédits &nbsp;: &nbsp;<credit style="color: white;"><?php echo $_SESSION['user']['credit'] ?></credit> &nbsp;&nbsp;/ 
+								&nbsp;&nbsp;Points &nbsp;: &nbsp;<point style="color: white;"><?php echo $_SESSION['user']['point'] ?></point>
+							</p>
+						<?php } ?>
+					</div>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
 					 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="icon-bar"></span>
@@ -56,8 +62,8 @@
 						<ul class="nav navbar-nav menu_nav justify-content-center">
 							<li class="nav-item <?php if (isset($flagActif) && $flagActif === "home") {echo "active";} ?>"><a class="nav-link" href="<?php echo base_url('index.php/home');?>">Acceuil</a></li>
 							<li class="nav-item submenu dropdown <?php if (isset($flagActif) && $flagActif === "jouer") {echo "active";} ?>">
-								<a class="nav-link" href="<?php echo base_url('index.php/jouer');?>">Jouer</a>
-								<ul style="min-width: 206px;" class="dropdown-menu">
+							<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+									aria-expanded="false">Jouer</a>								<ul style="min-width: 206px;" class="dropdown-menu">
 									<li class="nav-item <?php if (isset($flagActif) && $flagActif === "creer") {echo "active";} ?>"><a class="nav-link" href="<?php echo base_url('index.php/jouer');?>">Version ambigus</a>
 									<li class="nav-item <?php if (isset($flagActif) && $flagActif === "creer") {echo "active";} ?>"><a class="nav-link" href="<?php echo base_url('index.php/jouer/rattachement');?>">Version rattachement</a>
 								</ul>
@@ -76,21 +82,12 @@
 								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 								 aria-expanded="false">Classement</a>
 								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="classement_joueur.html">Joueur</a>
-									<li class="nav-item"><a class="nav-link" href="classement_phrases.html">Phrases</a>
-									<li class="nav-item"><a class="nav-link" href="classement_mesPhrases.html">Mes Phrases</a>
+									<li class="nav-item"><a class="nav-link" href="<?php echo base_url('index.php/ClassementJ');?>">Joueur</a>
+									<li class="nav-item"><a class="nav-link" href="#">Phrases</a>
+									<li class="nav-item"><a class="nav-link" href="#">Mes Phrases</a>
 								</ul>
 							</li>
-							<?php if (isset($_SESSION['user'])) { ?>
-								<li class="nav-item submenu dropdown">
-									<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-									aria-expanded="false" class="primary_btn">Crédits/Points</a>
-									<ul class="dropdown-menu">
-										<li class="nav-item"><a class="nav-link styleNavCoin" href="#"><?php echo $_SESSION['user']['credit'] ?> Crédits</a></li>
-										<li class="nav-item"><a class="nav-link styleNavCoin" href="#"><?php echo $_SESSION['user']['xp'] ?> Points</a></li>
-									</ul>
-								</li>
-							<?php } ?>
+							
 							<li class="nav-item <?php if (isset($flagActif) && $flagActif === "profil") {echo "active";} ?>"><a class="nav-link" href="profil">Profil</a></li>
 						</ul>
 						<ul class="nav navbar-nav navbar-right" >

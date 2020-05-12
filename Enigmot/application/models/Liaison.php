@@ -16,10 +16,15 @@
         $this->load->dbforge();
     
       	$fields = array(
-                'idLisaison' => array(
+                'idLigne' => array(
                               'type' => 'int',
                               'constraint' => '15',
                               'auto_increment'=>true,
+                              ),
+
+                'idLiaison' => array(
+                              'type' => 'varchar',
+                              'constraint' => '32',
                               ),
 
                 'idMotAmbigu' => array(
@@ -40,6 +45,7 @@
             );
 
         $this->dbforge->add_field($fields);
+        $this->dbforge->add_key('idLigne',true);
         $this->dbforge->add_key('idLisaison',true);
         $this->dbforge->add_key('idMotAmbigu',true);
         $this->dbforge->add_key('idGlose',true);

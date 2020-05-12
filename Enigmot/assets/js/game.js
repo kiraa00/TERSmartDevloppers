@@ -16,7 +16,7 @@ $(document).ready(function(){
         if(empty){
             if(!errors){
                 messageError.removeAttribute("hidden");
-                messageError.innerHTML = messageError.innerHTML + 'vous avez pas remplis tous les choix <br>';
+                messageError.innerHTML = messageError.innerHTML + 'Veuillez choisir une glose pour chacun des mots ambigus.<br>';
                 errors=true;
             }
         }else{
@@ -49,8 +49,8 @@ $(document).ready(function(){
             	console.log(data);
 		        ajoutGlose(glose.toLowerCase(),data);
 		        swal(
-		            'Glose Ajouté!',
-		            'Vous pouvez la selectionner dans la liste deroulante.',
+		            'Glose Ajouté !',
+		            'Vous pouvez la selectionner dans la liste déroulante.',
 		            'success'
 		        )                                    
             }  

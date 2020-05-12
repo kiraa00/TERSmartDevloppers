@@ -45,7 +45,7 @@ class Export extends CI_Controller {
 
 		$json = '{'
 					.'"infos":"Données collectées depuis le jeu Enigmot. Site web réalisé en 2020 dans le cadre d\'un TER de première année de master informatique à l\'université de Montpellier. Groupe : Chahinez BENALLAL, Mohamed HASSAN IBRAHIM, El-Bachir REHHALI, Nasser OMAR SOUBAGLE. Tuteur : Mathieu Lafourcade.\n",'
-					.'"date":"01/05/2020 03:30",'
+					.'"date":"'.date('Y-m-d H:i:s').'",'
 					.'"donnees":[';
 
 		for ($i = 0; $i < count($arrayPhrasesDB); $i++) {

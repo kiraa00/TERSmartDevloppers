@@ -30,7 +30,7 @@
                 <hr>
                 <h4 style="text-align:center;"><b>ARTICLE 2 : Mentions légales</b></h4>
 				<p class="text-left">
-					Voir la<u> <a href="<?php echo base_url('index.php/mentions');?>" style="color:white;">page des mentions légales</a></u>.
+					Voir la<b> <a href="<?php echo base_url('index.php/mentions');?>" style="color:#f8b600;">page des mentions légales</a></b>.
 				</p>
 				<hr>
 				<h4 style="text-align:center;"><b>ARTICLE 3 : Définitions</b></h4>
@@ -104,10 +104,10 @@
 				<hr>
 				<h4 style="text-align:center;"><b>ARTICLE 6 : Données personnelles</b></h4>
 				<p class="text-left">
-                Voir la<u> <a href="<?php echo base_url('index.php/mentions');?>" style="color:white;">page des mentions légales</a></u>.
+				Voir la<b> <a href="<?php echo base_url('index.php/mentions');?>" style="color:#f8b600;">page des mentions légales</a></b>.
 				</p>
 				<hr>
-				<h4><b>ARTICLE 7 : Responsabilité et force majeure</b></h4>
+				<h4 style="text-align:center;"><b>ARTICLE 7 : Responsabilité et force majeure</b></h4>
 				<p class="text-left">
 					Les sources des informations diffusées sur le site sont réputées fiables. Toutefois, le site se réserve la faculté d'une
 					non-garantie de la fiabilité des sources. Les informations données sur le site le sont à titre purement informatif. Ainsi,

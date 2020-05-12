@@ -21,17 +21,17 @@
                                 <br>
                                 <div class="col-lg-12 p-4" style="background-color: #5753967a; margin-top:-18px;" >                               
                                         
-                                                <div style="font-size: 13px;" class="alert alert-danger" role="alert">Ici tu gérera tes differentes erreurs .</div>
-                                                <p >Mot de passe actuel <b>*</b></p>
-                                                <input type="password" id="form1" class="form-control">
-                                                <p >Nouveau mot de passe <b>*</b></p>
-                                                <input type="password" id="form1" class="form-control">
-                                                <p >Confirmation du mot de passe <b>*</b></p> 
-                                                <input type="password" id="form1" class="form-control">
+                                    <div hidden style="font-size: 13px;" id="msgError" class="alert alert-danger" role="alert"></div>
+                                    <p >Mot de passe actuel <b>*</b></p>
+                                    <input type="password" id="ancienMotDePasse" class="form-control">
+                                    <p >Nouveau mot de passe <b>*</b></p>
+                                    <input type="password" id="nouveauMotDePasse" class="form-control">
+                                    <p >Confirmation du mot de passe <b>*</b></p> 
+                                    <input type="password" id="confirmMotDePasse" class="form-control">
 
-                                                <div class="buttonvalidation">        
-                                                    <a class="validerButton" href="#" >Valider</a>
-                                                </div>                                
+                                    <div class="buttonvalidation">        
+                                        <button class="btn btn-primary" onclick="validedForm()">Valider</button>
+                                    </div>                                
                                 </div>
                             </div> 
                         </div>  

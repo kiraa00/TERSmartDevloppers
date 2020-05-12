@@ -46,10 +46,9 @@ class Inscription extends CI_Controller {
 		$data=array(
         	'pseudo' => $this->input->post('pseudo'),
 			'email' => $this->input->post('email'),
-			'niveau' => '0',
-			'xp' => '0',
+			'point' => '0',
 			'credit' => '0',
-            'motdepasse' =>  $this->input->post('password')
+            'motdepasse' =>  sha1($this->input->post('password'))
         );
 
 		$this->Joueur->registerUser($data);

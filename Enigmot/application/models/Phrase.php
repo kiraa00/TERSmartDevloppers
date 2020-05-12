@@ -20,7 +20,7 @@ class Phrase extends CI_Model
 
                 'Phrase' => array(
                                 'type' => 'varchar',
-                                'constraint' => '250',
+                                'constraint' => '255',
                                  ),
 
                 'nbr_like'  => array(
@@ -39,20 +39,9 @@ class Phrase extends CI_Model
                           'default' => 'ambigu',
                           'null' => FALSE,
                           ),
-                'facile'  => array(
-                             'type' => 'int',
-                             'constraint' => '11',
-                             ),
+                          
+                'dateCreation datetime Not NULL default current_timestamp',
 
-                'moyenne'  => array(
-                             'type' => 'int',
-                             'constraint' => '11',
-                             ),
-
-                'difficile'  => array(
-                             'type' => 'int',
-                             'constraint' => '11',
-                             ),                                             
             );
 
         $this->dbforge->add_field($fields);
@@ -101,7 +90,10 @@ class Phrase extends CI_Model
         }
       }
 
-      public function saveData($data, $cost, $type) {
+      public function saveData($data, $cost, $type, $titre) {
+        $nbrMotAmbigu = 0;
+        $nbrGloseAjoutee = 0;
+
         //  Insertion de la phrase dans la base de données et récuperation de son id
         $phrase;
 
@@ -110,20 +102,14 @@ class Phrase extends CI_Model
             'Phrase' => $data['phrase'],
             'nbr_like'  => 0,
             'id_Createur'  => $_SESSION['user']['id_joueur'],
-            'type' => "ambigu",
-            'facile'  => 0,
-            'moyenne'  => 1,
-            'difficile'  => 0
+            'type' => "ambigu"
           );
         } else {
           $phrase = array(
             'Phrase' => $data['phrase'],
             'nbr_like'  => 0,
             'id_Createur'  => $_SESSION['user']['id_joueur'],
-            'type' => "rattachement",
-            'facile'  => 0,
-            'moyenne'  => 1,
-            'difficile'  => 0
+            'type' => "rattachement"
           );
         }
 
@@ -133,8 +119,9 @@ class Phrase extends CI_Model
         //  Insertion du mot ambigu dans la base de données
 
         for ($i = 0; $i < count($data['motsAmbigus']); $i++) {
+          $nbrMotAmbigu++;
           $motAmbiguCourant = $data['motsAmbigus'][$i];
-
+          
           if ($type == "amb") {
             $motAmbigu = array(
               'motAmbigu' => $motAmbiguCourant['motAmbigu'],
@@ -158,6 +145,7 @@ class Phrase extends CI_Model
           //  Insertion des gloses ambigus dans la base de données
 
           for ($j = 0; $j < count($motAmbiguCourant['gloses']); $j++) {
+            $nbrGloseAjoutee++;
             $gloseCourante = $motAmbiguCourant['gloses'][$j];
 
             $glose = array(
@@ -180,6 +168,7 @@ class Phrase extends CI_Model
 
             $liaison = [];
 
+          if ($type == "amb") {
             if ($gloseCourante['selected'] == true) {
               $liaison = array(
                 'idMotAmbigu' => $idMotAmbigu,
@@ -193,6 +182,23 @@ class Phrase extends CI_Model
                 'nbrVote'  => 0,
               );
             }
+          } else {
+            if ($gloseCourante['selected'] == true) {
+              $liaison = array(
+                'idLiaison' => $gloseCourante['identifiant'] . "_m" . ($i+1) ."'",
+                'idMotAmbigu' => $idMotAmbigu,
+                'idGlose'  => $idGlose,
+                'nbrVote'  => 1,
+              );
+            } else {
+              $liaison = array(
+                'idLiaison' => $gloseCourante['identifiant'] . "_m" . ($i+1) ."'",
+                'idMotAmbigu' => $idMotAmbigu,
+                'idGlose'  => $idGlose,
+                'nbrVote'  => 0,
+              );
+            }
+          }
 
             $this->db->insert('Liaison', $liaison);
           }
@@ -204,6 +210,22 @@ class Phrase extends CI_Model
         $this->db->where('id_joueur',$_SESSION['user']['id_joueur']);
         $this->db->update('Joueur', $dataCost);
         $_SESSION['user']['credit'] = $_SESSION['user']['credit'] - $cost;
+
+        $_SESSION['user']['nbrPhraseCree'] = $_SESSION['user']['nbrPhraseCree'] + 1;
+        $_SESSION['user']['nbrGloseAjoutee'] = $_SESSION['user']['nbrGloseAjoutee'] + $nbrGloseAjoutee;
+        $_SESSION['user']['nbrMotAmbigu'] = $_SESSION['user']['nbrMotAmbigu'] + $nbrMotAmbigu;
+        $_SESSION['user']['point'] = $_SESSION['user']['point'] + 25;
+        $_SESSION['user']['titre'] = $titre;
+        $dataJoueur = array(
+          'titre' => $titre,
+          'point' => $_SESSION['user']['point'],
+          'nbrPhraseCree' =>  $_SESSION['user']['nbrPhraseCree'],
+          'nbrGloseAjoutee' => $_SESSION['user']['nbrGloseAjoutee'],
+          'nbrMotAmbigu' => $_SESSION['user']['nbrMotAmbigu'],
+          'id_joueur' => $_SESSION['user']['id_joueur']
+        );
+        $requete = $this->db->query("UPDATE Joueur SET titre = ?, point = ?, nbrPhraseCree = ?, nbrGloseAjoutee = ?, nbrMotAmbigu = ? WHERE id_joueur = ?", $dataJoueur);
+
 
         return true;
       }

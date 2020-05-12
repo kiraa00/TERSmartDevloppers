@@ -31,12 +31,12 @@
                             <div class="info_item">
                                 <i class="lnr lnr-home"></i>
                                 <h6>Montpellier,France 34090</h6>
-                                <p>Fac de science</p>
+                                <p>Faculté des sciences</p>
                             </div>
                             <div class="info_item">
                                 <i class="lnr lnr-phone-handset"></i>
                                 <h6>00 (440) 9865 562 </h6>
-                                <p>De Lundi a Vendredi 9am a 6pm</p>
+                                <p>Du Lundi au Vendredi de 9h à 18h</p>
                             </div>
                             <div class="info_item">
                                 <i class="lnr lnr-envelope"></i>
@@ -46,16 +46,19 @@
                         </div>
                     </div>
                     <div class="col-lg-9">
-                        <form class="row contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+                        <div id="msgError" class="alert alert-danger" hidden></div>
+                        <div class="row contact_form">
                             <div class="col-md-6">
+                                <?php if(!isset($_SESSION['user'])) { ?>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="pseudo" name="name" placeholder="Saisir votre pseudo">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="Saisir votre adresse email">
+                                    </div>
+                                <?php } ?>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="name" name="name" placeholder="Saisir votre nom">
-                                </div>
-                                <div class="form-group">
-                                    <input type="email" class="form-control" id="email" name="email" placeholder="Saisir votre adresse email">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="subject" name="subject" placeholder="Saisir le sujet">
+                                    <input type="text" class="form-control" id="objet" name="subject" placeholder="Saisir le sujet">
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -64,9 +67,9 @@
                                 </div>
                             </div>
                             <div class="col-md-12 text-right">
-                                <button type="submit" value="submit" class="primary_btn">Envoyer</button>
+                                <button onclick="sendMessage()" type="submit" value="submit" class="primary_btn">Envoyer</button>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>

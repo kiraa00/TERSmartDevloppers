@@ -121,15 +121,15 @@ class Jouer extends CI_Controller {
 			//affichage de résultats
 			//----- phrase de resultat -----------------
 			if(isset($gainTotale)){
-				$resultat = "Félicitations, vous avez gagner <amb> $gainTotale </amb> points";
+				$resultat = "Félicitations, vous avez gagné <amb> $gainTotale </amb> points !";
 				if($gainTotale == 0){
-					$resultat = "malheureusement, vous n'avez pas gagner de points";
+					$resultat = "Dommage, vous n'avez pas gagné de point cette fois.";
 				}
 			}else{
 				if($dejaJouer){
-					$resultat = "vous avez déja jouer cette phrase vous n'avez pas de points à gagner";
+					$resultat = "Vous avez déjà joué cette phrase, vous ne gagnez donc pas de points.";
 				}else{
-				$resultat = "connecter vous pour enregistrer vos parties et gagner des points";
+				$resultat = "Connectez-vous pour enregistrer vos parties vos parties et avoir accès à toutes les phrases et fonctionnalités !";
 				}
 			}
 			//----- récupération de la phrase jouer ------

@@ -12,6 +12,7 @@ class Create_Phrase extends CI_Controller {
         $this->load->model('Mot');
         $this->load->model('Liaison');
         $this->load->model('Phrase');
+        $this->load->model('Joueur');
         // load form_validation library
 		//XMLHttpRequest
 		header('Access-Control-Allow-Origin: *');
@@ -54,32 +55,14 @@ class Create_Phrase extends CI_Controller {
 
 		// Si le cout est inferieure à son credit, on insert dans la base sinon, on rejete
 		if ($_SESSION['user']['credit'] >= $cost) {
-			$reponse = $this->Phrase->saveData($dataSet, $cost, "amb");
+			$titre = $this->Joueur->getTitre(25);
+
+			$reponse = $this->Phrase->saveData($dataSet, $cost, "amb", $titre);
 			echo json_encode(array("reponse" => $reponse, "cost" => $cost));
 		} else {
 			echo json_encode(array("reponse" => false, "cost" => $cost));
 		}		
 	}
-
-	/*public function ajouterGlose(){
-		$data=array(
-        	'glose'   =>  $this->input->post('glose'),
-            'motAmbigu' =>  $this->input->post('motAmbigu'),
-        );
-
-		$id_Glose = $this->Glose->insert($data['glose']);
-		$id_mot = $this->Mot->insert($data['motAmbigu']);
-
-		$dataC = array(
-        	'id_glose'   =>  $id_Glose,
-            'id_ambigu' =>  $id_mot,
-            'Nbr_choisi'  => 0,
-        );
-
-        $this->Liaison->insert($dataC);
-
-        echo json_encode($data['glose']);
-	}*/
 
 	public function getGloses(){
 		$data=array(
@@ -89,13 +72,4 @@ class Create_Phrase extends CI_Controller {
 		$gloses = $this->Glose->getGlose($data);
 		echo json_encode($gloses);
 	}
-
-	/*public function insertPhrase(){
-		$phrase = $this->input->post('phraseD');
-		$this->Phrase->insert($phrase);
-		echo json_encode($this->input->post('gloseD'));
-	}
-
-		redirect('Create_Phrase');
-	}*/
 }

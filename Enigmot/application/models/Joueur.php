@@ -2,7 +2,7 @@
  class Joueur extends CI_Model  
  {  
       var $table = 'Joueur';
-      var $column = array('id_joueur','pseudo','xp','credit');
+      var $column = array('id_joueur','pseudo','point','credit');
       var $order = array('credit' => 'desc');
 
       public function __construct(){
@@ -23,20 +23,15 @@
 
                 'pseudo' => array(
                                 'type' => 'varchar',
-                                'constraint' => '32',
+                                'constraint' => '255',
                                  ),
 
                 'email' => array(
                                 'type' => 'varchar',
-                                'constraint' => '32',
+                                'constraint' => '255',
                                  ),
 
-                'niveau'  => array(
-                             'type' => 'int',
-                             'constraint' => '11',
-                             ),
-
-                'xp'  => array(
+                'point'  => array(
                              'type' => 'int',
                              'constraint' => '11',
                              ),
@@ -48,8 +43,58 @@
 
                 'motdepasse' => array(
                                    'type' => 'varchar',
+                                    'constraint' => '255',
+                                     ),
+
+                'genre' => array(
+                                'type' => 'varchar',
+                                'constraint' => '32',
+                                ),
+
+                'titre' => array(
+                                'type' => 'varchar',
+                                'constraint' => '32',
+                                'default' => 'Novice'
+                                ),
+
+                'dateNaissance' => array(
+                                   'type' => 'varchar',
                                     'constraint' => '32',
                                      ),
+
+                'nbrPhraseCree' => array(
+                                   'type' => 'int',
+                                    'constraint' => '32',
+                                    'default' => 0,
+                                    'null' => FALSE,                                    
+                                   ),
+
+                'nbrGloseAjoutee' => array(
+                                   'type' => 'int',
+                                    'constraint' => '32',
+                                    'default' => 0,
+                                    'null' => FALSE,                                    
+                                   ),
+
+                'nbrMotAmbigu' => array(
+                                   'type' => 'int',
+                                    'constraint' => '32',
+                                    'default' => 0,
+                                    'null' => FALSE,                                    
+                                   ),
+
+                'nbrPartieJouee' => array(
+                                   'type' => 'int',
+                                    'constraint' => '32',
+                                    'default' => 0,
+                                    'null' => FALSE,
+                                  ),
+
+                'derniereConnexion' => array(
+                                   'type' => 'datetime',
+                                     ),
+
+                'dateInscription datetime Not NULL default current_timestamp',
             );
         $this->dbforge->add_field($fields);
         $this->dbforge->add_key('id_joueur',true);
@@ -71,13 +116,56 @@
       }
 
       public function verifyUserWhenConnecting($data) {
-        $request = $requetePseudo = $this->db->query("SELECT * FROM Joueur WHERE email = ? AND motdepasse = ?", $data);
+        $request = $this->db->query("SELECT * FROM Joueur WHERE email = ? AND motdepasse = ?", $data);
 
         if (count($request->result_array()) == 0) {
           return array("flag" => false, "reponse" => "");
         } else {
+          $requete = $this->db->query("UPDATE Joueur SET derniereConnexion = CURRENT_TIMESTAMP WHERE email = ? AND motdepasse = ?", $data);
           return array("flag" => true, "reponse" => $request->result_array());
         }
+      }
+
+      public function verifyAndEditPassword($data) {
+        $dataPassword = array(
+          'motdepasse' =>  $data['nouveauMotDePasse'],
+          'email' =>  $_SESSION['user']['email']
+        );
+
+          $requete = $this->db->query("UPDATE Joueur SET motdepasse = ? WHERE email = ?", $dataPassword);
+          $_SESSION['user']['motdepasse'] = $data['nouveauMotDePasse'];
+      }
+
+      public function editInfo($data, $type) {
+        var_dump($data);
+        if ($type === "GD") {
+          $requete = $this->db->query("UPDATE Joueur SET genre = ?, dateNaissance = ? WHERE id_joueur = ?", $data);
+          $_SESSION['user']['genre'] = $data['genre'];
+          $_SESSION['user']['dateNaissance'] = $data['dateNaissance'];
+        } else if ($type === "G") {
+          $requete = $this->db->query("UPDATE Joueur SET genre = ? WHERE id_joueur = ?", $data);
+          $_SESSION['user']['genre'] = $data['genre'];
+        } else if ($type === "D") {
+          $requete = $this->db->query("UPDATE Joueur SET dateNaissance = ? WHERE id_joueur = ?", $data);
+          $_SESSION['user']['dateNaissance'] = $data['dateNaissance'];
+        }
+      }
+
+      public function getTitre($pointGagner) {
+        $point = $_SESSION['user']['point'] + $pointGagner;
+
+        if ($point >= 115000)
+          return "Enigmator";
+        else if ($point >= 92000)
+          return "Bâtonnier";
+        else if ($point >= 68000)
+          return "Grand Maître";
+        else if ($point >= 22000)
+          return "Maître";
+        else if ($point >= 3000)
+          return "Challenger";
+        else
+          return "Novice";
       }
 
       public function jouer($joueur,$gain){
