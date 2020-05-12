@@ -1,17 +1,28 @@
 var curr_selectId;
 var idMot;
+var errors = false;
 $(document).ready(function(){
-    // $('form').on('submit', function(form){
-    //     form.preventDefault();
-    //     var empty = false;
-    //     $('.gloseValid').each(function(index) {
-    //         console.log(index+": "+this.value);
-    //         if($(this).val()==""){
-    //             empty = true;
-    //         }
-    //     });
-    //     console.log(empty);
-    // });
+    $('form#jouerForm').on('submit', function(form){
+        form.preventDefault();
+        var empty = false;
+
+        $('.gloseValid').each(function(index) {
+            if(index%2==0){
+                if(this.value==''){
+                    empty = true;
+                }
+            }
+        });
+        if(empty){
+            if(!errors){
+                messageError.removeAttribute("hidden");
+                messageError.innerHTML = messageError.innerHTML + 'vous avez pas remplis tous les choix <br>';
+                errors=true;
+            }
+        }else{
+            document.getElementById("jouerForm").submit();
+        }
+    });
 	$('#btnAddGlose').click(function(){
         document.getElementById("msgErrorPopup").setAttribute("hidden", "hidden");
         
@@ -58,9 +69,10 @@ function addGlose(Select,MotId){
 
 function ajoutGlose(value,idGlose){
     //ajoute la glose dans select
-    var compteur = $('#'+curr_selectId+' option:first-child').val();
+    var compteur = $('#nbr'+curr_selectId).val();
     compteur++;
-    let optionChoisir = "<option selected='' disabled='' value='"+compteur+"'> Choisissez une glose ("+compteur+" existantes)</option>";
+    $('#nbr'+curr_selectId).val(compteur);
+    let optionChoisir = "<option selected='' disabled='' value=''> Choisissez une glose ("+compteur+" existantes)</option>";
     let optionV="<option value='"+idGlose+"'>"+value+"</option>";
     $('#'+curr_selectId+' option:first-child').replaceWith(optionChoisir+optionV);
     // $('#'+curr_selectId).append(optionV);

@@ -8,7 +8,17 @@
 	<link rel="icon" href="<?php echo base_url('assets/img/favicon.png');?>" type="image/png">
 	<title>ENIGMOTS</title>
 	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.css');?>">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css" rel="stylesheet">
+	<link href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.bootstrap4.min.css" rel="stylesheet">
+
+
+
+
+
+
+
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap-multiselect.css');?>">
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/select-checkbox.css');?>">
 	<link rel="stylesheet" href="<?php echo base_url($cssFile);?>">
@@ -20,8 +30,10 @@
 	<link rel="stylesheet" href="<?php echo base_url('assets/vendors/animate-css/animate.css');?>">
 	<link rel="stylesheet" href="<?php echo base_url('assets/vendors/flaticon/flaticon.css');?>">
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/sweetalert.css');?>">
+	<link rel="stylesheet" href="<?php echo base_url('assets/css/dataTables.bootstrap.css');?>">
 	<!-- main css -->
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/style.css');?>">
+
 
 </head>
 
@@ -42,7 +54,7 @@
 					<!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
 						<ul class="nav navbar-nav menu_nav justify-content-center">
-							<li class="nav-item <?php if (isset($flagActif) && $flagActif === "home") {echo "active";} ?>"><a class="nav-link" href="home">Acceuil</a></li>
+							<li class="nav-item <?php if (isset($flagActif) && $flagActif === "home") {echo "active";} ?>"><a class="nav-link" href="<?php echo base_url('index.php/home');?>">Acceuil</a></li>
 							<li class="nav-item submenu dropdown <?php if (isset($flagActif) && $flagActif === "jouer") {echo "active";} ?>">
 								<a class="nav-link" href="<?php echo base_url('index.php/jouer');?>">Jouer</a>
 								<ul style="min-width: 206px;" class="dropdown-menu">

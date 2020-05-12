@@ -23,8 +23,7 @@ class Jouer extends CI_Controller {
 	{
 		$data = $this->getPhrase($type);
 		if($data!=null){
-			$data['Title']="Jouer Phrase ".$type;
-			$data['url']="jouer/$type";
+			$data['Type']=$type;
 			$footerData = array(
 				"javaFile" => "assets/js/game.js",
 			);
@@ -135,6 +134,7 @@ class Jouer extends CI_Controller {
 			}
 			//----- récupération de la phrase jouer ------
 			$dataPhrase = $this->Phrase->getPhraseById($data['Phrase']);
+			$type = $dataPhrase->type;
 			//----- récupération de créateur de la phrase
 			$dataJoueur = $this->Joueur->getJoueurById($dataPhrase->id_Createur);
 			//----- structurer les mots avec ses gloses et le nombre de vote
@@ -142,7 +142,7 @@ class Jouer extends CI_Controller {
 			for($i=0;$i<count($data['Mot']);$i++){
 				$dataMot = $this->Mot->getMotById($data['Mot'][$i]);
 				$MotsResultat[$i]=array(
-					'motName'	=>	$dataMot->motAmbigu,
+					'motObject'	=>	$dataMot,
 					'gloses'	=>	array(),
 				);
 				//récupérer et structurer des gloses du mot
@@ -176,6 +176,7 @@ class Jouer extends CI_Controller {
 				'phrase'	=>	$dataPhrase->Phrase,
 				'createur'	=>	$dataJoueur->pseudo,
 				'dataMots'	=>	$MotsResultat,
+				'url'		=>	$type,
 
 			);
 			$this->showResult($ResultatJeu);
@@ -191,7 +192,7 @@ class Jouer extends CI_Controller {
 			"flagActif" => "Résultats",
 		);
 		$footerData = array(
-			"javaFile" => "",
+			"javaFile" => "assets/js/game.js"
 		);
 		$this->load->view('header', $headerData);
 		$this->load->view('pages/resultat',$data);

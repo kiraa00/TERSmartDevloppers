@@ -24,7 +24,8 @@
                             <br>
                             <?php
                                 foreach ($dataMots as $mot) {
-                                    echo "<li class=''><amb>".$mot['motName']."</amb>: ";
+
+                                    echo "<li id='dm".$mot['motObject']->position."' onmouseover='showShadow(this)' onmouseout='hideShadow(this)'><ambmot class='amb'>".$mot['motObject']->motAmbigu."</ambmot>: ";
                                     foreach ($mot['gloses'] as $glose) {
                                         echo $glose['gloseName']." ";
                                         echo $glose['vote'].", ";
