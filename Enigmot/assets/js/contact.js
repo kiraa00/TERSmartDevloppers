@@ -13,7 +13,7 @@ function sendMessage() {
 
         if (pseudo.trim() === "" || email.trim() === "" || objet.trim() === "" || message.trim() === "") {
             msgError.removeAttribute("hidden");
-            msgError.innerHTML = "Aucun champs ne doit être.";
+            msgError.innerHTML = "Aucun champs ne doit être vide.";
             return;
         }
 
@@ -21,7 +21,7 @@ function sendMessage() {
     } else {
         if (objet.trim() === "" || message.trim() === "") {
             msgError.removeAttribute("hidden");
-            msgError.innerHTML = "Aucun champs ne doit être.";
+            msgError.innerHTML = "Aucun champs ne doit être vide.";
             return;
         }
         dataSet = {"objet" : objet, "message" : message};
@@ -34,6 +34,10 @@ function sendMessage() {
         success: function(data){
             var reponse = JSON.parse(data);
             if (reponse['reponse'] === true) {
+                document.getElementById('pseudo').value = "";
+                document.getElementById('email').value = "";
+                document.getElementById('objet').value = "";
+                document.getElementById('message').value = "";
                 swal(
                     'Formulaire de contact envoyé',
                     reponse['message'],
