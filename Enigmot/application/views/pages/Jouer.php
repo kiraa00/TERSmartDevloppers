@@ -53,7 +53,8 @@
 								echo			"<select class='form-control gloseValid' name='idGlose[]' id='$currSelect' value=''>";
 								echo				"<option selected='' disabled='' value=''> Choisissez une glose ($i existantes)</option>";
 								foreach ($Ambigu['gloses'] as $glose) {
-									echo			"<option value='$glose->id_glose'>$glose->glose</option>";
+										echo		"<option value='$glose->id_glose:$glose->idLiaison'>$glose->glose</option>";
+
 								}
 								echo			"</select>";
 								echo		"</div>";
@@ -71,7 +72,7 @@
 
 						<div class="row pull-right" style="padding-bottom: 10px;">
 							<button id="valider" class="btn btn-primary" type="submit">Valider</button>
-							<a style="margin-left: 7px;" href="<?php echo base_url('index.php/jouer');?>"><button type="button" class="btn btn-light" >Passer cette phrase</button></a>
+							<a style="margin-left: 7px;" href="<?php echo base_url($url);?>"><button type="button" class="btn btn-light" >Passer cette phrase</button></a>
 						</div>
 
 						</form>

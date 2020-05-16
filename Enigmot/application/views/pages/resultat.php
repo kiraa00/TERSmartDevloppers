@@ -37,7 +37,7 @@
                             ?>
                         </ul>
 
-                        <a href="<?php echo base_url('index.php/jouer');?>" class="btn btn-primary">Rejouer</a>
+                        <a href="<?php echo base_url($url);?>" class="btn btn-primary">Rejouer</a>
                     </div>
 
                 </div>

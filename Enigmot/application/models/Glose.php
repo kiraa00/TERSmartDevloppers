@@ -60,9 +60,9 @@
       }
 
       public function getGlosesByMotID($id){
-        $this->db->select('*');
-        $this->db->from('Glose');
-        $this->db->join('Liaison', 'Liaison.idGlose = Glose.id_glose');
+        $this->db->select('l.idLiaison, g.id_glose, g.glose');
+        $this->db->from('Glose as g');
+        $this->db->join('Liaison as l', 'l.idGlose = g.id_glose');
         $this->db->where('idMotAmbigu',$id);
         $query = $this->db->get();
         return $query->result();

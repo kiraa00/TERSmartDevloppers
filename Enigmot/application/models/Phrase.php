@@ -39,7 +39,11 @@ class Phrase extends CI_Model
                           'default' => 'ambigu',
                           'null' => FALSE,
                           ),
-                          
+                'gainTotale'  => array(
+                             'type' => 'int',
+                             'constraint' => '11',
+                             'default' => 0,
+                             ),         
                 'dateCreation datetime Not NULL default current_timestamp',
 
             );
@@ -260,6 +264,13 @@ class Phrase extends CI_Model
         $this->db->where('id_phrase',$id);
         $query = $this->db->get('Phrase');
         return $query->row();
+      }
+
+      public function getCreateurById($phrase){
+        $this->db->select('*');
+        $this->db->where('id_phrase',$phrase);
+        $query = $this->db->get('Phrase');
+        return $query->row()->id_Createur;
       }
 }
 ?>

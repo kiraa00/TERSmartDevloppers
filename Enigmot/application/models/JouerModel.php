@@ -52,10 +52,9 @@
         $query=$this->db->get('Jouer');
         if($query->num_rows()==0){
           $this->db->insert('Jouer',$data);
-        }else{
-          $this->db->set('Gain',"Gain+$gain",FALSE);
-          $this->db->where($where);
-          $this->db->update('Jouer');
+          $this->db->set('gainTotale',"gainTotale+$gain",FALSE);
+          $this->db->where('id_phrase',$phrase);
+          $this->db->update('Phrase');
         }
       }
 

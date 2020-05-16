@@ -24,8 +24,15 @@ class Jouer extends CI_Controller {
 		$data = $this->getPhrase($type);
 		if($data!=null){
 			$data['Type']=$type;
+			if($type == 'ambigu'){
+				$data['url']='index.php/jouer';
+				$javaFile = "assets/js/gameAmb.js";
+			}else{
+				$data['url']='index.php/jouer/rattachement';
+				$javaFile = "assets/js/gameRatt.js";
+			}
 			$footerData = array(
-				"javaFile" => "assets/js/game.js",
+				"javaFile" => $javaFile,
 			);
 			$headerData = array(
 				"cssFile" => 'assets/css/game.css',
@@ -67,15 +74,29 @@ class Jouer extends CI_Controller {
 
 	public function ajouterGlose(){
 		$id_mot = $this->input->post('id_Ambigu');
-		$glose = $this->input->post('glose');
-		$id_Glose = $this->Glose->insert($glose);
-		$dataL = array(
-            'idMotAmbigu' =>  $id_mot,
-        	'idGlose'   =>  $id_Glose,
-            'nbrVote'  => 0,
+		$id_Glose='';
+        $gloses = $this->Glose->getGlosesByMotID($id_mot);
+        $cost = count($gloses)*10;
+        $message='';
+        if($_SESSION['user']['credit']>=$cost){
+			$glose = $this->input->post('glose');
+			$id_Glose = $this->Glose->insert($glose);
+			$dataL = array(
+	            'idMotAmbigu' =>  $id_mot,
+	        	'idGlose'   =>  $id_Glose,
+	            'nbrVote'  => 0,
+	        );
+        	$_SESSION['user']['credit'] = $_SESSION['user']['credit'] - $cost;
+        	$this->joueur->ajoutGlose($_SESSION['user']['credit'],$cost);
+        	$this->Liaison->insert($dataL);
+        }else{
+        	$message='vous n\'avez pas assez de crédits pour créer la glose';
+        }
+        $dataSend=array(
+        	'message' => $message,
+        	'id_Glose' => $id_Glose,
         );
-        $this->Liaison->insert($dataL);
-        echo $id_Glose;
+        echo json_encode($dataSend);
 	}
 
 
@@ -103,17 +124,30 @@ class Jouer extends CI_Controller {
 			if(isset($this->session->user) & !$dejaJouer){
 				$gainTotale = 0;
 				for($i=0;$i<count($data['Mot']);$i++){
+					list($gloseID, $liaisonID) = explode(":",$data['Gloses'][$i]);
 					$nbr_reponse = $this->Mot->jouer($data['Mot'][$i]);
-					$nbr_Vote = $this->Liaison->jouer($data['Mot'][$i],$data['Gloses'][$i]);
+					$nbr_Vote = $this->Liaison->jouer($data['Mot'][$i],$gloseID,$liaisonID);
 					if($nbr_reponse==0){
 						$nbr_reponse=1;
 					}
 					$gainTotale +=($nbr_Vote/$nbr_reponse)*100; 
 				}
 				$gainTotale = ceil($gainTotale);
-				$_SESSION['user']['credit'] = $_SESSION['user']['credit'] + $gainTotale;
+				//ajouter la partie jouer
 				$this->JouerModel->jouer($data['Phrase'],$data['Joueur'],$gainTotale);
-				$this->Joueur->jouer($data['Joueur'],$gainTotale);
+				// ajouter les points et crédits au joueur
+				$_SESSION['user']['credit'] = $_SESSION['user']['credit'] + $gainTotale;
+				$_SESSION['user']['point'] = $_SESSION['user']['point'] + $gainTotale;
+				$titre = $this->Joueur->getTitre($_SESSION['user']['point']);
+
+				$this->Joueur->jouer($data['Joueur'],$gainTotale,$titre);
+
+				// ajouter les points et crédits au créateur
+				$createurId = $this->Phrase->getCreateurById($data['Phrase']);
+				$createur = $this->Joueur->getJoueurById($createurId);
+				$pointGagne = $createur->point+count($data['Mot'])*10;
+				$titre = $this->Joueur->getTitre($pointGagne);
+				$this->Joueur->jouer($createurId,$gainTotale,$titre);
 			}
 			
 
@@ -150,9 +184,11 @@ class Jouer extends CI_Controller {
 				$j=0;
 				foreach ($dataGloses as $dataglose) {
 					$idGlose=$dataglose->id_glose;
-					$Vote = $this->Liaison->getVote($data['Mot'][$i],$idGlose);
+					$idLiaison=$dataglose->idLiaison;
+					list($gloseIDref, $liaisonIDref) = explode(":",$data['Gloses'][$i]);
+					$Vote = $this->Liaison->getVote($data['Mot'][$i],$idGlose,$idLiaison);
 					$gloseName = $dataglose->glose;
-					if($dataglose->id_glose == $data['Gloses'][$i]){
+					if($idGlose == $gloseIDref & $idLiaison == $liaisonIDref){
 						$gloseName = "<glose>".$dataglose->glose."</glose>";
 						if(!$dejaJouer){
 							$Vote--;
@@ -176,9 +212,12 @@ class Jouer extends CI_Controller {
 				'phrase'	=>	$dataPhrase->Phrase,
 				'createur'	=>	$dataJoueur->pseudo,
 				'dataMots'	=>	$MotsResultat,
-				'url'		=>	$type,
-
 			);
+			if($type == 'ambigu'){
+				$ResultatJeu['url']='index.php/jouer';
+			}else{
+				$ResultatJeu['url']='index.php/jouer/rattachement';
+			}			
 			$this->showResult($ResultatJeu);
 		}else{
 			redirect('Jouer');
@@ -192,7 +231,7 @@ class Jouer extends CI_Controller {
 			"flagActif" => "Résultats",
 		);
 		$footerData = array(
-			"javaFile" => "assets/js/game.js"
+			"javaFile" => "assets/js/gameAmb.js"
 		);
 		$this->load->view('header', $headerData);
 		$this->load->view('pages/resultat',$data);

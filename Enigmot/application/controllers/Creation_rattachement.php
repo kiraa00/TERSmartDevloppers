@@ -54,7 +54,8 @@ class Creation_rattachement extends CI_Controller {
 
 		// Si le cout est inferieure à son credit, on insert dans la base sinon, on rejete
 		if ($_SESSION['user']['credit'] >= $cost) {
-			$titre = $this->Joueur->getTitre(25);
+			$pointgagner = $_SESSION['user']['point'] + 25;
+			$titre = $this->Joueur->getTitre($pointgagner);
 			$reponse = $this->Phrase->saveData($dataSet, $cost, "rat", $titre);
 			echo json_encode(array("reponse" => $reponse, "cost" => $cost));
 		} else {
