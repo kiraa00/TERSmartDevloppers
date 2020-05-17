@@ -1,6 +1,10 @@
 <?php  
 class Phrase extends CI_Model  
 {  
+      var $table = 'Phrase';
+      var $column = array('id_phrase', 'Phrase', 'type', 'gainTotale', 'dateCreation');
+      var $order = array('gainTotale' => 'desc');
+
       public function __construct(){
             parent::__construct();
             $this->load->database();
@@ -20,7 +24,7 @@ class Phrase extends CI_Model
 
                 'Phrase' => array(
                                 'type' => 'varchar',
-                                'constraint' => '255',
+                                'constraint' => '1024',
                                  ),
 
                 'nbr_like'  => array(
@@ -39,7 +43,19 @@ class Phrase extends CI_Model
                           'default' => 'ambigu',
                           'null' => FALSE,
                           ),
+
+                'signale' => array(
+                          'type' => 'tinyint',
+                          'constraint' => '1',
+                          'default' => '0',
+                          'null' => FALSE,
+                          ),
                           
+                'gainTotale'  => array(
+                             'type' => 'int',
+                             'constraint' => '11',
+                             'default' => 0,
+                             ),         
                 'dateCreation datetime Not NULL default current_timestamp',
 
             );
@@ -185,14 +201,14 @@ class Phrase extends CI_Model
           } else {
             if ($gloseCourante['selected'] == true) {
               $liaison = array(
-                'idLiaison' => $gloseCourante['identifiant'] . "_m" . ($i+1) ."'",
+                'idLiaison' => $gloseCourante['identifiant'] . "_m" . ($i+1),
                 'idMotAmbigu' => $idMotAmbigu,
                 'idGlose'  => $idGlose,
                 'nbrVote'  => 1,
               );
             } else {
               $liaison = array(
-                'idLiaison' => $gloseCourante['identifiant'] . "_m" . ($i+1) ."'",
+                'idLiaison' => $gloseCourante['identifiant'] . "_m" . ($i+1),
                 'idMotAmbigu' => $idMotAmbigu,
                 'idGlose'  => $idGlose,
                 'nbrVote'  => 0,
@@ -260,6 +276,52 @@ class Phrase extends CI_Model
         $this->db->where('id_phrase',$id);
         $query = $this->db->get('Phrase');
         return $query->row();
+      }
+
+      public function getCreateurById($phrase){
+        $this->db->select('*');
+        $this->db->where('id_phrase',$phrase);
+        $query = $this->db->get('Phrase');
+        return $query->row()->id_Createur;
+      }
+
+      ///fonctions pour le classement
+      private function _get_datatables_query(){
+        $this->db->from($this->table);
+        $i = 0;
+        foreach ($this->column as $item){
+          if($_POST['search']['value'])
+            ($i===0) ? $this->db->like($item, $_POST['search']['value']) : $this->db->or_like($item, $_POST['search']['value']);
+          $column[$i] = $item;
+          $i++;
+        }    
+        if(isset($_POST['order'])){
+          $this->db->order_by($column[$_POST['order']['0']['column']], $_POST['order']['0']['dir']);
+        }
+        else if(isset($this->order)){
+          $order = $this->order;
+          $this->db->order_by(key($order), $order[key($order)]);
+        }
+      }
+
+      public function get_datatables(){
+        $this->_get_datatables_query();
+        if($_POST['length'] != -1)
+          $this->db->limit($_POST['length'], $_POST['start']);
+        $query = $this->db->get();
+        return $query->result();
+      }
+
+      public function get_filtered_data(){
+        $this->_get_datatables_query();
+        $query = $this->db->get();  
+        return $query->num_rows();  
+      }
+
+      public function get_all_data(){ 
+        $this->db->select("*");  
+        $this->db->from($this->table);  
+        return $this->db->count_all_results();  
       }
 }
 ?>

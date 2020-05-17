@@ -70,7 +70,7 @@ $("#phrase").on('keypress', function(e) {
 });
 
 $(document).ready(function() {
-      $(".list").niceScroll();
+      
 });
 
 function ajouter_glose(value){
@@ -83,7 +83,7 @@ function ajouter_glose(value){
 
     $('#'+curr_selId).append(option);
     $('#'+curr_selId).niceSelect("update");
-    $(".list").niceScroll();
+    
     $(".list").addClass("scrollGloses");
 
     let positionGlose = curr_selectId[curr_selectId.length - 1];
@@ -283,7 +283,7 @@ function changeGloseListener(param) {
     
     document.getElementById(param.data.idSelect).innerHTML = optionsSelect;
     $("#"+param.data.idSelect).niceSelect("update");
-    $(".list").niceScroll();
+    
     $(".list").addClass("scrollGloses");
 
     let nbrGloses = 0;

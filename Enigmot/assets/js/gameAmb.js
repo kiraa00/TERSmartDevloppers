@@ -46,18 +46,33 @@ $(document).ready(function(){
             url: "Jouer/ajouterGlose",
             data: dataSet,
             success: function(data){
-            	console.log(data);
-		        ajoutGlose(glose.toLowerCase(),data);
-		        swal(
-		            'Glose Ajouté !',
-		            'Vous pouvez la selectionner dans la liste déroulante.',
-		            'success'
-		        )                                    
+            	var reponse = JSON.parse(data);
+                if(reponse['message'] === ''){
+                    ajoutGlose(glose.toLowerCase(),reponse['id_Glose']);
+                    document.getElementsByTagName('credit')[0].innerHTML=reponse['credit'];
+                swal(
+                    'Glose Ajouté !',
+                    'Vous pouvez la selectionner dans la liste déroulante.',
+                    'success'
+                )             
+                }else{
+                    
+                    document.getElementById("msgErrorPopup").removeAttribute("hidden");
+                    document.getElementById("msgErrorPopup").innerHTML = reponse['message'];
+                }
+		        
+                                  
             }  
         });
     });
+
+    
     $("amb").attr("onMouseOver","showShadow(this)");
-    $("amb").attr("onMouseOut", "hideShadow(this)");	
+    $("amb").attr("onMouseOut", "hideShadow(this)");
+
+    $("ref").attr("onMouseOver","showShadow(this)");
+    $("ref").attr("onMouseOut", "hideShadow(this)");   	
+    $(".list").addClass("scrollGloses");
 });
 
 function addGlose(Select,MotId){
@@ -77,7 +92,7 @@ function ajoutGlose(value,idGlose){
     $('#'+curr_selectId+' option:first-child').replaceWith(optionChoisir+optionV);
     // $('#'+curr_selectId).append(optionV);
     $('#'+curr_selectId).niceSelect('update');
-
+    $(".list").addClass("scrollGloses");
     hide_form();
 }
 

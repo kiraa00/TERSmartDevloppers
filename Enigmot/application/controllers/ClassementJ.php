@@ -36,11 +36,12 @@ public function ajax_list(){
 			$row = array();
 			$row[] = $no;
 			$row[] = $joueur->pseudo;
-			$row[] = $joueur->point;
 			$row[] = $joueur->titre;
+			$row[] = explode("-", explode(" ", $joueur->dateInscription)[0])[2] ."/". explode("-", explode(" ", $joueur->dateInscription)[0])[1] ."/". explode("-", explode(" ", $joueur->dateInscription)[0])[0];
+			$row[] = $joueur->point;
 			$row[] = $joueur->nbrPhraseCree;
+			$row[] = $joueur->nbrMotAmbigu;
 			$row[] = $joueur->nbrPartieJouee;
-			$row[] = $joueur->dateInscription;
 				//add html for action
 			$data[] = $row;
 		}

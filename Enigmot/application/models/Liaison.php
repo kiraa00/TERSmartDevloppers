@@ -71,10 +71,11 @@
         }
         
       }
-     public function jouer($Mot,$Glose){
+     public function jouer($Mot,$Glose,$liaison){
       $where = array(
         'idMotAmbigu' => $Mot,
         'idGlose' => $Glose,
+        'idLiaison' => $liaison,
 
       );
       $this->db->select('*');
@@ -98,7 +99,19 @@
       }
     }
 
-    public function getVote($mot,$glose){
+    public function getVote($mot,$glose,$liaison){
+      $where = array(
+        'idMotAmbigu' => $mot,
+        'idGlose' => $glose,
+        'idLiaison' => $liaison,
+      );      
+      $this->db->select('*');
+      $this->db->where($where);
+      $query=$this->db->get('Liaison');
+      return $query->row()->nbrVote;
+     }
+
+    public function getLiaisonByMotGlose($mot,$glose){
       $where = array(
         'idMotAmbigu' => $mot,
         'idGlose' => $glose,
@@ -106,7 +119,7 @@
       $this->db->select('*');
       $this->db->where($where);
       $query=$this->db->get('Liaison');
-      return $query->row()->nbrVote;
+      return $query->row()->idLiaison;       
      }
 }
   ?>

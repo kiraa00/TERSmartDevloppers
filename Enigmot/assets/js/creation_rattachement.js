@@ -150,7 +150,6 @@ function addMotAmb(){
     document.execCommand('insertHTML', true, "<amb id=m"+i+" class='amb'>" + selection.toString().trim() + "</amb>");
     $('#divAmbigu').append(form);
     $("#"+curr_selectId).niceSelect();
-    $(".list").niceScroll();
     $(".list").addClass("scrollGloses");
 
     $('#'+sup_mot_id).click({selectId:selectId, divId:divId, MotId:"m"+i}, suppressDiv);
@@ -193,7 +192,6 @@ function addEventBlurSentence(param) {
         if ($("#"+param.data.idR)[0] !== undefined) {
             $("#"+param.data.idROption)[0].innerHTML = $("#"+param.data.idR)[0].innerHTML.replace(/&nbsp;/g, ' ');
             $("#"+param.data.idS).niceSelect("update");
-            $(".list").niceScroll();
             $(".list").addClass("scrollGloses");
             addIdOption(param.data.idM);
             addEventMoussReference(param.data.idM, param.data.idS, param.data.idD);
@@ -229,7 +227,6 @@ function addRattachement(param) {
 
     $("#"+selectId).append(option);
     $("#"+selectId).niceSelect("update");
-    $(".list").niceScroll();
     $(".list").addClass("scrollGloses");
 
     let positionOption = addIdOption(motId);    
@@ -487,9 +484,9 @@ function getWordsAndRattachement(param, position){
                 }
             
                 if (options[k].text === optionSelected) {
-                    reponse = reponse.concat("{\"selected\": true, \"valeur\": \"" +options[k].text+ "\", \"identifiant\": \"id='ref" +k+ "\"}")
+                    reponse = reponse.concat("{\"selected\": true, \"valeur\": \"" +options[k].text+ "\", \"identifiant\": \"ref" +k+ "\"}")
                 } else {
-                    reponse = reponse.concat("{\"selected\": false, \"valeur\": \"" +options[k].text+ "\", \"identifiant\": \"id='ref" +k+ "\"}")
+                    reponse = reponse.concat("{\"selected\": false, \"valeur\": \"" +options[k].text+ "\", \"identifiant\": \"ref" +k+ "\"}")
                 }
         
                 if (k === options.length - 1) {

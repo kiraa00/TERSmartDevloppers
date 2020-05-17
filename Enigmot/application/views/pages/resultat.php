@@ -1,7 +1,7 @@
         <section class="banner_area">
             <div class="banner_inner d-flex align-items-center" style="min-height: 100vh">
                 <div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
-                <div class="container">
+                <div class="container conteneur">
                     <div class="banner_content text-center p-5">
                         <h2>Résultat de la partie</h2>
                     </div>
@@ -37,7 +37,7 @@
                             ?>
                         </ul>
 
-                        <a href="<?php echo base_url('index.php/jouer');?>" class="btn btn-primary">Rejouer</a>
+                        <a href="<?php echo base_url($url);?>" class="btn btn-primary">Rejouer</a>
                     </div>
 
                 </div>

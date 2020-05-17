@@ -2,7 +2,7 @@
  class Joueur extends CI_Model  
  {  
       var $table = 'Joueur';
-      var $column = array('id_joueur','pseudo','point','titre','nbrPhraseCree','nbrPartieJouee','dateInscription');
+      var $column = array('id_joueur', 'pseudo', 'titre', 'dateInscription', 'point', 'nbrPhraseCree', 'nbrMotAmbigu', 'nbrPartieJouee');
       var $order = array('point' => 'desc');
 
       public function __construct(){
@@ -154,9 +154,7 @@
         }
       }
 
-      public function getTitre($pointGagner) {
-        $point = $_SESSION['user']['point'] + $pointGagner;
-
+      public function getTitre($point) {
         if ($point >= 115000)
           return "Enigmator";
         else if ($point >= 92000)
@@ -171,8 +169,10 @@
           return "Novice";
       }
 
-      public function jouer($joueur,$gain){
+      public function jouer($joueur,$gain,$titre){
         $this->db->set('credit',"credit+$gain",FALSE);
+        $this->db->set('point',"point+$gain",FALSE);
+        $this->db->set('titre',"$titre");
         $this->db->where('id_joueur',$joueur);
         $this->db->update('Joueur');
       }
@@ -182,6 +182,12 @@
         $this->db->where('id_joueur',$id);
         $query = $this->db->get('Joueur');
         return $query->row();
+      }
+
+      public function ajoutGlose($joueur,$credit){
+        $this->db->set('credit',"credit-$credit",FALSE);
+        $this->db->where('id_joueur',$joueur);
+        $this->db->update('Joueur');
       }
 
 
@@ -224,6 +230,8 @@
         $this->db->from($this->table);  
         return $this->db->count_all_results();  
       }
+
+
 
 }
 ?>

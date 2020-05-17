@@ -21,6 +21,7 @@
                                 <div class="col-lg-12 p-4" style="background-color: #5753967a; margin-top:-18px;">
                                     <div class="row">
                                         <div class="col-md-6 text-left">
+                                            <p><b>Titre : </b> <?php echo $_SESSION['user']['titre'] ?></p>
                                             <p><b>Parties : </b> 0</p>
                                             <p><b>Points :</b> <?php echo $_SESSION['user']['point'] ?></p>
                                             <p><b>Crédits :</b> <?php echo $_SESSION['user']['credit'] ?></p>
@@ -31,7 +32,7 @@
                                                     <a href="#" style="color:white;"></a>
                                                 </li>
                                                 <li><?php echo $_SESSION['user']['nbrGloseAjoutee'] ?> gloses</li>
-                                                <li><?php echo $_SESSION['user']['nbrMotAmbigu'] ?> mots ambigus</li>
+                                                <li><?php echo $_SESSION['user']['nbrMotAmbigu'] ?> mots / rattachements ambigus</li>
                                             </ul>
                                             </div>
                                         </div>

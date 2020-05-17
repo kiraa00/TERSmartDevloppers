@@ -12,12 +12,6 @@
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css" rel="stylesheet">
 	<link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet">
 
-
-
-
-
-
-
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap-multiselect.css');?>">
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/select-checkbox.css');?>">
 	<link rel="stylesheet" href="<?php echo base_url($cssFile);?>">
@@ -84,12 +78,15 @@
 								 aria-expanded="false">Classement</a>
 								<ul class="dropdown-menu">
 									<li class="nav-item"><a class="nav-link" href="<?php echo base_url('index.php/ClassementJ');?>">Joueur</a>
-									<li class="nav-item"><a class="nav-link" href="#">Phrases</a>
-									<li class="nav-item"><a class="nav-link" href="#">Mes Phrases</a>
+									<?php if (isset($_SESSION['user'])) { ?>
+										<li class="nav-item"><a class="nav-link" href="<?php echo base_url('index.php/classement-phrase');?>">Phrases</a>
+										<li class="nav-item"><a class="nav-link" href="#">Mes Phrases</a>
+									<?php }?>
 								</ul>
 							</li>
-							
-							<li class="nav-item <?php if (isset($flagActif) && $flagActif === "profil") {echo "active";} ?>"><a class="nav-link" href="profil">Profil</a></li>
+							<?php if (isset($_SESSION['user'])) { ?>
+								<li class="nav-item <?php if (isset($flagActif) && $flagActif === "profil") {echo "active";} ?>"><a class="nav-link" href="<?php echo base_url('index.php/profil');?>">Profil</a></li>
+							<?php }?>
 						</ul>
 						<ul class="nav navbar-nav navbar-right" >
 							<ul class="nav navbar-nav navbar-right" class="primary_btn">
