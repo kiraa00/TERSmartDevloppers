@@ -95,9 +95,15 @@ $db['default'] = array(
 	'save_queries' => TRUE
 );
 
+<<<<<<< HEAD
 $db['Test'] = array(
                         'hostname' => 'localhost',
                         'username' => 'root',
+=======
+$db['default']['failover'] = array(
+                        'hostname' => 'localhost',
+                        'username' => '',
+>>>>>>> develop
                         'password' => '',
                         'database' => '',
                         'dbdriver' => 'mysqli',

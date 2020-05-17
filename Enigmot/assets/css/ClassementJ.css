@@ -1,0 +1,7 @@
+#table_wrapper{
+	display: block;
+}
+
+.pagination{
+	float: right;
+}

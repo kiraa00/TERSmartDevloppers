@@ -1,0 +1,57 @@
+.phraseGame {
+    color: white;
+    font-family: cursive;
+    margin-bottom: 10px;
+}
+.motGame{
+	display: flex;
+    justify-content: center;
+    padding-bottom: 7px;
+    padding-top: 16px;
+}
+.btn-like {
+    font-size: 12px;
+    padding: 0px 6px;
+}
+.btn-error {
+    padding: 0px 5px;
+    font-size: 13px;
+}
+.nice-select{
+    padding-top:0;
+    min-width: 252px;
+	padding-top:0;
+    width:inherit;
+}
+amb {
+	color: rgb(255, 188, 0); 
+    padding: 5px 2px; 
+    font-weight: bold;
+}
+#motForm{
+    vertical-align: middle;
+    display: block;
+}
+.conteneur {
+    padding-top: 3%;
+    padding-bottom: 10% !important;
+}
+.ambColor {
+    background-color: #2b245d99 !important;
+}
+.size20 {
+    font-size: 20px;
+}
+.champ{
+    display: contents;
+}
+ref {
+    color: #3fcaff; 
+    padding: 5px 2px; 
+    font-weight: bold;
+}
+.scrollGloses {
+    border-radius: 0px !important;
+    max-height: 200px !important;
+    overflow-y: scroll !important;
+}

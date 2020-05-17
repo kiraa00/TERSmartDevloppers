@@ -1,0 +1,175 @@
+p {
+    color: white;
+}
+
+li{
+    color: white;
+}
+
+.colstyle{
+    background-color: #5753967a;
+    margin-top:10px;
+    padding:10px;display:flex;
+}
+
+.rowdiv li a {
+    text-decoration: none;
+    color: white;
+    
+}
+.rowdiv li a:hover {
+    text-decoration: none;
+    background-color: #3383FF;
+    color: white;
+
+      
+}
+
+ul{
+    display: inline;
+    margin-left: 10px;
+}
+.activeprofil{
+    background-color: #3383FF;
+    color: white;
+    padding: 10px;
+    
+}
+
+.linkProfil{
+    text-decoration: none;
+}
+
+.inline{
+    margin: auto;
+   text-decoration: none;
+   list-style:none;
+   display:inline-block;
+   
+}
+
+.ul-inline{ 
+    
+    list-style: none;
+    margin: auto;
+}
+
+.ul-inline li {
+    display: inline;
+}
+
+.noactive{
+    background-color:#5753967a;
+    padding: 10px;
+    
+}
+
+.rowdiv{
+    margin-left: -40px;
+}
+
+.validerButton{
+    background-color: #3383FF;
+    color: white;
+    padding: 10px; 
+    border-radius: 5px;
+   
+}
+
+.validerButton:hover{
+    background-color: rgb(32, 100, 202);
+    color: white;
+    
+    
+}
+
+.col{
+    text-align: center ;
+    
+}
+
+.select p{
+
+    text-transform: none;
+    
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+option{
+    background-color: black;
+    color: black;
+}
+
+.other{
+    color: black;
+}
+
+.ulmarge{
+margin-top: -30px;
+margin-left: 20px;
+}
+
+.buttonvalidation{
+    text-align: center;
+    
+    
+}
+
+#leftgame{
+    background-color: yellow;
+    width: 40%;
+}
+
+#marge{
+    margin: 20px;
+}
+
+label{
+    color: white;
+}
+
+.radiosex{
+    display: inline-flex;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.row {
+    
+    width:auto;
+    
+}
+
+.abc{
+    float:right;
+    margin-left:10px;
+}
+
+.titleGame{
+    color: white;
+    background-color: white;
+}
+
+.imgsmyle{
+    width: 50px;
+    height: 50px;
+}
+

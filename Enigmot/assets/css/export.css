@@ -1,0 +1,34 @@
+.bulle {
+    padding: 50px 40px;
+    text-align: center;
+    color: #000000;
+    color: var(--color-black);
+    background: #FFFCBC;
+    background: var(--color-yellow);
+    border-radius: 220px / 120px;
+    box-shadow: 0 0 5px rgba(160, 210, 51, .5);
+}
+
+
+p{
+    color: white;
+}
+
+
+.download{
+    margin-top: 15px;
+    width: 25px;
+    height: 25px;
+    margin-bottom: 25px;
+}
+
+.downloadLink{
+    
+}
+
+.col-md-12 a{
+    color: white;
+    color: #FFB229;
+}
+
+

@@ -1,0 +1,332 @@
+.nice-select {
+    padding-top: 0;
+}
+
+.styleNavCoin {
+    font-weight: bold !important;
+    font-size: 13px !important;
+    font-family: cursive !important;
+}
+
+.multiselect-container {
+    min-width: 241px;
+}
+
+.ref {
+    color: #3fcaff; 
+    padding: 5px 2px; 
+    font-weight: bold;
+}
+
+.amb {
+    color: rgb(255, 188, 0); 
+    padding: 5px 2px; 
+    font-weight: bold;
+}
+
+.btn-warning {
+    background-color: #f0ad4e !important;
+    border-color: #eea236 !important;
+}
+
+.btn-warning:hover {
+    background-color: orange !important;
+    border-color: orange !important;
+}
+
+.inputPopup {
+    color: #555;
+    background-color: #fff !important;
+    border: 1px solid #ccc !important;
+}
+
+.msgErrorPopup {
+    display: block;
+    color: red;
+    margin-top: -19px;
+}
+
+.btnClosePopup {
+    margin-top: -33px !important;
+    margin-right: -28px !important;
+    color: rgb(0, 0, 0);
+    font-size: 30px;
+}
+
+.btnClosePopup:hover {
+    color: red !important;
+}
+
+.h4Message {
+    font-size: 15px;
+    color: green;
+    margin-bottom: -5px;
+}
+
+.ambColor {
+    background-color: #2b245d99 !important;
+}
+
+.list {
+    width: 100%;
+}
+
+.divActionBtn {
+    display: flex;
+}
+
+.scrollGloses {
+    border-radius: 0px !important;
+    max-height: 200px !important;
+    overflow-y: scroll !important;
+}
+
+.conteneur {
+    padding-top: 3%;
+    padding-bottom: 10% !important;
+}
+
+@media screen and (min-width: 1450px){
+    .conteneur {
+        max-width: 90% !important;
+    }
+
+    .selectGloseMargin {
+        margin-right: -45px;
+    }
+
+    .selectMultipleRight {
+        margin-right: -80px !important;
+        margin-left: -10px;
+    }
+}
+
+@media screen and (max-width: 575px){
+    .selectGloseMargin {
+        margin-top: 20px !important;
+    }
+
+    .selectGloseWidth {
+        min-width: 255px;
+    }
+}
+
+@media screen and (min-width: 576px) and (max-width: 746px){
+    .conteneur {
+        max-width: 100% !important;
+    }
+
+    .selectGloseWidth {
+        min-width: 255px;
+    }
+
+    .selectMultipleRight {
+        margin-right: 27px !important;
+    }
+
+    .selectGloseMargin {
+        margin-right: 292px !important;
+    }
+
+    .selectMultiple {
+        margin-left: 80px !important;
+    }
+
+    .actionMargin {
+        margin-top: 20px;
+    }
+}
+
+@media screen and (min-width: 747px) and (max-width: 767px){
+    .conteneur {
+        max-width: 100% !important;
+    }
+
+    .selectGloseWidth {
+        min-width: 255px;
+    }
+
+    .selectMultipleRight {
+        margin-right: 40px !important;
+    }
+
+    .selectGloseMargin {
+        margin-right: 103px !important;
+    }
+
+    .selectMultiple {
+        margin-left: 45px !important;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 840px){
+    .conteneur {
+        max-width: 100% !important;
+    }
+
+    .selectGloseWidth {
+        min-width: 255px;
+    }
+
+    .selectMultipleRight {
+        margin-right: 27px !important;
+    }
+
+    .selectGloseMargin {
+        margin-right: 103px !important;
+    }
+
+    .selectMultiple {
+        margin-left: 70px !important;
+    }
+}
+
+@media screen and (min-width: 841px) and (max-width: 991px){
+    .conteneur {
+        max-width: 100% !important;
+    }
+
+    .selectGloseWidth {
+        margin-top: 3px;
+        min-width: 255px;
+    }
+
+    .selectGloseMargin {
+        margin-left: -15px !important;
+    }
+
+    .selectMultiple {
+        margin-left: 40px !important;
+    }
+}
+
+@media screen and (min-width: 900px) and (max-width: 991px){
+
+    .selectGloseMargin {
+        margin-left: -35px;
+    }
+
+    .selectGloseWidth {
+        margin-top: 3px;
+        min-width: 255px;
+    }
+
+}
+
+@media screen and (min-width: 992px) {
+    .selectGloseMargin {
+        margin-left: -20px;
+    }
+
+    .selectGloseWidth {
+        margin-top: 3px;
+        min-width: 255px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .selectGloseMargin {
+        margin-left: -90px;
+    }
+}
+
+@media screen and (min-width: 576px)
+{
+    .selectMultiple {
+        margin-top: 5px;
+    }
+}
+
+@media screen and (max-width: 575px)
+{
+    .actionMargin {
+        margin-top: 20px;
+    }
+
+    .widthSelect {
+        width: 100% !important;
+    }
+}
+
+@media screen and (min-width: 576px) and (max-width: 991px) 
+{
+    .widthSelect {
+        margin-left: 90px;
+        margin-top: 3px;
+        min-width: 255px;
+    }
+}
+
+@media screen and (min-width: 992px)
+{
+    .widthSelect {
+        margin-top: 3px;
+        min-width: 255px;
+    }
+}
+
+
+@media screen and (min-width: 433px)
+{
+    .btnAjouterMargin {
+        margin-right: 20px;
+    }
+}
+
+@media screen and (max-width: 454px)
+{
+    .divActionBtn {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 452px)
+{
+    .btnAjouterMargin {
+        margin-bottom: 10px;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .selectMultipleRight {
+        margin-right: 1px;
+    }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1199px)
+{
+    .actionMargin {
+        margin-top: 5px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px)
+{
+    .selectMultiple {
+        margin-top: 5px;
+        margin-left: 25px;
+    }
+
+    .widthInput {
+        width: 225px !important;
+    }
+}
+
+@media screen and (min-width: 576px) and (max-width: 767px) {
+    .selectMultiple {
+        margin-top: 5px;
+        margin-left: 99px;
+    }
+
+    .widthInput {
+        width: 200px !important;
+    }
+}
+
+
+@media screen and (min-width: 1200px)
+{
+    .actionMargin {
+        margin-top: 5px;
+    }
+}
