@@ -39,12 +39,11 @@ $(document).ready(function(){
     $("amb").attr("onMouseOut", "hideShadow(this)");
 
     $("ref").attr("onMouseOver","showShadow(this)");
+<<<<<<< HEAD
     $("ref").attr("onMouseOut", "hideShadow(this)");
 
     $(".list").addClass("scrollGloses");   	
 });
-
-
 
 
 function showShadow(element){
