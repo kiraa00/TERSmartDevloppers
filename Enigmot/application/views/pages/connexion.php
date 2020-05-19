@@ -28,7 +28,7 @@
 							    <button onclick="verify_form_connexion()" type="submit" class="registerbtn">Se connecter</button>
 							</div>
 							<div class="container signin">
-							    <p>Vous n'avez pas encore de compte? <a href="<?php echo base_url('index.php/inscription');?>">S'inscrire'</a>.</p>
+							    <p>Vous n'avez pas encore de compte ? <a href="<?php echo base_url('index.php/inscription');?>">S'inscrire</a>.</p>
 							 </div>
 						</div>
 					</div>

@@ -75,22 +75,31 @@ class Jouer extends CI_Controller {
 	public function ajouterGlose(){
 		$id_mot = $this->input->post('id_Ambigu');
 		$id_Glose='';
+        $message='';
+        $existGlose=false;
         $gloses = $this->Glose->getGlosesByMotID($id_mot);
         $cost = count($gloses)*10;
-        $message='';
-        if($_SESSION['user']['credit']>=$cost){
-			$glose = $this->input->post('glose');
-			$id_Glose = $this->Glose->insert($glose);
-			$dataL = array(
-	            'idMotAmbigu' =>  $id_mot,
-	        	'idGlose'   =>  $id_Glose,
-	            'nbrVote'  => 0,
-	        );
-        	$_SESSION['user']['credit'] = $_SESSION['user']['credit'] - $cost;
-        	$this->Joueur->ajoutGlose($_SESSION['user']['id_joueur'],$cost);
-        	$this->Liaison->insert($dataL);
-        }else{
-        	$message='vous n\'avez pas assez de crédits pour créer la glose';
+		$glose = $this->input->post('glose');
+        foreach ($gloses as $varGlose) {
+        	if($varGlose->glose == $glose){
+        		$message='Cette glose existe déjà pour ce mot ambigu.';
+        		$existGlose = true;
+        	}
+        }
+        if(!$existGlose){
+	        if($_SESSION['user']['credit']>=$cost){
+				$id_Glose = $this->Glose->insert($glose);
+				$dataLiaison = array(
+		            'idMotAmbigu' =>  $id_mot,
+		        	'idGlose'   =>  $id_Glose,
+		            'nbrVote'  => 0,
+		        );
+	        	$_SESSION['user']['credit'] = $_SESSION['user']['credit'] - $cost;
+	        	$this->Joueur->ajoutGlose($_SESSION['user']['id_joueur'],$cost);
+	        	$this->Liaison->insert($dataLiaison);
+	        }else{
+	        	$message='Vous n\'avez pas assez de crédits pour créer cette glose.';
+	        }
         }
         $dataSend=array(
         	'credit' =>	$_SESSION['user']['credit'],
@@ -148,7 +157,7 @@ class Jouer extends CI_Controller {
 				$createur = $this->Joueur->getJoueurById($createurId);
 				$pointGagne = $createur->point+count($data['Mot'])*10;
 				$titre = $this->Joueur->getTitre($pointGagne);
-				$this->Joueur->jouer($createurId,$gainTotale,$titre);
+				$this->Joueur->jouer($createurId,count($data['Mot'])*10,$titre);
 			}
 			
 
@@ -156,7 +165,7 @@ class Jouer extends CI_Controller {
 			//affichage de résultats
 			//----- phrase de resultat -----------------
 			if(isset($gainTotale)){
-				$resultat = "Félicitations, vous avez gagné <amb> $gainTotale </amb> points !";
+				$resultat = "Félicitation, vous avez gagné <amb> $gainTotale </amb> points !";
 				if($gainTotale == 0){
 					$resultat = "Dommage, vous n'avez pas gagné de point cette fois.";
 				}
@@ -187,14 +196,14 @@ class Jouer extends CI_Controller {
 					$idGlose=$dataglose->id_glose;
 					$idLiaison=$dataglose->idLiaison;
 					list($gloseIDref, $liaisonIDref) = explode(":",$data['Gloses'][$i]);
-					$Vote = $this->Liaison->getVote($data['Mot'][$i],$idGlose,$idLiaison);
-					$gloseName = $dataglose->glose;
+					$Vote = $this->Liaison->getVote($data['Mot'][$i],$idGlose,$idLiaison)."</glose>";
+					$gloseName = "<glose id='d$idLiaison'>".$dataglose->glose;
 					if($idGlose == $gloseIDref & $idLiaison == $liaisonIDref){
-						$gloseName = "<glose>".$dataglose->glose."</glose>";
+						$gloseName = "<glose id='d$idLiaison' class='glose'>".$dataglose->glose;
 						if(!$dejaJouer){
 							$Vote--;
 						}
-						$Vote= "<glose>".$Vote."</glose>";
+						$Vote= $Vote."</glose>";
 					}
 					
 					$MotsResultat[$i]['gloses'][$j]=array(
@@ -211,6 +220,7 @@ class Jouer extends CI_Controller {
 			$ResultatJeu = array(
 				'resultat'	=>	$resultat,
 				'phrase'	=>	$dataPhrase->Phrase,
+				'type'		=>	$dataPhrase->type,
 				'createur'	=>	$dataJoueur->pseudo,
 				'dataMots'	=>	$MotsResultat,
 			);
@@ -227,12 +237,19 @@ class Jouer extends CI_Controller {
 	}
 
 	public function showResult($data){
+		$javaFile='';
+		$type=$data['type'];
+		if($type == 'ambigu'){
+				$javaFile = "assets/js/gameAmb.js";
+		}else{
+				$javaFile = "assets/js/gameRatt.js";
+			}
 		$headerData = array(
 			"cssFile" => "assets/css/resultat.css",
 			"flagActif" => "jouer",
 		);
 		$footerData = array(
-			"javaFile" => "assets/js/gameAmb.js"
+			"javaFile" => $javaFile,
 		);
 		$this->load->view('header', $headerData);
 		$this->load->view('pages/resultat',$data);

@@ -44,7 +44,7 @@ class Creation_rattachement extends CI_Controller {
 
 		//Calcul du cout total de création de la phrase
         for ($i = 0; $i < count($dataSet['motsAmbigus']); $i++) {
-			$cost = $cost + 50;
+			$cost = $cost + 25;
 			$motAmbiguCourant = $dataSet['motsAmbigus'][$i];
 			
 			for ($j = 0; $j < count($motAmbiguCourant['gloses']); $j++) {

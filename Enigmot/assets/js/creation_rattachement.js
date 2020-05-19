@@ -156,7 +156,7 @@ function addMotAmb(){
     $('#'+buttonId).click({selectId:selectId, divId:divId, MotId:"m"+i}, addRattachement);
     
     arrayGlose[i] = 0;
-    cost+=50;
+    cost+=25;
     document.getElementById("cost").innerHTML = cost;
 
     i++;
@@ -300,7 +300,7 @@ function suppressDiv(param){
             
             addEventMoussReference("m"+k, "gloses"+k, "div"+k);
             
-            cost = cost + 50;
+            cost = cost + 25;
             nbrGloses = nbrGloses + arrayGlose[k];
         }
     }
@@ -461,7 +461,9 @@ function getSentenceR() {
     } else {
         phrase = phrase.substring(0, 18) + phrase[18].toUpperCase() + phrase.substring(19, phrase.length);
     }
-    phrase = phrase + ".";
+    if ((phrase.substr(phrase.length - 1) !== ".") && (phrase.substr(phrase.length - 1) !== "!") && (phrase.substr(phrase.length - 1) !== "?")) {
+        phrase = phrase + ".";
+    }
 
     //Construction du JSON à envoyer au controller
     reponse = "{\"phrase\": \"" +phrase+ "\",\"motsAmbigus\": [" + reponse;
@@ -477,14 +479,16 @@ function getWordsAndRattachement(param, position){
         let options = document.getElementById("gloses"+param).options;
         if (options.length >= 3) {
             let reponse = "{\"motAmbigu\": \"" +document.getElementById("mot_ambigu"+param).value+ "\",\"position\": " +position+ ",\"gloses\": [";
+            let trueIsExist = false;
 
             for (let k = 1; k < options.length; k++) {
                 if (k !== 1 && k !== options.length) {
                     reponse = reponse.concat(",");
                 }
             
-                if (options[k].text === optionSelected) {
+                if (options[k].text === optionSelected  && !trueIsExist) {
                     reponse = reponse.concat("{\"selected\": true, \"valeur\": \"" +options[k].text+ "\", \"identifiant\": \"ref" +k+ "\"}")
+                    trueIsExist = true;
                 } else {
                     reponse = reponse.concat("{\"selected\": false, \"valeur\": \"" +options[k].text+ "\", \"identifiant\": \"ref" +k+ "\"}")
                 }

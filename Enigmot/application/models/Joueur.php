@@ -190,6 +190,17 @@
         $this->db->update('Joueur');
       }
 
+      public function editCreditsAndPoints($idJoueur) {
+        $this->db->select('*');
+        $this->db->where('id_joueur',$idJoueur);
+        $query = $this->db->get('Joueur');
+        $_SESSION['user']['credit'] = $query->row()->credit;
+        $_SESSION['user']['point'] = $query->row()->point;
+        $_SESSION['user']['nbrPartieJouee'] = $query->row()->nbrPartieJouee;
+        $_SESSION['user']['nbrPhraseCree'] = $query->row()->nbrPhraseCree;
+        $_SESSION['user']['nbrGloseAjoutee'] = $query->row()->nbrGloseAjoutee;
+        $_SESSION['user']['nbrMotAmbigu'] = $query->row()->nbrMotAmbigu;
+      }
 
 
       ///fonctions pour le classement des joueurs

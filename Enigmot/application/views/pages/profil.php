@@ -22,7 +22,7 @@
                                     <div class="row">
                                         <div class="col-md-6 text-left">
                                             <p><b>Titre : </b> <?php echo $_SESSION['user']['titre'] ?></p>
-                                            <p><b>Parties : </b> 0</p>
+                                            <p><b>Parties : </b> <?php echo $_SESSION['user']['nbrPartieJouee'] ?></p>
                                             <p><b>Points :</b> <?php echo $_SESSION['user']['point'] ?></p>
                                             <p><b>Crédits :</b> <?php echo $_SESSION['user']['credit'] ?></p>
                                             <p> Vous avez créé :</p>

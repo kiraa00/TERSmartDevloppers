@@ -2,6 +2,9 @@ var curr_selectId;
 var idMot;
 var errors = false;
 $(document).ready(function(){
+
+$(".list").addClass("scrollGloses");
+
     $('form#jouerForm').on('submit', function(form){
         form.preventDefault();
         var empty = false;
@@ -71,8 +74,20 @@ $(document).ready(function(){
     $("amb").attr("onMouseOut", "hideShadow(this)");
 
     $("ref").attr("onMouseOver","showShadow(this)");
-    $("ref").attr("onMouseOut", "hideShadow(this)");   	
-    $(".list").addClass("scrollGloses");
+    $("ref").attr("onMouseOut", "hideShadow(this)");
+
+
+    //gestion du button j'aime
+    // var clique=false;
+    // $('#phraseLike').click(function(){
+    //     if(clique){
+    //         $(this).attr('class:','btn-sm btn-light btn-like');
+    //         clique=false;
+    //     }else{
+    //         $(this).attr('class:','btn btn-xs btn-primary');
+    //         clique=true;
+    //     }
+    // }
 });
 
 function addGlose(Select,MotId){
@@ -88,7 +103,7 @@ function ajoutGlose(value,idGlose){
     compteur++;
     $('#nbr'+curr_selectId).val(compteur);
     let optionChoisir = "<option selected='' disabled='' value=''> Choisissez une glose ("+compteur+" existantes)</option>";
-    let optionV="<option value='"+idGlose+"'>"+value+"</option>";
+    let optionV="<option value='"+idGlose+":'>"+value+"</option>";
     $('#'+curr_selectId+' option:first-child').replaceWith(optionChoisir+optionV);
     // $('#'+curr_selectId).append(optionV);
     $('#'+curr_selectId).niceSelect('update');

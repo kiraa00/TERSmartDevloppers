@@ -63,14 +63,14 @@ function modifyInfo() {
 
     let genre = $("input:checked").val();
     let dateNaissance = document.getElementById("dateNaissance").value;
-
+    
     if (genre !== "Femme" && genre !== "Homme" && (dateNaissance === "" || parseInt(dateNaissance.split("-")[0]) < 1900 || parseInt(dateNaissance.split("-")[0]) > (new Date()).getFullYear())) {
         document.location.href = "profil";
     }
 
     let dataSet;
 
-    if ((genre === "Femme" || genre === "Homme") && dateNaissance !== "") {
+    if ((genre === "Femme" || genre === "Homme") && dateNaissance !== "" && parseInt(dateNaissance.split("-")[0]) <= (new Date()).getFullYear() && parseInt(dateNaissance.split("-")[0]) >= 1900) {
         dataSet = {"genre" : genre, "dateNaissance" : dateNaissance, "type" : "GD"};
     } else if (genre === "Femme" || genre === "Homme") {
         dataSet = {"genre" : genre, "type" : "G"};

@@ -3,8 +3,8 @@
 			<div class="banner_inner d-flex align-items-center" style="min-height: 100vh">
 				<div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
 				<div class="container conteneur">
-					<div class="banner_content text-center p-5">
-						<h2>Jouer Phrase <?php echo $Type; ?></h2>
+					<div class="banner_content text-center p-5" style="margin-top: 50px;">
+						<h2 style="margin-top: 50px;">Jouer Phrase <?php echo $Type; ?></h2>
 					</div>
 					<div class="col-lg-12 p-5" style="background-color: #5753967a; text-align:center; color: white;">
 						<div id="messageError" hidden style="margin-top: 15px; font-size: 13px;text-align:left;" class="alert alert-danger" role="alert"></div>

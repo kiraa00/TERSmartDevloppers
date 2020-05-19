@@ -14,7 +14,7 @@
 
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap-multiselect.css');?>">
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/select-checkbox.css');?>">
-	<link rel="stylesheet" href="<?php echo base_url($cssFile);?>">
+	<?php if (isset($cssFile) && $cssFile !== "") { ?><link rel="stylesheet" href="<?php echo base_url($cssFile);?>"><?php } ?>
 	<link rel="stylesheet" href="<?php echo base_url('assets/vendors/linericon/style.css');?>">
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/font-awesome.min.css');?>">
 	<link rel="stylesheet" href="<?php echo base_url('assets/vendors/owl-carousel/owl.carousel.min.css');?>">
@@ -38,7 +38,7 @@
 				<div class="container">
 					<!-- Brand and toggle get grouped for better mobile display -->
 					<div>
-						<a class="navbar-brand logo_h"  href="<?php echo base_url('index.php/home');?>"><img src="<?php echo base_url('assets/img/logo.png');?>" class="Mon_logo" alt=""></a>
+						<a class="navbar-brand logo_h"  href="<?php echo base_url('');?>"><img src="<?php echo base_url('assets/img/logo.png');?>" class="Mon_logo" alt=""></a>
 						<br><?php if (isset($_SESSION['user'])) { ?>
 							<p style="margin-left: 4px; color: rgb(255, 188, 0); font-weight: bold;">
 								Crédits &nbsp;: &nbsp;<credit style="color: white;"><?php echo $_SESSION['user']['credit'] ?></credit> &nbsp;&nbsp;/ 
@@ -55,9 +55,9 @@
 					<!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
 						<ul class="nav navbar-nav menu_nav justify-content-center">
-							<li class="nav-item <?php if (isset($flagActif) && $flagActif === "home") {echo "active";} ?>"><a class="nav-link" href="<?php echo base_url('index.php/home');?>">Acceuil</a></li>
+							<li class="nav-item <?php if (isset($flagActif) && $flagActif === "home") {echo "active";} ?>"><a class="nav-link" href="<?php echo base_url('');?>">Acceuil</a></li>
 							<li class="nav-item submenu dropdown <?php if (isset($flagActif) && $flagActif === "jouer") {echo "active";} ?>">
-							<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+							<a style="cursor: pointer;" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 									aria-expanded="false">Jouer</a>								<ul style="min-width: 206px;" class="dropdown-menu">
 									<li class="nav-item <?php if (isset($flagActif) && $flagActif === "creer") {echo "active";} ?>"><a class="nav-link" href="<?php echo base_url('index.php/jouer');?>">Version ambigus</a>
 									<li class="nav-item <?php if (isset($flagActif) && $flagActif === "creer") {echo "active";} ?>"><a class="nav-link" href="<?php echo base_url('index.php/jouer/rattachement');?>">Version rattachement</a>
@@ -65,7 +65,7 @@
 							</li>
 							<?php if (isset($_SESSION['user'])) { ?>
 								<li class="nav-item submenu dropdown <?php if (isset($flagActif) && $flagActif === "creer") {echo "active";} ?>">
-									<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+									<a style="cursor: pointer;" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 									aria-expanded="false">Créer</a>
 									<ul style="min-width: 206px;" class="dropdown-menu">
 										<li class="nav-item <?php if (isset($flagActif) && $flagActif === "creer") {echo "active";} ?>"><a class="nav-link" href="<?php echo base_url('index.php/create');?>">Version ambigus</a>
@@ -74,10 +74,10 @@
 								</li>
 							<?php } ?>
 							<li class="nav-item submenu dropdown <?php if (isset($flagActif) && $flagActif === "classement") {echo "active";} ?>">
-								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+								<a style="cursor: pointer;" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 								 aria-expanded="false">Classement</a>
 								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="<?php echo base_url('index.php/ClassementJ');?>">Joueur</a>
+									<li class="nav-item"><a class="nav-link" href="<?php echo base_url('index.php/ClassementJ');?>">Joueurs</a>
 									<?php if (isset($_SESSION['user'])) { ?>
 										<li class="nav-item"><a class="nav-link" href="<?php echo base_url('index.php/classement-phrase');?>">Phrases</a>
 										<li class="nav-item"><a class="nav-link" href="#">Mes Phrases</a>

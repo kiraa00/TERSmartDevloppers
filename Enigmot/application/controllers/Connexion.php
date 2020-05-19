@@ -34,7 +34,7 @@ class Connexion extends CI_Controller {
 
 	public function verifyUserWhenConnecting(){
 		$data=array(
-			'email' =>  $this->input->post('email'),
+			'email' =>  strtolower($this->input->post('email')),
             'motdepasse' =>  sha1($this->input->post('password'))
 		);
 		

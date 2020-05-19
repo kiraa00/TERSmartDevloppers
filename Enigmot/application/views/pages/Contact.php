@@ -4,8 +4,8 @@
 				<div class="container">
 					<div class="banner_content text-center">
 						<div class="page_link">
-							<a href="index.html">Acceuil</a>
-							<a href="contact.html">CONTACT</a>
+							<a href="<?php echo base_url('index.php/home');?>">Acceuil</a>
+							<a href="<?php echo base_url('index.php/Contact');?>">Contact</a>
 						</div>
 						<h2>CONTACTEZ NOUS</h2>
 						

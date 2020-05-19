@@ -40,7 +40,7 @@ $(document).ready(function(){
             for (let k = 0; k < options.length; k++) {
                 if (options[k].text.trim() === glose.trim()) {
                     document.getElementById("msgErrorPopup").removeAttribute("hidden");
-                    document.getElementById("msgErrorPopup").innerHTML = "Cette glose existe déjà pour ce mot ambigus.";
+                    document.getElementById("msgErrorPopup").innerHTML = "Cette glose existe déjà pour ce mot ambigu.";
                     return; 
                 } 
             }
@@ -532,7 +532,9 @@ function getSentence() {
     } else {
         phrase = phrase.substring(0, 13) + phrase[13].toUpperCase() + phrase.substring(14, phrase.length);
     }
-    phrase = phrase + ".";
+    if (phrase.substr(phrase.length - 1) !== ".") {
+        phrase = phrase + ".";
+    }
     
     
     //Construction du JSON à envoyer au controller
@@ -607,9 +609,9 @@ function changeSelectName() {
 
     if (val !== undefined && val.toString() !== "") {
         arrayVal = val.toString().split(",");
-        document.getElementsByClassName("multiselect-selected-text")[0].innerHTML = "Selecionner les gloses (" +arrayVal.length+ ")";
+        document.getElementsByClassName("multiselect-selected-text")[0].innerHTML = "Sélectionner les gloses (" +arrayVal.length+ ")";
     } else {
-        document.getElementsByClassName("multiselect-selected-text")[0].innerHTML = "Selecionner les gloses (0)";
+        document.getElementsByClassName("multiselect-selected-text")[0].innerHTML = "Sélectionner les gloses (0)";
     }
 
     document.getElementsByClassName("multiselect-selected-text")[0].setAttribute("class", "gloses"+(i-1));
@@ -620,7 +622,7 @@ function newChangeSelectName(param) {
 
     if (val !== null) {
         if (document.getElementsByClassName("multiselect-selected-text")[0] !== undefined) {
-            document.getElementsByClassName("multiselect-selected-text")[0].innerHTML = "Selecionner les gloses (" +val.options.length+ ")";
+            document.getElementsByClassName("multiselect-selected-text")[0].innerHTML = "Sélectionner les gloses (" +val.options.length+ ")";
             document.getElementsByClassName("multiselect-selected-text")[0].setAttribute("class", param);
         }
     }

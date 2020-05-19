@@ -11,6 +11,12 @@
         $this->load->dbforge();
     
       	$fields = array(
+                'id_partie' => array(
+                             'type' => 'int',
+                             'constraint' => '15',
+                             'auto_increment'=>true,
+                              ),
+
                 'id_phrase' => array(
                              'type' => 'int',
                              'constraint' => '15',
@@ -24,10 +30,13 @@
                 'Gain'  => array(
                              'type' => 'int',
                              'constraint' => '11',
-                             ),                                           
+                             ), 
+                             
+                'dateCreation datetime Not NULL default current_timestamp'
             );
 
         $this->dbforge->add_field($fields);
+        $this->dbforge->add_key('id_partie',true);
         $this->dbforge->add_key('id_phrase',true);
         $this->dbforge->add_key('id_joueur',true);
         $this->dbforge->add_field('CONSTRAINT FOREIGN KEY (id_joueur) REFERENCES Joueur(id_joueur)');
@@ -55,6 +64,9 @@
           $this->db->set('gainTotale',"gainTotale+$gain",FALSE);
           $this->db->where('id_phrase',$phrase);
           $this->db->update('Phrase');
+          $this->db->set('nbrPartieJouee',"nbrPartieJouee+1",FALSE);
+          $this->db->where('id_joueur',$joueur);
+          $this->db->update('Joueur');
         }
       }
 

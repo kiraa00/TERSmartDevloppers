@@ -35,7 +35,7 @@ class Inscription extends CI_Controller {
 	public function verifyPseudoAndEmail(){
 		$data=array(
         	'pseudo'   =>  $this->input->post('pseudo'),
-			'email' =>  $this->input->post('email')
+			'email' =>  strtolower($this->input->post('email'))
         );
 
 		$reponse = $this->Joueur->verifyPseudoAndEmail($data);
@@ -45,7 +45,7 @@ class Inscription extends CI_Controller {
 	public function registerUser(){
 		$data=array(
         	'pseudo' => $this->input->post('pseudo'),
-			'email' => $this->input->post('email'),
+			'email' => strtolower($this->input->post('email')),
 			'point' => '0',
 			'credit' => '0',
             'motdepasse' =>  sha1($this->input->post('password'))

@@ -33,12 +33,12 @@
 								<div id="errorPasswordVerify" hidden style="color:red;" role="alert"></div>
 								<hr>
 
-								<p>En créant votre compte vous accepter nos conditions d'utilisation.</p>
+								<p>En créant votre compte vous acceptez nos conditions d'utilisation.</p>
 								<button onclick="verify_form()" type="submit" class="registerbtn">S'inscrire</button>
 								
 							</div>
 							<div class="container signin">
-							    <p>Vous avez dèjà un compte? <a href="<?php echo base_url('index.php/connexion');?>">Se connecter</a>.</p>
+							    <p>Vous avez déjà un compte ? <a href="<?php echo base_url('index.php/connexion');?>">Se connecter</a>.</p>
 							 </div>
 						</div>
 					</div>

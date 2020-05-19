@@ -20,7 +20,7 @@ class Contact extends CI_Controller {
 			"flagActif" => "Contact",
 		);
 		$footerData = array(
-			"javaFile" => "assets/js/Contact.js",
+			"javaFile" => "assets/js/contact.js",
 		);
 		$this->load->view('header', $headerData);
 		$this->load->view('pages/Contact');

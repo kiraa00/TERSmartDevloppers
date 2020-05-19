@@ -55,3 +55,6 @@ ref {
     max-height: 200px !important;
     overflow-y: scroll !important;
 }
+.list {
+    width: 100%;
+}

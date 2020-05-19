@@ -8,6 +8,7 @@ class Editer_Information extends CI_Controller {
 		// load form and url helpers
 		$this->load->library('session');
         // load form_validation library
+		$this->load->model('Joueur');
 		//XMLHttpRequest
 		header('Access-Control-Allow-Origin: *');
 	}
@@ -28,5 +29,16 @@ class Editer_Information extends CI_Controller {
 			$this->load->view('pages/connexion');
 		}
 		$this->load->view('footer',$footerData);
+	}
+
+	public function editCreditsAndPoints() {
+		if (isset($_SESSION['user'])) {
+			$this->Joueur->editCreditsAndPoints($_SESSION['user']['id_joueur']);
+			$dataSend=array(
+				'credit' =>	$_SESSION['user']['credit'],
+				'point' => $_SESSION['user']['point']
+			);
+			echo json_encode($dataSend);
+		}
 	}
 }

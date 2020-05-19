@@ -3,10 +3,10 @@
     <div class="banner_inner d-flex align-items-center" style="min-height: 100vh">
         <div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
         <div class="container conteneur">
-            <div class="banner_content text-center p-5">
+            <div class="banner_content text-center p-5" style="margin-top:50px;">
                 <div class="page_link">
-                    <a href="Home">Acceuil</a>
-                    <a href="create">Création Version Rattachement</a>
+                    <a href="<?php echo base_url('index.php/home');?>">Acceuil</a>
+                    <a href="<?php echo base_url('index.php/creation_rattachement');?>">Création Version Rattachement</a>
                 </div>
                 <h2>Création d'une phrase à rattachements ambigus</h2>
             </div>
@@ -15,7 +15,7 @@
                 <?php if($_SESSION["user"]["credit"] < 75) { ?>
                     <div style="margin-top: 15px; font-size: 13px;" class="alert alert-danger" role="alert">Vous n'avez pas assez de crédits pour pouvoir créer une phrase à mots rattachés.</div>
                 <?php } else { ?>
-                    <div style="margin-top: 15px; font-size: 13px;" class="alert alert-success" role="alert">Pour chaque groupe de mot ambigu ajouté, cela vous coûtera 50 crédits.<br>Pour chaque rattachement effectuer, cela vous coûtera 25 crédits.<br>Coût de la création de la phrase : <cost id="cost">0</cost> crédits</div>
+                    <div style="margin-top: 15px; font-size: 13px;" class="alert alert-success" role="alert">Pour chaque groupe de mot ambigu ajouté, cela vous coûtera 25 crédits.<br>Pour chaque rattachement effectué, cela vous coûtera 25 crédits.<br>Coût de la création de la phrase : <cost id="cost">0</cost> crédits</div>
                 <?php } ?>
                 <div style="margin-bottom: 20px;" class="form-control" autocomplete="off" id="phrase" required="required" placeholder="Saisissez votre phrase" contenteditable></div>
                 <div id="messageErrorR" hidden style="margin-top: 15px; font-size: 13px;" class="alert alert-danger" role="alert"></div>
