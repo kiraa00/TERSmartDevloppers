@@ -68,4 +68,5 @@ $route['conditions']='Conditions';
 $route['contact']='Contact';
 $route['classementJ']='ClassementJ';
 $route['classement-phrase']='ClassementPhrase';
+$route['classement-mesphrase']='ClassementPhrase/index/MesPhrase';
 $route['translate_uri_dashes'] = FALSE;

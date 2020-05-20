@@ -80,7 +80,7 @@
 									<li class="nav-item"><a class="nav-link" href="<?php echo base_url('index.php/ClassementJ');?>">Joueurs</a>
 									<?php if (isset($_SESSION['user'])) { ?>
 										<li class="nav-item"><a class="nav-link" href="<?php echo base_url('index.php/classement-phrase');?>">Phrases</a>
-										<li class="nav-item"><a class="nav-link" href="#">Mes Phrases</a>
+										<li class="nav-item"><a class="nav-link" href="<?php echo base_url('index.php/classement-mesphrase');?>">Mes Phrases</a>
 									<?php }?>
 								</ul>
 							</li>

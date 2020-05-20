@@ -13,22 +13,30 @@ class ClassementPhrase extends CI_Controller {
 		header('Access-Control-Allow-Origin: *');
 	}
 
-	public function index()
+	public function index($type = 'ALL')
 	{
+		$javaFile="assets/js/classementPhraseJS.js";
+		if($type!='ALL'){
+			$javaFile="assets/js/classementMesPhraseJS.js";
+		}
 		$headerData = array(
 			"cssFile" => "assets/css/ClassementJ.css",
 			"flagActif" => "classement",
 		);
 		$footerData = array(
-			"javaFile" => "assets/js/classementPhraseJS.js",
+			"javaFile" => $javaFile,
 		);
 		$this->load->view('header', $headerData);
         $this->load->view('pages/classement-phrase');
 		$this->load->view('footer',$footerData);
 	}
 
-public function ajax_list(){
-		$list = $this->Phrase->get_datatables();
+public function ajax_list($type){
+		$Filter = array(
+			'type'	=> $type,
+			'idUser'	=> $_SESSION['user']['id_joueur'],
+		);
+		$list = $this->Phrase->get_datatables($Filter);
 		$data = array();
 		$no = $_POST['start'];
 		foreach ($list as $phrase) {

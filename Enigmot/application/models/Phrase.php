@@ -304,10 +304,13 @@ class Phrase extends CI_Model
         }
       }
 
-      public function get_datatables(){
+      public function get_datatables($data){
         $this->_get_datatables_query();
         if($_POST['length'] != -1)
           $this->db->limit($_POST['length'], $_POST['start']);
+        if($data['type']!='All'){
+          $this->db->where('id_Createur',$data['idUser']);
+        }
         $query = $this->db->get();
         return $query->result();
       }

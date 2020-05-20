@@ -1,15 +1,14 @@
-$(document).ready(function(){ 
+$(document).ready(function(){
+	console.log("MesPhrase");
 	var table = $('#table').DataTable({
 		"processing":true,
 		"serverSide":true,
-		"order":[0,'asc'],
 		"language": {
             "url": "//cdn.datatables.net/plug-ins/1.10.20/i18n/French.json"
         },
 		"ajax": {
-			"url": "ClassementJ/ajax_list",
+			"url": "ClassementPhrase/ajax_list/MesPhrase",
 			"type": "POST"
 		},
 	});
 });
-

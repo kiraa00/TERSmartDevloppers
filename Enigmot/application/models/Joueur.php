@@ -186,6 +186,7 @@
 
       public function ajoutGlose($joueur,$credit){
         $this->db->set('credit',"credit-$credit",FALSE);
+        $this->db->set('nbrGloseAjoutee',"nbrGloseAjoutee+1",FALSE);
         $this->db->where('id_joueur',$joueur);
         $this->db->update('Joueur');
       }
