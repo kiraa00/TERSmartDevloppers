@@ -196,19 +196,18 @@ class Jouer extends CI_Controller {
 					$idGlose=$dataglose->id_glose;
 					$idLiaison=$dataglose->idLiaison;
 					list($gloseIDref, $liaisonIDref) = explode(":",$data['Gloses'][$i]);
-					$Vote = $this->Liaison->getVote($data['Mot'][$i],$idGlose,$idLiaison)."</glose>";
+					$Voteval=$this->Liaison->getVote($data['Mot'][$i],$idGlose,$idLiaison);
 					$gloseName = "<glose id='d$idLiaison'>".$dataglose->glose;
 					if($idGlose == $gloseIDref & $idLiaison == $liaisonIDref){
 						$gloseName = "<glose id='d$idLiaison' class='glose'>".$dataglose->glose;
 						if(!$dejaJouer){
-							$Vote--;
+							$Voteval--;
 						}
-						$Vote= $Vote."</glose>";
 					}
-					
+					$VoteB = $Voteval."</glose>";
 					$MotsResultat[$i]['gloses'][$j]=array(
 						'gloseName' =>	$gloseName,
-						'vote'	=>	$Vote,
+						'vote'	=>	$VoteB,
 					);
 					if(!isset($this->session->user)){
 						$MotsResultat[$i]['gloses'][$j]['vote']="";

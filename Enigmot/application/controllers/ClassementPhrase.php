@@ -15,20 +15,24 @@ class ClassementPhrase extends CI_Controller {
 
 	public function index($type = 'ALL')
 	{
-		$javaFile="assets/js/classementPhraseJS.js";
-		if($type!='ALL'){
-			$javaFile="assets/js/classementMesPhraseJS.js";
+		if(isset($_SESSION['user'])){
+			$javaFile="assets/js/classementPhraseJS.js";
+			if($type!='ALL'){
+				$javaFile="assets/js/classementMesPhraseJS.js";
+			}
+			$headerData = array(
+				"cssFile" => "assets/css/ClassementJ.css",
+				"flagActif" => "classement",
+			);
+			$footerData = array(
+				"javaFile" => $javaFile,
+			);
+			$this->load->view('header', $headerData);
+	        $this->load->view('pages/classement-phrase');
+			$this->load->view('footer',$footerData);
+		}else{
+			redirect('Connexion');
 		}
-		$headerData = array(
-			"cssFile" => "assets/css/ClassementJ.css",
-			"flagActif" => "classement",
-		);
-		$footerData = array(
-			"javaFile" => $javaFile,
-		);
-		$this->load->view('header', $headerData);
-        $this->load->view('pages/classement-phrase');
-		$this->load->view('footer',$footerData);
 	}
 
 public function ajax_list($type){
