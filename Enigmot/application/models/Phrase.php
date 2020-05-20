@@ -286,8 +286,11 @@ class Phrase extends CI_Model
       }
 
       ///fonctions pour le classement
-      private function _get_datatables_query(){
+      private function _get_datatables_query($data){
         $this->db->from($this->table);
+        if($data['type']!='All'){
+          $this->db->where('id_Createur',$data['idUser']);
+        }
         $i = 0;
         foreach ($this->column as $item){
           if($_POST['search']['value'])
@@ -305,18 +308,16 @@ class Phrase extends CI_Model
       }
 
       public function get_datatables($data){
-        $this->_get_datatables_query();
+        $this->_get_datatables_query($data);
+
         if($_POST['length'] != -1)
           $this->db->limit($_POST['length'], $_POST['start']);
-        if($data['type']!='All'){
-          $this->db->where('id_Createur',$data['idUser']);
-        }
         $query = $this->db->get();
         return $query->result();
       }
 
-      public function get_filtered_data(){
-        $this->_get_datatables_query();
+      public function get_filtered_data($data){
+        $this->_get_datatables_query($data);
         $query = $this->db->get();  
         return $query->num_rows();  
       }

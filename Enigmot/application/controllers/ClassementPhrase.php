@@ -57,7 +57,7 @@ public function ajax_list($type){
 		$output = array(
             "draw" => $_POST['draw'],
             "recordsTotal" => $this->Phrase->get_all_data(),
-            "recordsFiltered" => $this->Phrase->get_filtered_data(),
+            "recordsFiltered" => $this->Phrase->get_filtered_data($Filter),
             "data" => $data,
         );
 		//output to json format
